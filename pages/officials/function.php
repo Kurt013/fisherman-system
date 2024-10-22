@@ -16,7 +16,7 @@ if(isset($_POST['btn_add'])){
     $ct = mysqli_num_rows($q);
 
 
-    if($ct != 0){
+    if($ct == 0){
         $query = mysqli_query($con,"INSERT INTO tblofficial (sPosition,completeName,pcontact,paddress,termStart,termEnd,status) 
         values ('$ddl_pos', '$txt_cname', '$txt_contact', '$txt_address', '$txt_sterm', '$txt_eterm', 'Ongoing Term')") or die('Error: ' . mysqli_error($con));
         if($query == true)

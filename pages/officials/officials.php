@@ -11,7 +11,7 @@
     {
     ob_start();
     include('../head_css.php'); ?>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <?php 
         
@@ -28,7 +28,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Barangay Officials
+                        BFARMC Officials
                     </h1>
                     
                 </section>
@@ -44,13 +44,13 @@
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Officials</button>  
 
                                         <?php 
-                                            if(!isset($_SESSION['staff']))
-                                            {
-                                        ?>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
-                                        <?php
+                                            // Check if the user role is not 'Staff' before displaying the delete button
+                                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "Staff") {
+                                            ?>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Delete</button> 
+                                            <?php
                                             }
-                                        ?>
+                                            ?>
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->
@@ -95,11 +95,17 @@
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
                                                                 <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>';
-                                                                if($row['status'] == 'Ongoing Term'){
-                                                                echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle " aria-hidden="true"></i> End</button>';
-                                                                }
-                                                                else{
-                                                                echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle " aria-hidden="true"></i> Start</button>';
+                                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "Staff") {
+                                                                    if($row['status'] == 'Ongoing Term') {
+                                                                        echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';
+                                                                    } else {
+                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
+                                                                    }
+                                                                } else {
+                                                                    // If the user is 'Staff', show only the Edit button and the Start button if applicable
+                                                                    if ($row['status'] !== 'Ongoing Term') {
+                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
+                                                                    }
                                                                 }
                                                             echo '</td>
                                                         

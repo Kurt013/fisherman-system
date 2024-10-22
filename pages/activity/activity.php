@@ -11,7 +11,7 @@
     {
     ob_start();
     include('../head_css.php'); ?>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <?php 
         
@@ -64,14 +64,9 @@
                                     <table id="table" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <?php 
-                                                if((!isset($_SESSION['staff'])) && (!isset($_SESSION['resident'])))
-                                                {
-                                                ?>
+                                                
                                                 <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
-                                                <?php
-                                                    }
-                                                ?>
+        
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
                                                 <th>Description</th>
@@ -80,8 +75,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if($_SESSION['role'] == "Administrator")
-                                            {   
+                                            
 
                                                 $squery = mysqli_query($con, "select * from tblactivity");
                                                 while($row = mysqli_fetch_array($squery))
@@ -103,43 +97,7 @@
                                                     include "view_modal.php";
                                                 }
 
-                                            }
-                                            elseif(isset($_SESSION['resident'])){
-                                                $squery = mysqli_query($con, "select * from tblactivity");
-                                                while($row = mysqli_fetch_array($squery))
-                                                {
-                                                    echo '
-                                                    <tr>
-                                                        <td>'.$row['dateofactivity'].'</td>
-                                                        <td>'.$row['activity'].'</td>
-                                                        <td>'.$row['description'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#viewModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-search" aria-hidden="true"></i> Photo</button></td>
-                                                    </tr>
-                                                    ';
-
-                                                    include "view_modal.php";
-                                                }
-                                            }
-                                            else{
-                                                $squery = mysqli_query($con, "select * from tblactivity");
-                                                while($row = mysqli_fetch_array($squery))
-                                                {
-                                                    echo '
-                                                    <tr>
-                                                        <td>'.$row['dateofactivity'].'</td>
-                                                        <td>'.$row['activity'].'</td>
-                                                        <td>'.$row['description'].'</td>
-                                                        <td>
-                                                            <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                                            <button class="btn btn-primary btn-sm" data-target="#viewModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-search" aria-hidden="true"></i> Photo</button>
-                                                        </td>
-                                                    </tr>
-                                                    ';
-
-                                                    include "edit_modal.php";
-                                                    include "view_modal.php";
-                                                }
-                                            }
+                                            
                                             ?>
                                         </tbody>
                                     </table>

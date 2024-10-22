@@ -16,7 +16,7 @@
         width:418px;
     }
     </style>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <?php 
         
@@ -33,7 +33,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Resident
+                        Members
                     </h1>
                     
                 </section>
@@ -52,13 +52,13 @@
                                         
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Residents</button>  
                                         <?php 
-                                            if(!isset($_SESSION['staff']))
-                                            {
-                                        ?>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
-                                        <?php
+                                            // Check if the user role is not 'Staff' before displaying the delete button
+                                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "Staff") {
+                                            ?>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Delete</button> 
+                                            <?php
                                             }
-                                        ?>
+                                            ?>
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->
@@ -75,12 +75,12 @@
                                                 <?php
                                                     }
                                                 ?>
-                                                <th>Zone</th>
+                                                <th>Purok</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Age</th>
                                                 <th>Gender</th>
-                                                <th>Former Address</th>
+                                                <th>Cellphone Number</th>
                                                 <th style="width: 40px !important;">Option</th>
                                             </tr>
                                         </thead>
@@ -88,7 +88,7 @@
                                             <?php
                                             if(!isset($_SESSION['staff']))
                                             {
-                                                $squery = mysqli_query($con, "SELECT zone,id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, formerAddress, image FROM tblresident order by zone");
+                                                $squery = mysqli_query($con, "SELECT zone,id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, cpnumber, image FROM tblresident order by zone");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
@@ -99,7 +99,7 @@
                                                         <td>'.$row['cname'].'</td>
                                                         <td>'.$row['age'].'</td>
                                                         <td>'.$row['gender'].'</td>
-                                                        <td>'.$row['formerAddress'].'</td>
+                                                        <td>'.$row['cpnumber'].'</td>
                                                         <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
@@ -108,7 +108,7 @@
                                                 }
                                             }
                                             else{
-                                                $squery = mysqli_query($con, "SELECT zone,id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, formerAddress, image FROM tblresident order by zone");
+                                                $squery = mysqli_query($con, "SELECT zone,id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, cpnumber, image FROM tblresident order by zone");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
@@ -118,7 +118,7 @@
                                                         <td>'.$row['cname'].'</td>
                                                         <td>'.$row['age'].'</td>
                                                         <td>'.$row['gender'].'</td>
-                                                        <td>'.$row['formerAddress'].'</td>
+                                                        <td>'.$row['cpnumber'].'</td>
                                                         <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
@@ -171,13 +171,13 @@
                                                 <th>Name</th>
                                                 <th>Age</th>
                                                 <th>Gender</th>
-                                                <th>Former Address</th>
+                                                <th>Cellphone Number</th>
                                                 <th style="width: 40px !important;">Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $squery = mysqli_query($con, "SELECT id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, formerAddress, image FROM tblresident where householdnum = '".$_GET['resident']."'");
+                                            $squery = mysqli_query($con, "SELECT id,CONCAT(lname, ', ', fname, ' ', mname) as cname, age, gender, cpnumber, image FROM tblresident where householdnum = '".$_GET['resident']."'");
                                             while($row = mysqli_fetch_array($squery))
                                             {
                                                 echo '
@@ -187,7 +187,7 @@
                                                     <td>'.$row['cname'].'</td>
                                                     <td>'.$row['age'].'</td>
                                                     <td>'.$row['gender'].'</td>
-                                                    <td>'.$row['formerAddress'].'</td>
+                                                    <td>'.$row['cpnumber'].'</td>
                                                     <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                 </tr>
                                                 ';
@@ -215,11 +215,29 @@
         <?php }
         include "../footer.php"; ?>
 <script type="text/javascript">
-    $(function() {
-        $("#table").dataTable({
-           "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,6 ] } ],"aaSorting": []
-        });
-    });
-</script>
+        <?php if(!isset($_SESSION['staff'])) { ?>
+            $(function() {
+                $("#table").DataTable({
+                    "responsive": true,
+                    "aoColumnDefs": [ 
+                        { "bSortable": false, "aTargets": [ 0, 7 ] }
+                    ],
+                    "aaSorting": [],
+                    "autoWidth": false 
+                });
+            });
+        <?php } else { ?>
+            $(function() {
+                $("#table").DataTable({
+                    "responsive": true,
+                    "aoColumnDefs": [ 
+                        { "bSortable": false, "aTargets": [ 6 ] }
+                    ],
+                    "aaSorting": [],
+                    "autoWidth": false
+                });
+            });
+        <?php } ?>
+        </script>
     </body>
 </html>

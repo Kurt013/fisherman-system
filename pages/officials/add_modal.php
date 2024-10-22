@@ -15,17 +15,15 @@
                                     <label>Positions:</label>
                                     <select name="ddl_pos" class="form-control input-sm">
                                         <option selected="" disabled="">-- Select Positions -- </option>
-                                        <option value="Captain">Barangay Captain</option>
-                                        <option value="Kagawad(Ordinance)">Barangay Kagawad(Ordinance)</option>
-                                        <option value="Kagawad(Public Safety)">Barangay Kagawad(Public Safety)</option>
-                                        <option value="Kagawad(Tourism)">Barangay Kagawad(Tourism)</option>
-                                        <option value="Kagawad(Budget & Finance)">Barangay Kagawad(Budget & Finance)</option>
-                                        <option value="Kagawad(Agriculture)">Barangay Kagawad(Agriculture)</option>
-                                        <option value="Kagawad(Education)">Barangay Kagawad(Education)</option>
-                                        <option value="Kagawad(Infrastracture)">Barangay Kagawad(Infrastracture)</option>
-                                        <option value="SK Chairman">SK Chairman</option>
-                                        <option value="Secretary">Barangay Secretary</option>
-                                        <option value="Treasurer">Barangay Treasurer</option>
+                                        <option value="President">President</option>
+                                        <option value="Vice President">Vice President</option>
+                                        <option value="Secretary">Secretary</option>
+                                        <option value="Treasurer">Treasurer</option>
+                                        <option value="Public Relations Officer">Public Relations Officer</option>
+                                        <option value="Public Relations Officer">Public Relations Officer</option>
+                                        <option value="Sergeant at Arms">Sergeant at Arms</option>
+                                        <option value="Sergeant at Arms">Sergeant at Arms</option>
+
                                     </select>
                                 </div>
                                 <div class="form-group">
