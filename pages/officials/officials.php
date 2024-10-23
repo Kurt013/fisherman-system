@@ -45,7 +45,7 @@
 
                                         <?php 
                                             // Check if the user role is not 'Staff' before displaying the delete button
-                                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "Staff") {
+                                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                             ?>
                                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Delete</button> 
                                             <?php
@@ -95,7 +95,7 @@
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
                                                                 <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>';
-                                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "Staff") {
+                                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                                                     if($row['status'] == 'Ongoing Term') {
                                                                         echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';
                                                                     } else {

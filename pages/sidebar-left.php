@@ -14,7 +14,7 @@
             ';
 
             // Check if the role is Administrator
-            if ($_SESSION['role'] == "Administrator") {
+            if ($_SESSION['role'] == "administrator") {
                 echo '
                 <ul class="sidebar-menu">
                     <li>
@@ -45,7 +45,7 @@
                 </ul>';
             }
             // Check if the role is Staff
-            elseif (isset($_SESSION['role']) && $_SESSION['role'] == "Staff") { // Correct the check to 'role'
+            elseif (isset($_SESSION['role']) && $_SESSION['role'] == "staff") { // Correct the check to 'role'
                 echo '
                 <ul class="sidebar-menu">
                     <li>

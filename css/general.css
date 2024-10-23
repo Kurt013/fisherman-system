@@ -1,0 +1,379 @@
+@font-face {
+    font-family: 'Cocogoose-Bold';
+    src: url('../fonts/Cocogoose-Pro-Bold-trial.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Cocogoose-Regular';
+    src: url('../fonts/Cocogoose-Pro-Regular-trial.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Spotify Medium';
+    src: url('../fonts/CircularSpotifyText-Medium.otf');
+  }
+  
+  @font-face {
+    font-family: 'Spotify Bold';
+    src: url('../fonts/CircularSpotifyText-Bold.otf');
+  }
+  
+  @font-face {
+    font-family: 'Spotify Black';
+    src: url('../fonts/CircularSpotifyText-Black.otf');
+  }
+  
+  
+  *, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  
+  dialog {
+    z-index: 9999;
+  }
+  
+  ::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  dialog :focus {
+    outline: none;
+  }
+  
+  input, ::placeholder, select, option {
+    font-weight: 600;
+  }
+  
+  input {
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline-width: 0.5px;
+    outline-color: #3D7080;
+  }
+  
+  input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
+  
+  button, input[type="submit"] {
+    cursor: pointer;
+  }
+  
+  
+  /* Reusable error message design */
+  .visibility {
+    visibility: hidden;
+  }
+  
+  .error-message {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 20px;
+    font-size: clamp(12px, 2vw, 15px);
+    width: 80%;
+    max-width: 400px;
+    background-color: #FAB4B6;
+    color: #B6050A;
+    margin: 0px auto 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  
+  .error-message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 10px;
+    background-color: #B6050A;
+  }
+  
+  .success-message {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 20px;
+    font-size: clamp(12px, 2vw, 15px);
+    width: 80%;
+    max-width: 400px;
+    background-color: #B2E8B9;
+    color: #26A237;
+    margin: 0px auto 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  
+  .success-message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 10px;
+    background-color: #26A237;
+  }
+  
+  /* Verified Icon */
+  .icon-wrapper {
+    display: inline-block;
+    border-radius: 50%; 
+    border: 10px solid #D6DFD5;
+    box-shadow: inset 0 0 0 26px #D6DFD5;
+  }
+  
+  .ri-verified-badge-fill {
+    color: #419999;
+    font-size: 120px;
+  }
+  
+  
+  /* Confirmation Delete Design */
+  .confirm-popup {
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: -1;
+    width: 95%;
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .confirm-header, .confirm-body, .confirm-footer {
+    padding: 10px;
+  }
+  
+  .confirm-header {
+    background-color: #FF3A40;
+    color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .confirm-header h1 {
+    font-size: 25px;
+  }
+  
+  .exit-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .exit-icon {
+    font-size: 40px !important;
+  }
+  
+  .confirm-body {
+    display: flex;
+    height: 100px;
+    background-color: #FEFEFE;
+    column-gap: 10px;
+  }
+  
+  .left-confirm-body {
+    flex: 0 1 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .left-confirm-body p {
+    color: #FEFEFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF3A40;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+  }
+  
+  .right-confirm-body {
+    flex: 1;
+  }
+  
+  .right-confirm-body p {
+    color: #949191;
+  }
+  
+  .confirm-footer {
+    background-color: #F0F1F0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 10px;
+  }
+  
+  .cancel-btn, .delete-btn {
+    padding: 5px 15px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 80px;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    border: 2px solid #A4A0A0;
+    color: #A4A0A0;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .delete-btn {
+    color: #FEFEFE;
+    border: 2px solid #FF3A40;
+    background-color: #FF3A40;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  
+  /* Successful Notif */
+  .message-popup {
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 9999;
+    width: 95%;
+    max-width: 1000px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .pop-up {
+    display: flex;
+    column-gap: 10px;
+    margin: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .success {
+    background-color: #B2E8B9;
+  }
+  
+  .error {
+    background-color: #FAB4B6;
+  }
+  
+  .success::before, .error::before {
+    content: '';
+    position: absolute;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    right: 0;
+  }
+  
+  .success::before {
+    background-color: #26A237;
+  }
+  
+  .error::before {
+    background-color: #FF3A40;
+  }
+  
+  .left-side {
+    flex: 0 1 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right-side {
+    flex: 1;
+  }
+  
+  .success-circle, .error-circle {
+    position: relative;
+    font-size: 45px !important;
+  }
+  
+  .success-circle {
+    color: #26A237;
+  }
+  
+  .error-circle {
+    color: #FF3A40;
+  }
+  
+  .success-circle::after, .error-circle::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 50%;
+    height: 50%;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  .right-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .content * {
+    color: black;
+  }
+  
+  .exit {
+    font-size: 30px;
+    color: #323232;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .cancel-btn:active {
+      background-color: #A4A0A0;
+      color: white;
+    }
+  
+    .delete-btn:active {
+      border-color: #FF0007;
+      background-color: #FF0007;
+    }
+  }
+  
+  @media only screen and (min-width: 991px) {
+    .cancel-btn:hover {
+      background-color: #A4A0A0;
+      color: white;
+    }
+  
+    .delete-btn:hover {
+      border-color: #FF0007;
+      background-color: #FF0007;
+    }
+  
+    .exit-btn:hover {
+      background-color: white;
+    }
+  
+    .exit-btn:hover i {
+      color: #FF3A40;
+    }
+  }
+  
+  

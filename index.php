@@ -1,89 +1,105 @@
-<!DOCTYPE html>
-<html>
 <?php
 session_start();
 ?>
-    <head>
-        <meta charset="UTF-8">
-        <title>Barangay Information System</title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <!-- bootstrap 3.0.2 -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-    </head>
-    <body class="skin-black">
-        <div class="container" style="margin-top:30px">
-          <div class="col-md-4 col-md-offset-4">
-              <div class="panel panel-default">
-            <div class="panel-heading" style="text-align:center;">
-                <img src="img/logo.png" style="height:150px;"/>
-              <h3 class="panel-title">
-                <strong>
-                    Barangay Information System
-                </strong>
-              </h3>
-            </div>
-            <div class="panel-body">
-              <form role="form" method="post">
-                <div class="form-group">
-                  <label for="txt_username">Username</label>
-                  <input type="text" class="form-control" style="border-radius:0px" name="txt_username" placeholder="Enter Username">
-                </div>
-                <div class="form-group">
-                  <label for="txt_password">Password</label>
-                  <input type="password" class="form-control" style="border-radius:0px" name="txt_password" placeholder="Enter Password">
-                </div>
-                <button type="submit" class="btn btn-sm btn-primary" name="btn_login">Log in</button>
-                <label id="error" class="label label-danger pull-right"></label> 
-              </form>
-            </div>
-          </div>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFARMC - Sinalhan</title>
+  <link rel="icon" href="images/villa-gilda-logo3.png">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<form method="post" class="login-form">
+    <div><img src="images/villa-gilda-logo2.png" class="logo" alt="Villa Gilda Resort Logo"></div>   
+    <p class='error-message visibility' id="error">The password or username you entered is incorrect. Please try again. </p>
+    
+    <?php
+    include "pages/connection.php";
 
-      <?php
-        include "pages/connection.php";
-        if(isset($_POST['btn_login']))
-        { 
-            $username = $_POST['txt_username'];
-            $password = $_POST['txt_password'];
+    if (isset($_POST['btn_login'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
+        // Prepare the query
+        $query = "SELECT id, username, password, role FROM tbluser WHERE username = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
 
-            $admin = mysqli_query($con, "SELECT * from tbluser where username = '$username' and password = '$password' and role = 'administrator' ");
-            $numrow_admin = mysqli_num_rows($admin);
+        if ($stmt->num_rows == 1) {
+            $stmt->bind_result($id, $username, $db_password_hash, $role);
+            $stmt->fetch();
 
-            $staff = mysqli_query($con, "SELECT * from tbluser where username = '$username' and password = '$password' and role = 'staff'");
-            $numrow_staff = mysqli_num_rows($staff);
+            // Debugging: Check fetched values
+            // echo "Username: $username, Password Hash: $db_password_hash, Role: $role";
 
-            if($numrow_admin > 0)
-            {
-                while($row = mysqli_fetch_array($admin)){
-                  $_SESSION['role'] = "Administrator";
-                  $_SESSION['userid'] = $row['id'];
-                  $_SESSION['username'] = $row['username'];
-                }    
-                header ('location: pages/officials/officials.php');
+            // Verify the password
+            if (password_verify($password, $db_password_hash)) {
+                $_SESSION['userid'] = $id;
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
+
+                // Redirect based on the role
+                if ($role === 'administrator') {
+                    header('Location: pages/officials/officials.php');
+                    exit();
+                } elseif ($role === 'staff') {
+                    header('Location: pages/resident/resident.php');
+                    exit();
+                }
+            } else {
+                // Incorrect password
+                echo "<script>
+                    document.getElementById('error').textContent = 'The password or username you entered is incorrect. Please try again.';
+                    document.getElementById('error').classList.remove('visibility');
+                </script>";
             }
-            elseif($numrow_staff > 0)
-            {
-                while($row = mysqli_fetch_array($staff)){
-                  $_SESSION['role'] = "Staff";
-                  $_SESSION['userid'] = $row['id'];
-                  $_SESSION['username'] = $row['username'];
-                }    
-                header ('location: pages/resident/resident.php');
-            }
-            else
-            {
-              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Invalid Account";</script>';
-               
-            }
-             
+        } else {
+            // User not found
+            echo "<script>
+                document.getElementById('error').textContent = 'Invalid Account';
+                document.getElementById('error').classList.remove('visibility');
+            </script>";
         }
-        
-      ?>
 
-    </body>
+        // Close the statement
+        $stmt->close();
+    }
+    ?>
+
+    <div class="username-field">
+      <input class="username" placeholder="Enter your username" type="text" name="username" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" required>
+    </div>
+    <div class="password-field">
+      <input placeholder="Enter your password" class="password" id="password" type="password" name="password" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" required>
+    </div>
+    <div class="login"><input class="submit-btn" type="submit" name="btn_login" value="LOGIN"></div>
+    <div class="forgot"><a class="forgot-redirect" href="forget_password.php">FORGOT YOUR PASSWORD?</a></div>
+
+    <div class="sun"></div>
+    <div class="custom-shape-divider-bottom-1717433957">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </form>
+  <?php
+  //$conn = new mysqli('localhost', 'root', '', 'db_barangay');
+
+  
+   //$password = 'staff123';
+   //$encryptedPass = password_hash($password, PASSWORD_BCRYPT);
+   //$sql = "INSERT INTO tbluser (username, password, role) VALUES ('bfarmcstaff', '{$encryptedPass}', 'staff')";
+ 
+    //$conn->query($sql);
+ ?>
+  <script src="login.js"></script>
+</body>
 </html>
