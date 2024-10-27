@@ -44,11 +44,12 @@ if(isset($_POST['btn_add'])){
                                         fname,
                                         mname,
                                         bdate,
+                                        age,
                                         barangay,
                                         zone,
                                         hnumber,
                                         gender,
-                                        cpnumber
+                                        cpnumber,
                                         image
                                     ) 
                                     VALUES (
@@ -56,6 +57,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_fname', 
                                         '$txt_mname',  
                                         '$txt_bdate', 
+                                        '$txt_age',
                                         '$txt_brgy',
                                         '$txt_zone',
                                         '$txt_hnumber',
@@ -76,6 +78,7 @@ if(isset($_POST['btn_add'])){
                                         fname,
                                         mname,
                                         bdate,
+                                        age,
                                         barangay,
                                         zone,
                                         hnumber,
@@ -88,6 +91,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_fname', 
                                         '$txt_mname',  
                                         '$txt_bdate', 
+                                        '$txt_age',
                                         '$txt_brgy',
                                         '$txt_zone',
                                         '$txt_hnumber',
@@ -114,6 +118,10 @@ if(isset($_POST['btn_save'])){
     $txt_edit_fname = mysqli_real_escape_string($con, $_POST['txt_edit_fname']);
     $txt_edit_mname = mysqli_real_escape_string($con, $_POST['txt_edit_mname']);
     $txt_edit_bdate = mysqli_real_escape_string($con, $_POST['txt_edit_bdate']);
+    $dateOfBirth = $txt_edit_bdate;
+    $today = date("Y-m-d");
+    $diff = date_diff(date_create($dateOfBirth), date_create($today));
+    $txt_edit_age = $diff->format('%y');
     $txt_edit_brgy = mysqli_real_escape_string($con, $_POST['txt_edit_brgy']);
     $txt_edit_zone = mysqli_real_escape_string($con, $_POST['txt_edit_zone']);
     $txt_edit_hnumber = mysqli_real_escape_string($con, $_POST['txt_edit_hnumber']);
@@ -155,6 +163,7 @@ if(isset($_POST['btn_save'])){
         fname = '".$txt_edit_fname."',
         mname = '".$txt_edit_mname."',
         bdate = '".$txt_edit_bdate."',
+        age = '".$txt_edit_age."',
         barangay = '".$txt_edit_brgy."',
         zone = '".$txt_edit_zone."',
         hnumber = '".$txt_edit_hnumber."',

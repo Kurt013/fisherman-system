@@ -11,6 +11,13 @@
     {
     ob_start();
     include('../head_css.php'); ?>
+
+    <head>
+    <title>BFARMC - Sinalhan</title>
+    <link rel="icon" href="img\bfarmc-sinalhan-logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    </head>
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <?php 

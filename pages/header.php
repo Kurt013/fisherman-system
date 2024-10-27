@@ -1,7 +1,8 @@
 <?php
 
 echo  '<header class="header">
-         <a href="#" class="logo">
+         <a href="#" class="logo" >
+         <img src="img/bfarmc-sinalhan-logo.png" alt="BFARMC Logo">
              <!-- Add the class icon to your logo image or logo icon to add the margining -->
              BFARMC - SINALHAN
          </a>

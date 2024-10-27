@@ -5,12 +5,14 @@ session_start();
 ?>
     <head>
         <meta charset="UTF-8">
-        <title>Barangay Information System</title>
+        <title>BFARMC - Sinalhan</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link rel="icon" href="img/bfarmc-sinalhan-logo.png">
+
 
     </head>
     <body class="skin-black">

@@ -5,17 +5,19 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Edit Resident Information</h4>
+            <h4 class="modal-title">Edit Member Information</h4>
         </div>
         <div class="modal-body">';
 
         $edit_query = mysqli_query($con,"SELECT * from tblresident where id = '".$row['id']."' ");
+        
         $erow = mysqli_fetch_array($edit_query);
 
         echo '
             <div class="row">
                 <div class="container-fluid">
                     <div class="col-md-6 col-sm-12">
+                        <input type="hidden" value="'.$erow['id'].'" name="hidden_id" id="hidden_id"/>
                         <div class="form-group">
                             <label class="control-label">Last Name:</label>
                             <input name="txt_edit_lname" class="form-control input-sm" type="text" value="'.$erow['lname'].'"/>
@@ -75,4 +77,6 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
   </div>
 </form>
 </div>';
+
 ?>
+

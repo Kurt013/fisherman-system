@@ -8,7 +8,7 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BFARMC - Sinalhan</title>
-  <link rel="icon" href="images/villa-gilda-logo3.png">
+  <link rel="icon" href="img/bfarmc-sinalhan-logo.png">
   <link rel="stylesheet" type="text/css" href="css/general.css">
   <link rel="stylesheet" type="text/css" href="css/login.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -16,7 +16,7 @@ session_start();
 </head>
 <body>
 <form method="post" class="login-form">
-    <div><img src="images/villa-gilda-logo2.png" class="logo" alt="Villa Gilda Resort Logo"></div>   
+    <div><img src="img/bfarmc-sinalhan-logo.png" class="logo" alt="BFARMC - SINALHAN Logo"></div>   
     <p class='error-message visibility' id="error">The password or username you entered is incorrect. Please try again. </p>
     
     <?php

@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Cellphone Number:</label>
-                                        <input name="txt_cpnumber" class="form-control input-sm" type="text" placeholder="Cellphone Number:"/>
+                                        <input name="txt_cpnumber" class="form-control input-sm" type="number" placeholder="Cellphone Number:"/>
                                     </div>
                                     
                                 </div>
