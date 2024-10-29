@@ -34,68 +34,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Handle the PDF generation action
         $qrData = htmlspecialchars($_POST['qr_data']); // Sanitize input
         $qrImageData = $_POST['image_data'];
-
+    
         // Decode the QR code image data and save it as a temporary file
         $tempImageFile = tempnam(sys_get_temp_dir(), 'qr_') . '.png'; // Create a temp file
         file_put_contents($tempImageFile, base64_decode($qrImageData)); // Save the QR code image
-
+    
         // Fetch member details
-        $memberId = explode(': ', $qrData)[1]; // Extract the ID from qrData
-        $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, CONCAT(zone, ', ', barangay) as address, cpnumber, image FROM tblresident WHERE id = '$memberId'");
-        $row = mysqli_fetch_assoc($query);
-
-        // Create a new PDF document
-        $pdf = new FPDF('L', 'mm', [266, 179]); // Landscape orientation with short bond paper size (8.5 x 11 inches)
-        $pdf->AddPage();
-        $pdf->SetAutoPageBreak(false);
-
-        // Set colors for header and footer
-        
-
-        // Logo and Title
-        $pdf->SetXY(10, 3);
-        $pdf->Image('C:\xampp\htdocs\fisherman-system\img\bg-id.png', 0, 0, 270, 180); // Adjust the logo path and size
-        $pdf->SetFont('Arial', 'B', 12);
-        
-        // Member Image
-        $pdf->SetDrawColor(6, 5, 166); // Set border color
-        $pdf->SetLineWidth(1.1); // Adjust this value for thickness
-
-        // Draw a border rectangle around the image
-        $pdf->Rect(10, 60, 80, 80); // Draw border
-        if ($row['image']) {
-            $pdf->Image('image/' . basename($row['image']), 11, 63, 78, 77); // Adjust the member image path
+        $memberId = explode('=', $qrData)[1]; // Adjust to ensure the ID is extracted correctly
+        $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, CONCAT(zone, ', ', barangay) AS address, cpnumber, image FROM tblresident WHERE id = '$memberId'");
+    
+        // Check if a row was returned
+        if ($row = mysqli_fetch_assoc($query)) {
+            // Create a new PDF document
+            $pdf = new FPDF('L', 'mm', [266, 179]); // Landscape orientation with short bond paper size (8.5 x 11 inches)
+            $pdf->AddPage();
+            $pdf->SetAutoPageBreak(false);
+    
+            // Set colors for header and footer
+            // (Add any header/footer styling here if needed)
+    
+            // Logo and Title
+            $pdf->SetXY(10, 3);
+            $pdf->Image('C:\xampp\htdocs\fisherman-system\img\bg-id.png', 0, 0, 270, 180); // Adjust the logo path and size
+            $pdf->SetFont('Arial', 'B', 12);
+            
+            // Member Image
+            $pdf->SetDrawColor(6, 5, 166); // Set border color
+            $pdf->SetLineWidth(1.1); // Adjust this value for thickness
+    
+            // Draw a border rectangle around the image
+            $pdf->Rect(10, 60, 80, 80); // Draw border
+            if ($row['image']) {
+                $pdf->Image('image/' . basename($row['image']), 11, 63, 78, 77); // Adjust the member image path
+            } else {
+                $pdf->SetXY(10, 30);
+                $pdf->SetFont('Arial', 'I', 8);
+                $pdf->SetTextColor(128, 128, 128); // Gray text color
+                $pdf->Cell(30, 10, 'IMAGE', 0, 2, 'C');
+                $pdf->Cell(30, 10, 'UNAVAILABLE', 0, 2, 'C');
+            }
+    
+            // Member Details
+            $pdf->SetFont('Helvetica', 'B', 25);
+            $pdf->SetXY(100, 85);
+            $pdf->Cell(0, 10, $row['cname'], 0, 1); // Use 10 for height to fit the text better
+            $pdf->SetFont('Helvetica', 'B', 20);
+            $pdf->SetXY(107, 98);
+            $pdf->Cell(0, 10, 'Age: ' . $row['age'], 0, 1); // Use better spacing for readability
+            $pdf->SetXY(107, 110);
+            $pdf->Cell(0, 10, 'Purok: ' . $row['address'], 0, 1);
+            $pdf->SetXY(107, 120);
+            $pdf->Cell(0, 10, 'Contact No: ' . $row['cpnumber'], 0, 1);
+    
+            // QR Code
+            $pdf->Image($tempImageFile, 212, 72, 40, 40); // QR Code
+    
+            // Clean output buffer before sending PDF
+            ob_end_clean();
+            // Output the PDF as a file download
+            $pdf->Output('I', 'qr_code.pdf'); // Inline display
+            unlink($tempImageFile); // Clean up temporary image file
+            exit; // Stop further execution
         } else {
-            $pdf->SetXY(10, 30);
-            $pdf->SetFont('Arial', 'I', 8);
-            $pdf->SetTextColor(128, 128, 128); // Gray text color
-            $pdf->Cell(30, 10, 'IMAGE', 0, 2, 'C');
-            $pdf->Cell(30, 10, 'UNAVAILABLE', 0, 2, 'C');
+            // Handle case where no member was found
+            echo "Member not found.";
+            exit;
         }
-
-        // Member Details
-        $pdf->SetFont('Helvetica', 'B', 25);
-        $pdf->SetXY(100, 40);
-        $pdf->Cell(0, 100, '' . $row['cname'], 0, 1);
-        $pdf->SetFont('Helvetica', 'B', 20);
-        $pdf->SetXY(107, 47);
-        $pdf->Cell(0, 120, 'Age                          : ' . $row['age'], 0, 1);
-        $pdf->SetXY(107, 58);
-        $pdf->Cell(0, 120, 'Purok                       : ' . $row['address'], 0, 1);
-        $pdf->SetXY(107, 68);
-        $pdf->Cell(0, 120, 'Contact No              : ' . $row['cpnumber'], 0, 1);
-
-        // QR Code
-        $pdf->Image($tempImageFile, 212, 72, 40, 40); // QR Code
-
-        // Clean output buffer before sending PDF
-        ob_end_clean();
-        // Output the PDF as a file download
-        $pdf->Output('I', 'qr_code.pdf'); // Inline display
-        unlink($tempImageFile); // Clean up temporary image file
-        exit; // Stop further execution
     }
 }
+    
 ?>
 
 <!DOCTYPE html>
@@ -168,7 +175,7 @@ include('../header.php');
                             $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image FROM tblresident ORDER BY zone");
                             while ($row = mysqli_fetch_array($squery)) {
                                 // Generate QR Code for each resident
-                                $qrData = 'Member ID: ' . $row['id'] . ', Name: ' . $row['cname'];
+                                $qrData = 'http://localhost/fisherman-system/pages/resident/display_member.php?id=' . $row['id'];
                                 $qrCode = new QrCode($qrData);
                                 $writer = new PngWriter();
                                 $qrCodeImage = $writer->write($qrCode);
@@ -184,13 +191,10 @@ include('../header.php');
                                     <td>' . $row['gender'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
                                     <td>
-                                        <form method="post" enctype="multipart/form-data" style="display:inline;">
-                                            <input type="hidden" name="qr_data" value="' . htmlspecialchars($qrData) . '"/>
-                                            <input type="hidden" name="image_data" value="' . $qrCodeBase64 . '"/>
-                                            <button type="submit" name="generate_pdf" class="btn btn-info btn-sm">
-                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
-                                            </button>
-                                        </form>
+                                        <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-info btn-sm">
+    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
+</button>
+
                                     </td>
                                     <td><button class="btn btn-primary btn-sm" data-target="#editModal' . $row['id'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                 </tr>';
@@ -200,6 +204,8 @@ include('../header.php');
 </tbody>
 
                             </table>
+
+                            
                             <?php include "../deleteModal.php"; ?>
                             
                         </form>
@@ -243,5 +249,43 @@ include('../header.php');
             });
         <?php } ?>
         </script>
+
+    <script type="text/javascript">
+    // Function to prevent checkbox state change when clicking on other elements
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.toggle-button-class'); // Use your actual class for toggle buttons
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent click event from bubbling up
+            });
+        });
+    });
+
+</script>
+        <script type="text/javascript">
+    function generatePdf(qrData, imageData) {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.target = '_blank'; // This makes the form submission open in a new tab
+        form.action = ''; // This will be the current page
+
+        var qrDataInput = document.createElement('input');
+        qrDataInput.type = 'hidden';
+        qrDataInput.name = 'qr_data';
+        qrDataInput.value = qrData;
+
+        var imageDataInput = document.createElement('input');
+        imageDataInput.type = 'hidden';
+        imageDataInput.name = 'image_data';
+        imageDataInput.value = imageData;
+
+        form.appendChild(qrDataInput);
+        form.appendChild(imageDataInput);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form); // Clean up the form after submission
+    }
+</script>
+
 </body>
 </html>

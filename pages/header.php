@@ -4,7 +4,7 @@ echo  '<header class="header">
           <a href="#" class="logo">
              <!-- Add the logo image -->
              <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 40px; margin-right: 10px;"> <!-- Adjust height as needed -->
-             BFARMC - SINALHAN
+             BFARMC
          </a>
          <!-- Header Navbar: style can be found in header.less -->
          <nav class="navbar navbar-static-top" role="navigation">

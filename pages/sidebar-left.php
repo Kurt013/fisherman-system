@@ -42,6 +42,11 @@
                             <i class="fa fa-history"></i> <span>Logs</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="../qrscanner/qrscanner.php">
+                            <i class="fa fa-history"></i> <span>Qr Scanner</span>
+                        </a>
+                    </li>
                 </ul>';
             }
             // Check if the role is Staff
