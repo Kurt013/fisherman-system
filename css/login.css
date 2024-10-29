@@ -1,422 +1,243 @@
-/* Layering of Items */
-.username-field, .password-field, .forgot, .login{
-    z-index: 10;
-  }
-  
-  .custom-shape-divider-bottom-1717433957, .login-form::before { 
-    z-index: 8;
-  }
-  
-  .tree-1, .tree-2 {
-    z-index: 6;
-  }
-  
-  .sun {
-    z-index: 4;
-  }
-  
-  
-  @media only screen and (max-width: 767px) {
-    body {
-      align-items: flex-end;
-    }
-    
-    .login-form {
-      background-image: linear-gradient(#3D7080 50%, #0097B2 80%);
-    }
-  
-    .sun {
-      right: 25%;
-      top: -45px;
-    }
-  
-    /*Trees placement*/
-    .tree-1, .tree-2 {
-      top: -205px;
-      right: 25%;
-    }
-  
-    .tree-1 {
-      transform: translateX(80px);
-    }
-    
-    .tree-2 {
-      transform: rotate(-12deg);
-    
-    }
-  }
-  
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    body {
-      align-items: flex-end;
-    }
-    
-    .login-form {
-      background-image: linear-gradient(#3D7080 50%, #0097B2 80%);
-    }
-  
-    .sun {
-      right: 25%;
-      top: -45px;
-    }
-  
-    .tree-1, .tree-2 {
-      top: -205px;
-      right: 25%;
-    }
-  
-    .tree-1 {
-      transform: translateX(90px);
-    }
-    
-    .tree-2 {
-      transform: rotate(-10deg);
-    }
-  }
-  
-  @media only screen and (min-width: 992px) { 
-   body {
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-    }
-  
-    .login-form {
-      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden; 
-      background: linear-gradient(rgba(61, 112, 128, 0.6) 50%, rgba(0, 151, 178, 0.6) 80%);
-    }
-  
-    .sun {
-      right: 70px;
-      bottom: -10px;
-    }
-  
-    .tree-1 {
-      transform: rotate(5deg);
-      left: -20px;
-      bottom: 20px;
-    }
-    
-    .tree-2 {
-      transform: rotate(-20deg);
-      right: -20px;
-      bottom: -20px;
-    }
-  
-    .tree-pos-2, .tree-pos {
-      width: 140px;
-    }
-  }
-  
-  
-  
-  @media only screen and (max-width: 991px) {
-    .custom-shape-divider-bottom-1717433957, .login-form::before { 
-      z-index: -4;
-    }
-    
-    .tree-1, .tree-2 {
-      z-index: -6;
-    }
-    
-    .sun {
-      z-index: -8;
-    }
-  
-    .submit-btn:active{
-      background-color: #F4CB26;
-      color: #EFF1EF;
-    }
-  }
-  
+
+
+
+
+@media only screen and (max-width: 767px) {
   body {
-    background-image: url('../img/login-bg-2.webp');
-    background-position: center;
-    background-size:cover;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    position: relative;
+    align-items: flex-end;
   }
   
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    align-items: flex-end;
+  }
+  
+}
+
+@media only screen and (min-width: 992px) { 
+ body {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
   .login-form {
-    width: 40%;
-    text-align: center;
-    flex: 1;
-    height: 50%;
-    position: relative;
-    padding: 10px;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; 
+    background: #034868;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 991px) {
+  .login-form::before { 
+    z-index: -4;
   }
   
-  .login-form::before {
-    content: '';
-    position: absolute;
-    background-color:#3D7080;
+
+  .submit-btn:active{
+    background-color: #F4CB26;
+    color: #EFF1EF;
   }
-  
-  /* .login-form .field {
-    padding-right: 2.2em;
-  } */
-  
-  
+}
+
+body {
+  background-image: url('../img/login-bg.png');
+  background-position: center;
+  background-size:cover;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  position: relative;
+}
+
+.login-form {
+  width: 40%;
+  text-align: center;
+  flex: 1;
+  height: 50%;
+  position: relative;
+  padding: 10px;
+  background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency */
+}
+
+.login-form::before {
+  content: '';
+  position: absolute;
+  background-color:#034868;
+}
+
+/* .login-form .field {
+  padding-right: 2.2em;
+} */
+
+
+.logo {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); 
+  width: clamp(170px, 25vw, 190px);
+  border-radius: 100px; 
+}
+
+h1 {
+  margin-bottom: 20px; 
+  font-family: 'Poppins Medium';
+  font-size: 24px; 
+  color: #FFFFFF; 
+  text-align: center; /* Center align heading if desired */
+}
+.username-field,
+.password-field {
+  position: relative; /* Allows for absolute positioning of label if needed */
+  margin-bottom: 20px; /* Space between input fields */
+}
+
+.username-field label,
+.password-field label {
+  display: block; 
+  margin-bottom: 15px; /* Space between label and input */
+  font-size: 16px; /* Adjust size as needed */
+  color: #FFFFFF; /* Change color as per your design */
+  text-align: left; /* Aligns text to the left */
+  position: absolute; /* Position label absolutely */
+  left: 10%; 
+  top: -20px; 
+  padding: 0 5px; 
+  font-weight: bold; 
+}
+
+.username,
+.password {
+  height: 45px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.username-field + .password-field {
+  margin-top: 20px;
+}
+
+.username, .password, .submit-btn {
+  font-size: clamp(12px, 2vw, 15px);
+  border-radius: 2.5em;
+  padding: 0.5em 0.8em;
+  border: none;
+}
+
+.username, .password {
+  height: 45px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.submit-btn {
+  background-color: #0200ff;
+  color: white;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 5px;
+  width: 50%; 
+  margin-top: 40px;
+  padding: 10px 0;
+  min-width: 150px;
+  max-width: 220px;
+  transition: background-color 0.2s;
+}
+
+.forgot-redirect {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 10px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+
+/* Media Queries for Phone and Tablet */
+@media only screen and (max-width: 991px) {
+  body {
+      flex-direction: column; /* Stack elements vertically on mobile */
+      align-items: center; /* Center items horizontally */
+  }
+
+  .login-form {
+      width: 100%; /* Occupy full width on mobile */
+      height: auto; /* Allow height to adjust based on content */
+      padding: 20px; /* Add padding for better spacing */
+      margin: 0; /* Remove margin to fit full width */
+  }
+
   .logo {
-    width: clamp(170px, 25vw, 190px);
+      margin-bottom: 20px; /* Space below the logo */
   }
-  
-  .username-field + .password-field {
-    margin-top: 20px;
-  }
-  
-  .username, .password, .submit-btn {
-    font-size: clamp(12px, 2vw, 15px);
-    border-radius: 2.5em;
-    padding: 0.5em 0.8em;
-    border: none;
-  }
-  
-  .username, .password {
-    height: 45px;
-    width: 80%;
-    max-width: 500px;
-  }
-  
-  /* input[type='password'] {
-    font-family: 'Arial';
-    padding-bottom: 12px;
-  } */
-  /* 
-  .password {
-    margin-bottom: 20px;
-    padding-right: 40px;
-  } */
-  
-  /* .show-pass {
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .show-pass-toggle {
-    position: absolute;
-    left: -9999px;
-  }
-  
-  .bx-hide, .bx-show {
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  
-  .passwordState {
-    color: #354550;
-    position: absolute;
-    right: 7px;
-    bottom: -2px;
-  } */
-  
-  .submit-btn {
-    background-color: #F4D248;
-    color: white;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: 5px;
-    width: 50%; 
-    margin-top: 40px;
-    padding: 10px 0;
-    min-width: 150px;
-    max-width: 220px;
-    transition: background-color 0.2s;
-  }
-  
-  .forgot-redirect {
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 10px;
-    margin-top: 10px;
-    letter-spacing: 2px;
-    font-weight: 800;
-  }
-  
-  
-  /* Tree icon */
-  .tree-1, .tree-2 {
-    position: absolute;
-  }
-  
-  .tree-pos-2 {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
-  
-  /* Sun icon */
-  .sun {
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    background-color: #F4D248;
-    border-radius: 50%;
-    transform: scale(1.5);
-  }
-  
-  .sun::before, .sun::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%; 
-  }
-  
-  .sun::before {
-    background-color: rgba(244, 210, 72, 0.4);
-    width: 4em;
-    height: 4em;
-    top: -7px;
-    right: -7px;
-  }
-  
-  .sun::after {
-    background-color: rgba(244, 210, 72, 0.2);
-    width: 5em;
-    height: 5em;
-    top: -15px;
-    right: -15px;
-  }
-  
-  /* Curved border svg */
-  .custom-shape-divider-bottom-1717433957 {
-    position: absolute;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg) scaleX(-1);
-  }
-  
-  .custom-shape-divider-bottom-1717433957 svg {
-    position: relative;
-    display: block;
-    width: calc(150% + 1.3px); 
-  }
-  
-  .custom-shape-divider-bottom-1717433957 .shape-fill {
-    fill: #3D7080;
-  }
-  
-  /* Responsiveness of Curved border*/
-  @media only screen and (max-width: 620px){
-    .custom-shape-divider-bottom-1717433957 {
-      top: -84px;
-      left: 0;
-      width: 100%;
-    }
-    
-    .custom-shape-divider-bottom-1717433957 svg {
-      height: 85px;
-    }  
-  }
-  
-  
-  @media only screen and (min-width: 351px) and (max-width: 620px) {
-    .custom-shape-divider-bottom-1717433957 {
-      top: -109px;
-      left: 0;
-      width: 100%;
-    }
-    
-    .custom-shape-divider-bottom-1717433957 svg {
-      height: 110px;
-    }  
-  }
-  
-  @media only screen and (min-width: 621px) and (max-width: 767px) {
-    .custom-shape-divider-bottom-1717433957 {
-      top: -128px;
-      left: 0;
-      width: 100%;
-    }
-    
-    .custom-shape-divider-bottom-1717433957 svg {
-      height: 130px;
-    }  
-  }
-  
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .custom-shape-divider-bottom-1717433957 {
-      top: -148px;
-      left: 0;
-      width: 100%;
-    }
-    
-    .custom-shape-divider-bottom-1717433957 svg {
-      height: 150px;
-    }  
-  }
-  
-  @media only screen and (min-width: 992px) {
-    .custom-shape-divider-bottom-1717433957 {
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-    }
-    
-    .login-form::before {
-      width: 100%;
-      height: 40px;
-      background-color: #3D7080;
-      bottom: -20px;
-      left: 0;
-    }
-  
-    .custom-shape-divider-bottom-1717433957 svg {
-      height: 100px;
-    }  
-  
-    .submit-btn:hover{
-      background-color: #F4CB26;
-      color: #EFF1EF;
-    }
-  }
-  
-  dialog {
-    text-align: center;
-    color: #3D7080;
-    z-index: 1000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: none;
-    width: 70%;
-    height: 30%;
-    max-width: 400px;
-    min-height: 200px;
-    border-radius: 30px;
-  }
-  
+
   h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Spotify Medium';
+      margin-bottom: 15px; /* Space below the heading */
   }
-  
-  .exit {
-    color: #3D7080;
-    cursor: pointer;
-    font-family: 'Spotify Bold';
-    font-weight: bold;
-    font-size: 30px;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
-    padding-top: 5px;
+
+  .username, .password, .submit-btn {
+      width: 100%; /* Inputs and button take full width */
+      max-width: none; /* Remove max-width constraint */
   }
-  
-  .exit:focus {
-    outline-color: #F4D248;
-  }
-  
+}
+
+login-form {
+  width: 40%;
+  text-align: center;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  padding: 10px;
+  background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency */
+}
+dialog {
+  text-align: center;
+  color: #3D7080;
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  width: 70%;
+  height: 30%;
+  max-width: 400px;
+  min-height: 200px;
+  border-radius: 30px;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Spotify Medium';
+}
+
+.exit {
+  color: #3D7080;
+  cursor: pointer;
+  font-family: 'Spotify Bold';
+  font-weight: bold;
+  font-size: 30px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding-top: 5px;
+}
+
+.exit:focus {
+  outline-color: #F4D248;
+}

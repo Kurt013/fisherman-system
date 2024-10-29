@@ -66,7 +66,7 @@
                                             <tr>
                                                 
                                                 <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
-        
+                                                <th>Image</th>
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
                                                 <th>Description</th>
@@ -83,12 +83,12 @@
                                                     echo '
                                                     <tr>
                                                         <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                        <td><img src="photo/' . $row['image'] . '" alt="Activity Image" style="width: 100px; height: auto;"/></td> <!-- Displaying photo -->
                                                         <td>'.$row['dateofactivity'].'</td>
                                                         <td>'.$row['activity'].'</td>
                                                         <td>'.$row['description'].'</td>
                                                         <td>
                                                             <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                                            <button class="btn btn-primary btn-sm" data-target="#viewModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-search" aria-hidden="true"></i> Photo</button>
                                                         </td>
                                                     </tr>
                                                     ';

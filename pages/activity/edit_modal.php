@@ -1,5 +1,5 @@
 <?php echo '<div id="editModal'.$row['id'].'" class="modal fade">
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   <div class="modal-dialog modal-sm" style="width:300px !important;">
     <div class="modal-content">
         <div class="modal-header">
@@ -21,6 +21,10 @@
                 <div class="form-group">
                     <label>Description : </label>
                     <textarea name="txt_edit_desc" class="form-control input-sm">'.$row['description'].'</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Image:</label>
+                    <input name="txt_edit_files[]" class="form-control input-sm" type="file"/>
                 </div>
             </div>
         </div>

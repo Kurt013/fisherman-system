@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2024 at 03:55 PM
+-- Generation Time: Oct 29, 2024 at 01:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,16 +31,16 @@ CREATE TABLE `tblactivity` (
   `id` int(11) NOT NULL,
   `dateofactivity` date NOT NULL,
   `activity` text NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblactivity`
 --
 
-INSERT INTO `tblactivity` (`id`, `dateofactivity`, `activity`, `description`) VALUES
-(10, '2017-01-03', 'Cleaning', 'Cleaning of Lawa'),
-(11, '2017-01-28', 'teets', 'sdfsdfsdfsdf');
+INSERT INTO `tblactivity` (`id`, `dateofactivity`, `activity`, `description`, `image`) VALUES
+(14, '2024-10-28', 'Ayuda', 'Distribution of ayuda', '1730191689375login-bg.png');
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,12 @@ INSERT INTO `tblactivityphoto` (`id`, `activityid`, `filename`) VALUES
 (34, 10, '1485267649563motherboard.png'),
 (35, 10, '14855301764078196186971_2237f161bd_b.jpg'),
 (36, 10, '1485530481111bicycle-1280x720.jpg'),
-(38, 11, '1485530620716user2.jpg');
+(38, 11, '1485530620716user2.jpg'),
+(39, 10, '1730188518268login-bg.jfif'),
+(40, 12, '1730188541680login-bg.png'),
+(41, 13, '1730188952155paper.jfif'),
+(42, 13, '1730188973025idpic.png'),
+(43, 13, '1730189118956bfarmc-sinalhan-logo.png');
 
 -- --------------------------------------------------------
 
@@ -141,7 +146,86 @@ INSERT INTO `tbllogs` (`id`, `user`, `logdate`, `action`) VALUES
 (49, 'Administrator', '2024-10-22 21:31:01', 'Added Resident named Dela Cruz, Juan Algabre'),
 (50, 'Administrator', '2024-10-22 21:38:15', 'Updated Resident named Dela Cruz, Juan Algabre'),
 (51, 'Administrator', '2024-10-22 21:45:52', 'Added Resident named Casubha, Kim Mendoza'),
-(52, 'Administrator', '2024-10-22 21:47:11', 'Added Resident named Casubha, Kim Mendoza');
+(52, 'Administrator', '2024-10-22 21:47:11', 'Added Resident named Casubha, Kim Mendoza'),
+(53, 'administrator', '2024-10-25 16:06:04', 'Added Resident named Casubha, Lucky  Mendoza'),
+(54, 'administrator', '2024-10-25 16:29:39', 'Added Resident named Dela Cruz, Juan Algabre'),
+(55, 'administrator', '2024-10-25 16:34:36', 'Added Resident named Juan, Zofia Zurita'),
+(56, 'administrator', '2024-10-25 16:38:10', 'Added Resident named Par, Era Dane'),
+(57, 'administrator', '2024-10-25 16:48:32', 'Added Resident named Almodovar, Kurt Eqe'),
+(58, 'administrator', '2024-10-25 17:28:26', 'Added Official named Delos Santos, Sergio'),
+(59, 'administrator', '2024-10-25 17:41:05', 'Added Resident named Gonzales, Isaac juju'),
+(60, 'administrator', '2024-10-25 17:42:14', 'Added Resident named Taa, Criza jeje'),
+(61, 'administrator', '2024-10-25 18:01:12', 'Updated Resident named Casubha, Kim Mendoza'),
+(62, 'administrator', '2024-10-25 18:01:33', 'Updated Resident named Casubha, Kim Mendoza'),
+(63, 'administrator', '2024-10-25 18:02:09', 'Update Official named Dela Cruz, Juan C.'),
+(64, 'administrator', '2024-10-25 18:02:19', 'Updated Resident named Casubha, Kim Asthley Mendoza'),
+(65, 'administrator', '2024-10-25 18:09:29', 'Updated Resident named Casubha, Kim Mendoza'),
+(66, 'administrator', '2024-10-25 18:13:21', 'Updated Resident named Casubha, Kim Mendoza'),
+(67, 'administrator', '2024-10-25 18:14:02', 'Updated Resident named Juan, Zofia Zurita'),
+(68, 'administrator', '2024-10-25 18:20:26', 'Updated Resident named Casubha, Kim Mendoza'),
+(69, 'administrator', '2024-10-25 18:21:33', 'Updated Resident named Casubha, Kim Mendoza'),
+(70, 'administrator', '2024-10-25 18:23:17', 'Added Resident named aa, aq qq'),
+(71, 'administrator', '2024-10-25 18:29:02', 'Added Resident named Cruz, Iner Santos'),
+(72, 'administrator', '2024-10-25 18:29:38', 'Updated Resident named Casubha, Kim Mendoza'),
+(73, 'administrator', '2024-10-25 18:36:19', 'Updated Resident named Casubha, Lucky Star Mendoza'),
+(74, 'administrator', '2024-10-25 18:41:45', 'Updated Resident named Casubha, Kim Asthley Mendoza'),
+(75, 'administrator', '2024-10-25 18:41:57', 'Update Official named Dela Cruz, Juan C.'),
+(76, 'staff', '2024-10-25 18:42:50', 'Updated Resident named Casubha, Kim Mendoza'),
+(77, 'staff', '2024-10-25 18:43:12', 'Updated Resident named Casubha, Kim Mendoza'),
+(78, 'staff', '2024-10-25 18:43:37', 'Added Resident named bat, bat bat'),
+(79, 'staff', '2024-10-25 18:45:47', 'Added Resident named bat, bat bat'),
+(80, 'staff', '2024-10-25 18:50:25', 'Updated Resident named bat, bat bat'),
+(81, 'administrator', '2024-10-25 18:55:03', 'Updated Resident named Casubha, Kim Mendoza'),
+(82, 'administrator', '2024-10-25 18:55:44', 'Updated Resident named Casubha, Kim Mendoza'),
+(83, 'administrator', '2024-10-25 18:56:35', 'Updated Resident named Casubha, Kim Mendoza'),
+(84, 'administrator', '2024-10-25 18:58:40', 'Updated Resident named Casubha, Kim Mendoza'),
+(85, 'administrator', '2024-10-25 19:01:37', 'Updated Resident named Dela Cruz, Kim Mendoza'),
+(86, 'administrator', '2024-10-25 19:05:57', 'Updated Resident named Casubha, Kim Mendoza'),
+(87, 'administrator', '2024-10-25 19:06:09', 'Updated Resident named Casubha, Kim Mendoza'),
+(88, 'administrator', '2024-10-25 19:11:59', 'Updated Resident named Casubha, Kima Mendoza'),
+(89, 'administrator', '2024-10-26 15:37:37', 'Updated Resident named Casubha, Kim Mendoza'),
+(90, 'administrator', '2024-10-26 15:41:52', 'Update Resident named Casubha, Kim Mendoza'),
+(91, 'administrator', '2024-10-26 15:42:05', 'Update Resident named Casubha, Kim Mendoza'),
+(92, 'administrator', '2024-10-26 15:42:53', 'Updated Resident named Casubha, Kim Mendoza'),
+(93, 'administrator', '2024-10-26 15:54:59', 'Update Resident named Casubha, Kim Mendoza'),
+(94, 'administrator', '2024-10-26 15:55:12', 'Update Resident named Casubha, Kim Mendoza'),
+(95, 'administrator', '2024-10-26 15:57:57', 'Update Resident named Casubha, Kima Mendoza'),
+(96, 'administrator', '2024-10-26 16:00:18', 'Update Resident named Casubha, Kima Mendoza'),
+(97, 'administrator', '2024-10-26 16:01:32', 'Update Resident named Casubha, Kim Mendoza'),
+(98, 'administrator', '2024-10-26 16:01:43', 'Update Resident named Casubha, Kima Mendoza'),
+(99, 'administrator', '2024-10-26 16:03:08', 'Update Resident named Casubha, Kima Mendoza'),
+(100, 'administrator', '2024-10-26 16:03:18', 'Update Resident named Casubha, Kim Mendoza'),
+(101, 'administrator', '2024-10-26 16:03:29', 'Update Resident named Juan, Zofia Zurita'),
+(102, 'administrator', '2024-10-26 16:03:57', 'Update Resident named Casubha, Kim Mendoza'),
+(103, 'administrator', '2024-10-26 16:04:06', 'Update Resident named Casubha, Kima Mendoza'),
+(104, 'administrator', '2024-10-26 16:05:56', 'Update Resident named Casubha, Kim Mendozaaaa'),
+(105, 'administrator', '2024-10-26 16:06:45', 'Update Resident named Casubha, Kim Mendoza'),
+(106, 'administrator', '2024-10-26 16:07:08', 'Updated Resident named Casubha, Ashley Mendoza'),
+(107, 'administrator', '2024-10-26 16:07:50', 'Updated Resident named Casubha, Kima Mendoza'),
+(108, 'administrator', '2024-10-26 16:08:18', 'Updated Resident named Casubha, Kim Mendoza'),
+(109, 'administrator', '2024-10-26 16:11:51', 'Updated Resident named Casubha, Kim Mendoza'),
+(110, 'administrator', '2024-10-26 16:12:31', 'Updated Resident named Casubha, Ashley Mendoza'),
+(111, 'administrator', '2024-10-26 17:31:39', 'Added Resident named Dela Cruz, Lina Casubha'),
+(112, 'administrator', '2024-10-26 17:32:27', 'Updated Resident named Taa, Criza mendoza'),
+(113, 'administrator', '2024-10-27 23:58:51', 'Added Resident named Amarante, Juan Taa'),
+(114, 'administrator', '2024-10-28 00:02:06', 'Updated Resident named Amarante, Juan Taa'),
+(115, 'administrator', '2024-10-28 00:06:29', 'Updated Resident named Amarante, Juan Danilo'),
+(116, 'administrator', '2024-10-28 01:19:19', 'Updated Resident named Dela Cruz, Lina Casubha'),
+(117, 'administrator', '2024-10-28 01:19:27', 'Updated Resident named Casubha, Ashley Mendoza'),
+(118, 'administrator', '2024-10-28 01:19:34', 'Updated Resident named Par, Era Dane'),
+(119, 'administrator', '2024-10-28 01:19:41', 'Updated Resident named Juan, Zofia Zurita'),
+(120, 'administrator', '2024-10-29 15:55:41', 'Added Activity cleaning'),
+(121, 'administrator', '2024-10-29 16:02:32', 'Added Activity Ayuda'),
+(122, 'administrator', '2024-10-29 16:08:38', 'Updated Activity cleaning'),
+(123, 'administrator', '2024-10-29 16:09:38', 'Updated Activity cleaning'),
+(124, 'administrator', '2024-10-29 16:09:46', 'Updated Activity cleaning'),
+(125, 'administrator', '2024-10-29 16:12:27', 'Updated Activity cleaning'),
+(126, 'administrator', '2024-10-29 16:40:57', 'Updated Activity cleaning'),
+(127, 'administrator', '2024-10-29 16:43:13', 'Updated Activity cleaning'),
+(128, 'administrator', '2024-10-29 16:47:31', 'Added Activity Ayuda'),
+(129, 'administrator', '2024-10-29 16:48:09', 'Updated Activity Ayuda'),
+(130, 'administrator', '2024-10-29 17:04:52', 'Updated Resident named Juan, Zofia Zurita'),
+(131, 'administrator', '2024-10-29 17:05:08', 'Updated Resident named Par, Era Dane');
 
 -- --------------------------------------------------------
 
@@ -165,7 +249,7 @@ CREATE TABLE `tblofficial` (
 --
 
 INSERT INTO `tblofficial` (`id`, `sPosition`, `completeName`, `pcontact`, `paddress`, `termStart`, `termEnd`, `status`) VALUES
-(12, 'President', 'Dela Cruz, Juan D.', '09236781914', 'Purok 2 Sinalhan', '2024-10-16', '2024-11-08', 'Ongoing Term');
+(12, 'President', 'Dela Cruz, Juan C.', '09236781914', 'Purok 3 Sinalhan', '2024-10-16', '2024-11-08', 'Ongoing Term');
 
 -- --------------------------------------------------------
 
@@ -184,7 +268,7 @@ CREATE TABLE `tblresident` (
   `zone` varchar(5) NOT NULL,
   `hnumber` int(100) NOT NULL,
   `gender` varchar(6) NOT NULL,
-  `cpnumber` int(11) NOT NULL,
+  `cpnumber` varchar(15) DEFAULT NULL,
   `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -193,8 +277,11 @@ CREATE TABLE `tblresident` (
 --
 
 INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `image`) VALUES
-(18, 'Dela Cruz', 'Juan', 'Algabre', '2024-10-11', 0, 'Sinalhan', '2', 22, 'Male', 0, 'default.png'),
-(19, 'Casubha', 'Kim', 'Mendoza', '2013-02-05', 0, 'Sinalhan', '1', 655, 'Female', 2147483647, 'default.png');
+(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '6', 655, 'Female', '2147483647', '1730049567353_idpic.png'),
+(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '1', 11, 'Female', '2147483647', '1730049581675_idpic.png'),
+(23, 'Par', 'Era', 'Dane', '1991-03-17', 33, 'SInalhan', '1', 121, 'Female', '2147483647', '1730049574672_idpic.png'),
+(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '1730049559567_idpic.png'),
+(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '1730044926206_idpic.png');
 
 -- --------------------------------------------------------
 
@@ -207,7 +294,7 @@ CREATE TABLE `tbluser` (
   `First Name` varchar(100) NOT NULL,
   `Last Name` varchar(100) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -219,7 +306,8 @@ INSERT INTO `tbluser` (`id`, `First Name`, `Last Name`, `username`, `password`, 
 (1, '', '', 'admin', 'admin', 'administrator'),
 (2, '', '', 'zone', '1234', 'zoneleader'),
 (11, '', '', 'staff', 'staff', 'staff'),
-(19, '', '', 'bfarmc', '$2y$10$Sxk.sHSUcqy6f', 'administrator');
+(25, '', '', 'bfarmcadmin', '$2y$10$bgRoIIX.GwwVUbu16S.neualH.xM4x..yLlJSh94RGRIwL4ibW8du', 'administrator'),
+(26, '', '', 'bfarmcstaff', '$2y$10$uhNu9u9jBFVLOsVgvTMbYun4SjxF7l7ZyosnG9ef2ztkJXZUYkTWq', 'staff');
 
 -- --------------------------------------------------------
 
@@ -295,37 +383,37 @@ ALTER TABLE `tblzone`
 -- AUTO_INCREMENT for table `tblactivity`
 --
 ALTER TABLE `tblactivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tblactivityphoto`
 --
 ALTER TABLE `tblactivityphoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `tblofficial`
 --
 ALTER TABLE `tblofficial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tblresident`
 --
 ALTER TABLE `tblresident`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

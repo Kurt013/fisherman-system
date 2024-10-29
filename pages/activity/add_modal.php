@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Image:</label>
-                                    <input name="files[]" class="form-control input-sm" type="file" multiple/>
+                                    <input name="files[]" class="form-control input-sm" type="file"/>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,9 @@
 <?php
 
 echo  '<header class="header">
-         <a href="#" class="logo" >
-         <img src="img/bfarmc-sinalhan-logo.png" alt="BFARMC Logo">
-             <!-- Add the class icon to your logo image or logo icon to add the margining -->
+          <a href="#" class="logo">
+             <!-- Add the logo image -->
+             <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 40px; margin-right: 10px;"> <!-- Adjust height as needed -->
              BFARMC - SINALHAN
          </a>
          <!-- Header Navbar: style can be found in header.less -->
