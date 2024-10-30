@@ -49,10 +49,10 @@ session_start();
 
                 // Redirect based on the role
                 if ($role === 'administrator') {
-                    header('Location: pages/officials/officials.php');
+                    header('Location: pages/home/home.php');
                     exit();
                 } elseif ($role === 'staff') {
-                    header('Location: pages/resident/resident.php');
+                    header('Location: pages/home/home.php');
                     exit();
                 }
             } else {

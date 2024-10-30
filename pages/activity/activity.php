@@ -28,7 +28,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Activity
+                    <i class="fa fa-calendar"></i> <span>Activity</span>
                     </h1>
                     
                 </section>

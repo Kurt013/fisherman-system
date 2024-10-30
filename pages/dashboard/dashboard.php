@@ -18,8 +18,9 @@ if (!isset($_SESSION['role'])) {
 
         <aside class="right-side">
             <section class="content-header">
-                <h1>Dashboard</h1>
+                <h1><i class="fa fa-dashboard"></i> <span>Dashboard</span></h1>
             </section>
+            <div class="main-content">
             <div class="box">
                                 <div class="box-header">
                                     <div style="padding:10px;">
@@ -86,26 +87,26 @@ if (!isset($_SESSION['role'])) {
 
                 <!-- Bar charts and Donut chart -->
                 <div class="row">
-                    <!-- Age Distribution Bar Chart -->
-                    <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <h4>Age Distribution of Members</h4>
-                        <div id="morris-bar-chart2" style="height: 250px;"></div>
-                    </div>
+    <!-- Age Distribution Bar Chart -->
+    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
+        <h4>Age Distribution of Members</h4>
+        <div id="morris-bar-chart2" style="height: 250px;"></div>
+    </div>
 
-                    <!-- Members per Purok Bar Chart -->
-                    <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <h4>Members per Purok</h4>
-                        <div id="morris-bar-chart3" style="height: 250px;"></div>
-                    </div>
-                </div>
+    <!-- Members per Purok Bar Chart -->
+    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
+        <h4>Members per Purok</h4>
+        <div id="morris-bar-chart3" style="height: 250px;"></div>
+    </div>
 
-                <!-- Gender Distribution Donut Chart -->
-                <div class="row">
-                <div class="col-md-6 col-sm-12 col-xs-12">                     
-                <h4>Gender Distribution of Members</h4>
-                        <div id="morris-donut-chart" style="height: 250px;"></div>
-                    </div>
-                </div>
+    <!-- Gender Distribution Donut Chart -->
+    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
+        <h4>Gender Distribution of Members</h4>
+        <div id="morris-donut-chart" style="height: 250px;"></div>
+    </div>
+</div>
+
+
             </section>
         </aside>
     </div>
@@ -119,68 +120,76 @@ if (!isset($_SESSION['role'])) {
 
 <script>
     // Age Distribution Bar Chart
-        Morris.Bar({
-            element: 'morris-bar-chart2',
-            data: [
-                <?php
-                    $age_ranges = [
-                        "0-9", "10-19", "20-29", "30-39", "40-49", 
-                        "50-59", "60-69", "70-79", "80-89", "90-99"
-                    ];
+    Morris.Bar({
+        element: 'morris-bar-chart2',
+        data: [
+            <?php
+                $age_ranges = [
+                    "0-9", "10-19", "20-29", "30-39", "40-49", 
+                    "50-59", "60-69", "70-79", "80-89", "90-99"
+                ];
 
-                    foreach ($age_ranges as $range) {
-                        // Split the range into min and max
-                        list($min_age, $max_age) = explode('-', $range);
-                        // Query to count residents in the given age range
-                        $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE age BETWEEN $min_age AND $max_age");
-                        $row = mysqli_fetch_array($qry);
-                        $count = $row['cnt'] ?? 0;
-                        echo "{ y: '$range', a: $count },";
-                    }
-                ?>
-            ],
-            xkey: 'y',
-            ykeys: ['a'],
-            labels: ['Number of Residents'],
-            hideHover: 'auto'
-        });
+                foreach ($age_ranges as $range) {
+                    list($min_age, $max_age) = explode('-', $range);
+                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE age BETWEEN $min_age AND $max_age");
+                    $row = mysqli_fetch_array($qry);
+                    $count = $row['cnt'] ?? 0;
+                    echo "{ y: '$range', a: $count },"; 
+                }
+            ?>
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Number of Residents'],
+        barColors: ['#040384'], // Set bar color
+        lineColors: ['#000'], // Set line color to black
+        hideHover: 'auto',
+        labelColor: '#000', // Set label color to black
+        gridTextColor: '#000' // Set grid text color to black
+    });
+
+    // Members per Purok Bar Chart
+    Morris.Bar({
+        element: 'morris-bar-chart3',
+        data: [
+            <?php
+                for ($purok = 1; $purok <= 6; $purok++) {
+                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE zone = '$purok'");
+                    $row = mysqli_fetch_array($qry);
+                    $count = $row['cnt'] ?? 0;
+                    echo "{ y: 'Purok $purok', a: $count },"; 
+                }
+            ?>
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Residents per Purok'],
+        barColors: ['#040384'], // Set bar color
+        lineColors: ['#000'], // Set line color to black
+        hideHover: 'auto',
+        labelColor: '#000', // Set label color to black
+        gridTextColor: '#000', // Set grid text color to black
+        resize: true
+    });
+
+    // Gender Distribution Donut Chart
+    Morris.Donut({
+        element: 'morris-donut-chart',
+        data: [
+            <?php
+                $male_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Male'"))['cnt'];
+                $female_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Female'"))['cnt'];
+                echo "{ label: 'Male', value: $male_count },"; 
+                echo "{ label: 'Female', value: $female_count }"; 
+            ?>
+        ],
+        colors: ['#007bff', '#ff6384'],
+        labelColor: '#000', // Set label color to black
+        resize: true
+    });
+</script>
 
 
-        // Members per Purok Bar Chart
-        Morris.Bar({
-            element: 'morris-bar-chart3',
-            data: [
-                <?php
-                    for ($purok = 1; $purok <= 6; $purok++) {
-                        $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE zone = '$purok'");
-                        $row = mysqli_fetch_array($qry);
-                        $count = $row['cnt'] ?? 0;
-                        echo "{ y: 'Purok $purok', a: $count },";
-                    }
-                ?>
-            ],
-            xkey: 'y',
-            ykeys: ['a'],
-            labels: ['Residents per Purok'],
-            hideHover: 'auto',
-            resize: true
-        });
-
-        // Gender Distribution Donut Chart
-        Morris.Donut({
-            element: 'morris-donut-chart',
-            data: [
-                <?php
-                    $male_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Male'"))['cnt'];
-                    $female_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Female'"))['cnt'];
-                    echo "{ label: 'Male', value: $male_count },";
-                    echo "{ label: 'Female', value: $female_count }";
-                ?>
-            ],
-            colors: ['#007bff', '#ff6384'],
-            resize: true
-        });
-    </script>
 
     <?php include "../footer.php"; ?>
     <script type="text/javascript">
@@ -190,6 +199,7 @@ if (!isset($_SESSION['role'])) {
             });
         });
     </script>
+    </div>
 </body>
 </html>
 <?php } ?>

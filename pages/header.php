@@ -1,9 +1,9 @@
 <?php
 
 echo  '<header class="header">
-          <a href="#" class="logo">
+          <a href="../home/home.php" class="logo">
              <!-- Add the logo image -->
-             <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 40px; margin-right: 10px;"> <!-- Adjust height as needed -->
+             <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 55px; margin-right: 10px;"> <!-- Adjust height as needed -->
              BFARMC
          </a>
          <!-- Header Navbar: style can be found in header.less -->
@@ -21,7 +21,7 @@ echo  '<header class="header">
                      <!-- User Account: style can be found in dropdown.less -->
                      <li class="dropdown user user-menu">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                             <i class="glyphicon glyphicon-user"></i><span>'.$_SESSION['role'].'<i class="caret"></i></span>
+                             <i class="bx bxs-user-circle" ></i><span><i class="caret"></i></span>
                          </a>
                          <ul class="dropdown-menu">
                              <!-- User image -->

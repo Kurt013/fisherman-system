@@ -201,7 +201,7 @@ body.fixed .wrapper {
 /* Content */
 .content {
   padding: 20px 15px;
-  background: #f9f9f9;
+  background: #0605a6;
 }
 /* Utility */
 /* H1 - H6 font */
@@ -2517,6 +2517,7 @@ Component: timeline
     ---------
 */
 /* skin-blue navbar */
+
 .skin-blue .navbar {
   background-color: #3c8dbc;
 }
@@ -2874,6 +2875,11 @@ Component: timeline
     background-image: url('iCheck/minimal/minimal@2x.png');
     -webkit-background-size: 200px 20px;
     background-size: 200px 20px;
+  }
+  .skin-blue .right-side > .content-header {
+    background: #fbfbfb;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    padding-top: 30px;
   }
 }
 .pace .pace-progress {

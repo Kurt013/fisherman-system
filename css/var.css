@@ -1,0 +1,66 @@
+/* Contains All Variables */
+/*-----------------------*/
+
+/* Layout */
+/* Side bar and logo width */
+:root {
+    --left-side-width: 220px;
+
+    /* Colors */
+    --light-blue: #0200ff; /* Primary */
+    --red: #f56954;        /* Danger */
+    --green: #00a65a;      /* Success */
+    --aqua: #00c0ef;       /* Info */
+    --yellow: #f39c12;     /* Warning */
+    --blue: #0073b7;
+    --navy:  #001F3F;
+    --teal:  #39CCCC;
+    --olive: #3D9970;
+    --lime:  #01FF70;
+    --orange:  #FF851B;
+    --fuchsia: #F012BE;
+    --purple:  #932ab6;
+    --maroon:  #85144B;
+    --black: #222;
+    --gray: #eaeaec;
+
+    /* Link colors (Aka: <a> tags) */
+    --link-color: var(--light-blue);
+    --link-hover-color: rgba(2, 0, 255, 0.85); /* Lighten by 15% using a rough estimate */
+
+    /* Body background (Affects main content background only) */
+    --body-bg: #f9f9f9;
+
+    /* Table striped color */
+    --table-striped-color: #f3f4f5;
+
+    /* Sidebar skins */
+    /* Skin blue (light) sidebar vars */
+    --sidebar-light-bg: #f4f4f4;
+    --sidebar-light-hover-bg: #f9f9f9;
+    --sidebar-light-font: #555;
+    --sidebar-light-border: #dbdbdb;
+
+    /* Screen widths - Same as bootstrap default settings */
+    --screen-xs: 480px;
+    --screen-sm: 767px;
+    --screen-md: 992px;
+    --screen-lg: 1200px;
+    /* When the logo should go to the top of the screen */
+    --screen-header-collapse: 560px;
+
+    /* BOXES */
+    --box-border-color: #f4f4f4;
+    --box-border-radius: 3px;
+    --box-footer-bg: #fff;
+
+    /* FORMS */
+    --input-radius: 0px;
+
+    /* BUTTONS */
+    /* Border radius for non-flat buttons */
+    --btn-border-radius: 3px;
+
+    /* CHAT widget */
+    --attachment-border-radius: 3px;
+}

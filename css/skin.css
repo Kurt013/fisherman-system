@@ -1,4 +1,3 @@
-
 /* 
     Skins
     -----
@@ -9,32 +8,61 @@
     ---------
 */
 
-.debug-box {
-    background-color: @light-blue;
-}
-
 /* skin-blue navbar */
 .skin-blue .navbar {
-    .navbar-variant(@light-blue);
+    background-color: #0200ff;
 }
+
+/* Add a background image for tablet and phone sizes */
+@media screen and (max-width: 768px) { /* Adjust the max-width as needed for tablet sizes */
+    .skin-blue .navbar {
+        background-color: #0605a6; /* Use appropriate calculation for darken */
+        background-image: url('path/to/your/image.jpg'); /* Replace with your image path */
+        background-size: cover; /* Adjust to fit the element */
+        background-position: center; /* Center the image */
+    }
+
+    /* Other elements within the skin-blue class can also have styles adjusted if needed */
+    .skin-blue .logo {
+        background-color: #0605a6; /* Adjust logo background for consistency */
+    }
+
+    .skin-blue .right-side > .content-header {
+        background: #fbfbfb;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Other styles can go here if needed... */
+}
+
 /* skin-blue logo */
 .skin-blue .logo {
-    .logo-variant(darken(@light-blue, 5%));
+    background-color: #0200ff;
 }
+
+.skin-blue .right-side{
+    background-color: #0605a6; /* Adjust logo background for consistency */
+
+}
+
 /* skin-blue content header */
 .skin-blue .right-side > .content-header {
-    background: #fbfbfb;
+    
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    background: #1688e8; /* Updated background to linear gradient */
 }
+
 /* Skin-blue user panel */
 .skin-blue .user-panel {
-
+    /* Image border */
     > .image > img {
         border: 1px solid #dfdfdf;
     }
-
+    
+    /* User info text color */
     > .info, > .info > a {
-        color: @sidebar-light-font;
+        color: var(--sidebar-light-font);
     }
 }
 
@@ -43,50 +71,56 @@
     .sidebar {
         border-bottom: 1px solid #fff;
     }
-    // the menu 
+
+    /* The menu */
     .sidebar > .sidebar-menu > li {
         border-top: 1px solid #fff;
-        border-bottom: 1px solid @sidebar-light-border;
+        border-bottom: 1px solid var(--sidebar-light-border);
 
         &:first-of-type {
-            border-top: 1px solid @sidebar-light-border;
+            border-top: 1px solid var(--sidebar-light-border);
             > a {
                 border-top: 1px solid #fff;
             }
         }
+        
         > a {
             margin-right: 1px;
         }
-        //Hover and active states
+        
+        /* Hover and active states */
         > a:hover, &.active > a {
-            color: #222;
-            background: @sidebar-light-hover-bg;            
+            color: #ffffff;
+            background: #0200ff;      
         }
 
         > .treeview-menu {
             margin: 0 1px;
-            background: @body-bg;
+            background: var(--body-bg);
         }
     }
 
-    // Sidebar color (Both .wrapper and .left-side are responsible for sidebar bg color) 
+    /* Sidebar color */
     .left-side {
-        background: @sidebar-light-bg;
-        -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-        box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07);
+        background: #0605a6;
+        box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
     }
 
     .sidebar a {
-        color: @sidebar-light-font;
+        color: var(--sidebar-light-font);
+        
         &:hover {
             text-decoration: none;
         }
     }
-    // skin blue treeview-menu
+
+    /* Skin blue treeview-menu */
     .treeview-menu {
         > li {
-            > a {color: #777;}
+            > a {
+                color: #777;
+            }
             &.active > a, > a:hover {
                 color: #111;
             }
@@ -94,30 +128,34 @@
     }
 
     .sidebar-form {
-        .border-radius(2px);
-        border: 1px solid @sidebar-light-border;
+        border-radius: 2px;
+        border: 1px solid var(--sidebar-light-border);
         margin: 10px 10px;
+
         input[type="text"], .btn {
             box-shadow: none;
             background-color: #fafafa;
             border: 1px solid #fafafa;
             height: 35px;
-
         }
-        input[type="text"]{
+
+        input[type="text"] {
             color: #666;
-            .border-radius(2px, 0, 2px, 0)!important;
+            border-radius: 2px 0 2px 0 !important;
+
             &:focus, &:focus + .input-group-btn .btn {
                 background-color: #fff;
                 color: #666;
             }
+
             &:focus + .input-group-btn .btn {
                 border-left-color: #fff;
             }
         }
+
         .btn {
             color: #999;
-            .border-radius(0, 2px, 0, 2px)!important;
+            border-radius: 0 2px 0 2px !important;
         }
     }
 }
@@ -129,21 +167,23 @@
 
 /* skin-black navbar */
 .skin-black .navbar {
-    .navbar-variant(#fff; #333; #999; #fff);
+    background-color: #fff;
     border-bottom: 1px solid #eee;
 }
+
 /* skin-black logo */
 .skin-black .logo {
-    .logo-variant(#333);
+    background-color: #333;
 }
+
 /* skin-black content header */
 .skin-black .right-side > .content-header {
     background: transparent;
     box-shadow: none;
 }
-/* Skin-red user panel */
-.skin-black .user-panel {
 
+/* Skin-black user panel */
+.skin-black .user-panel {
     > .image > img {
         border: 1px solid #444;
     }
@@ -158,21 +198,24 @@
     .sidebar {
         border-bottom: 1px solid #333;
     }
-    // the menu 
+
+    /* The menu */
     .sidebar > .sidebar-menu > li {
         border-top: 1px solid #333;
-        border-bottom: 0px solid #444;
+        border-bottom: 0 solid #444;
 
         &:first-of-type {
             border-top: 1px solid #444;
             > a {
-                border-top: 0px solid #333;
+                border-top: 0 solid #333;
             }
         }
+
         > a {
             margin-right: 1px;
         }
-        //Hover and active states
+
+        /* Hover and active states */
         > a:hover, &.active > a {
             color: #f6f6f6;
             background: #444;            
@@ -184,21 +227,25 @@
         }
     }
 
-    // Sidebar color
+    /* Sidebar color */
     .left-side {
         background: #333;
     }
 
     .sidebar a {
         color: #eee;
+        
         &:hover {
             text-decoration: none;
         }
     }
-    // skin blue treeview-menu
+
+    /* skin black treeview-menu */
     .treeview-menu {
         > li {
-            > a {color: #ccc;}
+            > a {
+                color: #ccc;
+            }
             &.active > a, > a:hover {
                 color: #fff;
             }
@@ -206,30 +253,35 @@
     }
 
     .sidebar-form {
-        .border-radius(2px);
-        border: 0px solid #555;
+        border-radius: 2px;
+        border: 0 solid #555;
         margin: 10px 10px;
+
         input[type="text"], .btn {
             box-shadow: none;
-            background-color: rgba(255,255,255, 0.1);   
-            border: 0 solid rgba(255,255,255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 0 solid rgba(255, 255, 255, 0.1);
             height: 35px;
             outline: none;
         }
-        input[type="text"]{
+
+        input[type="text"] {
             color: #666;            
-            .border-radius(2px, 0, 2px, 0)!important;
+            border-radius: 2px 0 2px 0 !important;
+
             &:focus, &:focus + .input-group-btn .btn {
                 background-color: #444;                
                 border: 0;
             }
+
             &:focus + .input-group-btn .btn {
                 border-left: 0;
             }
         }
+
         .btn {
             color: #999;
-            .border-radius(0, 2px, 0, 2px)!important;
+            border-radius: 0 2px 0 2px !important;
             border-left: 0;
         }
     }

@@ -128,7 +128,9 @@ include('../header.php');
 
     <aside class="right-side">
         <section class="content-header">
-            <h1>Members</h1>
+            <h1>                            
+                <i class="fa fa-users"></i> <span>Members</span>
+            </h1>
         </section>
 
         <section class="content">

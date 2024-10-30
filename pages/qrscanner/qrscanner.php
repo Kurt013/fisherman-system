@@ -26,7 +26,9 @@
 
             <aside class="right-side">
                 <section class="content-header">
-                    <h1>QR Scanner</h1>
+                    <h1>
+                    <i class="bx bx-qr-scan"></i> <span>Qr Scanner</span>
+                    </h1>
                 </section>
                 <section class="content">
                 <video id="preview" style="width: 100%; max-width: 600px; height: auto;"></video>

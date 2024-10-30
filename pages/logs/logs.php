@@ -28,7 +28,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Staff Logs
+                    <i class="fa fa-history"></i> <span>Logs</span>
                     </h1>
                     
                 </section>
