@@ -71,7 +71,7 @@
   
   /* Reusable error message design */
   .visibility {
-    visibility: hidden;
+    display: none;
   }
   
   .error-message {

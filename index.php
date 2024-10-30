@@ -79,11 +79,11 @@ session_start();
       <input class="username" placeholder="Enter your username" type="text" name="username" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" required>
     </div>
     <div class="password-field">
-    <label for="password">Password</label>
+      <label for="password">Password</label>
       <input placeholder="Enter your password" class="password" id="password" type="password" name="password" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" required>
     </div>
-    <div class="login"><input class="submit-btn" type="submit" name="btn_login" value="LOGIN"></div>
-    <div class="forgot"><a class="forgot-redirect" href="forget_password.php">FORGOT YOUR PASSWORD?</a></div>
+    <div class="login"><input class="submit-btn" type="submit" name="btn_login" value="Login"></div>
+    <div class="forgot"><a class="forgot-redirect" href="forget_password.php">Forgot Password?</a></div>
   </form>
   <?php
   //$conn = new mysqli('localhost', 'root', '', 'db_barangay');

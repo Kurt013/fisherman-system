@@ -2,7 +2,7 @@
 
 
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
   body {
     align-items: flex-end;
   }
@@ -14,39 +14,9 @@
     align-items: flex-end;
   }
   
-}
-
-@media only screen and (min-width: 992px) { 
- body {
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .login-form {
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden; 
-    background: #034868;
-  }
-
-}
+} */
 
 
-
-@media only screen and (max-width: 991px) {
-  .login-form::before { 
-    z-index: -4;
-  }
-  
-
-  .submit-btn:active{
-    background-color: #F4CB26;
-    color: #EFF1EF;
-  }
-}
 
 body {
   background-image: url('../img/login-bg.png');
@@ -59,13 +29,11 @@ body {
 }
 
 .login-form {
-  width: 40%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  flex: 1;
-  height: 50%;
   position: relative;
   padding: 10px;
-  background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency */
 }
 
 .login-form::before {
@@ -79,124 +47,87 @@ body {
 } */
 
 
-.logo {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); 
-  width: clamp(170px, 25vw, 190px);
-  border-radius: 100px; 
-}
-
 h1 {
-  margin-bottom: 20px; 
-  font-family: 'Poppins Medium';
-  font-size: 24px; 
+  font-size: clamp(20px, 2vw ,30px); 
+  margin-inline: auto;
+  padding-inline: 10%;
   color: #FFFFFF; 
   text-align: center; /* Center align heading if desired */
 }
-.username-field,
-.password-field {
-  position: relative; /* Allows for absolute positioning of label if needed */
-  margin-bottom: 20px; /* Space between input fields */
+
+.logo {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); 
+  width: clamp(140px, 28vh, 200px);
 }
+
+.username-field, .password-field {
+  position: relative;
+}
+
+
 
 .username-field label,
 .password-field label {
+  text-align: left;
+  margin-left: -5px;
   display: block; 
-  margin-bottom: 15px; /* Space between label and input */
-  font-size: 16px; /* Adjust size as needed */
+  margin-bottom: 8px;
   color: #FFFFFF; /* Change color as per your design */
-  text-align: left; /* Aligns text to the left */
-  position: absolute; /* Position label absolutely */
-  left: 10%; 
-  top: -20px; 
   padding: 0 5px; 
-  font-weight: bold; 
+  font-weight: normal; 
+}
+
+
+.username-field + .password-field {
+  margin-top: 10px;
 }
 
 .username,
 .password {
-  height: 45px;
-  width: 80%;
-  max-width: 500px;
+  height: 50px;
+  border-radius: 0.2em;
 }
 
-.username-field + .password-field {
-  margin-top: 20px;
-}
 
 .username, .password, .submit-btn {
-  font-size: clamp(12px, 2vw, 15px);
-  border-radius: 2.5em;
+  font-size: 18px;
   padding: 0.5em 0.8em;
   border: none;
-}
-
-.username, .password {
-  height: 45px;
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
 }
 
 .submit-btn {
   background-color: #0200ff;
   color: white;
-  font-weight: 800;
   font-size: 22px;
-  letter-spacing: 5px;
-  width: 50%; 
-  margin-top: 40px;
+  border-radius: 0.2em;
+  margin-top: 25px;
+  height: 55px;
   padding: 10px 0;
-  min-width: 150px;
-  max-width: 220px;
+  border-radius: 2.4em;
   transition: background-color 0.2s;
 }
 
 .forgot-redirect {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 10px;
+  color: white;
+  font-size: 17px;
   margin-top: 10px;
-  letter-spacing: 2px;
-  font-weight: 800;
 }
 
 
-/* Media Queries for Phone and Tablet */
-@media only screen and (max-width: 991px) {
-  body {
-      flex-direction: column; /* Stack elements vertically on mobile */
-      align-items: center; /* Center items horizontally */
-  }
 
-  .login-form {
-      width: 100%; /* Occupy full width on mobile */
-      height: auto; /* Allow height to adjust based on content */
-      padding: 20px; /* Add padding for better spacing */
-      margin: 0; /* Remove margin to fit full width */
-  }
-
-  .logo {
-      margin-bottom: 20px; /* Space below the logo */
-  }
-
-  h1 {
-      margin-bottom: 15px; /* Space below the heading */
-  }
-
-  .username, .password, .submit-btn {
-      width: 100%; /* Inputs and button take full width */
-      max-width: none; /* Remove max-width constraint */
-  }
-}
-
-login-form {
+/* .login-form {
   width: 40%;
   text-align: center;
   flex: 1;
   height: 100%;
   position: relative;
   padding: 10px;
-  background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency */
-}
+  background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency
+} */
+
+
 dialog {
   text-align: center;
   color: #3D7080;
@@ -212,14 +143,14 @@ dialog {
   min-height: 200px;
   border-radius: 30px;
 }
-
+/* 
 h1 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Spotify Medium';
-}
+} */
 
 .exit {
   color: #3D7080;
@@ -241,3 +172,77 @@ h1 {
 .exit:focus {
   outline-color: #F4D248;
 }
+
+@media only screen and (min-width: 992px) { 
+  body {
+     justify-content: flex-end;
+   }
+
+   h1 {
+    padding-block: 5%;
+  }
+ 
+   .login-form {
+     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+     justify-content: center;
+     background: rgba(3, 72, 104, 0.4); /* Adjust alpha (0.8) for transparency */
+     width: 45%;
+   }
+
+  .username-field,
+  .password-field, .login {
+    width: 55%;
+    margin-inline: auto;
+    margin-bottom: 10px; /* Space between input fields */
+  }
+ }
+ 
+ 
+ 
+ @media only screen and (max-width: 991px) {
+   body {
+     position: relative;
+     justify-content: center;
+     align-items: center;
+     background: linear-gradient(rgba(3, 72, 104, 0.4), rgba(3, 72, 104, 0.4)), url('../img/login-bg.png');
+     background-size: cover;
+     background-position: center;
+    }
+ 
+    h1 {
+      padding-block: 10px;
+    }
+
+    .username-field,
+    .password-field, .login {
+      width: 80%;
+      margin-inline: auto;
+      margin-bottom: 10px; /* Space between input fields */
+    }
+
+   .login-form::before { 
+     z-index: -4;
+   }
+   
+   .submit-btn:active{
+     background-color: #F4CB26;
+     color: #EFF1EF;
+   }
+ 
+   .login-form {
+      padding: 20px; /* Add padding for better spacing */
+  }
+ 
+   .logo {
+       margin-bottom: 20px; /* Space below the logo */
+   }
+ 
+   h1 {
+       margin-bottom: 15px; /* Space below the heading */
+   }
+ 
+   .username, .password, .submit-btn {
+       width: 100%; /* Inputs and button take full width */
+       max-width: none; /* Remove max-width constraint */
+   }
+ }
