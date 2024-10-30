@@ -1,8 +1,7 @@
 body {
     background-color: #040384; /* Set background color */
     color: white;
-    overflow-x: hidden; /* Prevent scrolling */
-    font-family: Poppins Extrabold;
+    font-family: 'Poppins Extrabold';
 }
 
 .desc-content {
@@ -19,8 +18,6 @@ body {
     display: flex; /* Create a flex container */
     width: 100%; /* Ensure it uses the full width */
 }
-
-
 
 .text-wrapper p {
     font-size: 20px;
@@ -126,6 +123,10 @@ body {
     justify-content: center; /* Center text vertically */
     overflow: hidden; /* Prevent overflow of text */
 }
+
+/* My edited part */
+
+
 
 /* Media queries for smaller screens */
 @media only screen and (max-width: 991px) {

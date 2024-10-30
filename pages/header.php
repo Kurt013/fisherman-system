@@ -26,9 +26,10 @@ echo  '<header class="header">
                          <ul class="dropdown-menu">
                              <!-- User image -->
                              <li class="user-header bg-light-blue">
-                                 
+                                  <div class="circle-2"><i class="bx bxs-user"></i></div>
                                  <p>
-                                     '.$_SESSION['role'].'
+                                     '.$_SESSION['username'].' <br>
+                                     <span class="role">'.$_SESSION['role'].'</span>
                                  </p>
                              </li>
                              <!-- Menu Body -->

@@ -70,40 +70,114 @@
     width: 45px;
 }
 
-/* Sidebar user panel */
-
 /* Sidebar User Panel Styling */
+
+
+
 .user-panel {
     position: relative; /* Establishes a positioning context */
-    background-color: #ffde59;
-    padding: 30px; /* Maintain padding for user details */
-    overflow: hidden; /* Prevents overflow from other elements */
 }
 
-.user-panel down{
+.user-panel::before {
+    content: '';
+    background-color: #ffde59;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    position:absolute;
+}
+
+.user-panel .down{
     background-color: #0605a6 ;
 }
+
 .user-details {
     display: flex;
-    align-items: center;
+    height: 130px;
     padding: 10px 0; /* Adjust padding as needed */
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+.user-group {
+    display: flex;
+    align-items: flex-end;
+    z-index: 1;
+    margin-bottom: -16px;
+}
+
+.user-role {
+    font-size: 14px;
+}
+
+.role {
+    font-style: italic;
+    font-size: 12px;
 }
 
 .user-details i {
     background-color: transparent;
 }
 
+.circle {
+    position: relative;
+    z-index: 1;
+    background-color: rgb(255, 255, 202);
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 10px solid #0605a6 ;
+}
+
+
+
 .user-details i.bx {
+    top: 60%;   
+    left: 50%;  
+    transform: translate(-50%, -50%)
+        scale(1.2);
+    position: absolute;
     font-size: 60px; /* Adjust icon size */
-    color: white; /* Icon color */
+    color: #ffde59;
     background-color: transparent; /* Background color for the circle */
-    border-radius: 50px;
-    padding: 10px; /* Adds padding inside the circle */
-    margin-right: 10px; /* Space between icon and username */
-    position: absolute; /* Positioning the icon absolutely */
-    bottom: -30px; /* Move the icon down to extend outside */
-    left: 50%; /* Center the icon horizontally */
-    transform: translateX(-50%); /* Adjust to ensure it's centered */
+}
+
+
+.user-header {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.circle-2 {
+    position: relative;
+    z-index: 1;
+    background-color: rgb(255, 255, 202);
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.user-header p {
+    line-height: 1;
+    text-align: start;
+    text-shadow: none !important;
+}
+
+
+.user-header i{
+    top: 60%;   
+    left: 50%;  
+    transform: translate(-50%, -50%)
+        scale(1.2);
+    position: absolute;
+    font-size: 60px; /* Adjust icon size */
+    color: #ffde59;
+    background-color: transparent; 
 }
 
 /* User info styling */

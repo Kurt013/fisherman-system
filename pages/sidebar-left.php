@@ -5,12 +5,14 @@
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
-                <div class="pull-left info">
-                </div>
+
                 <div class="user-details"> 
-                <i class="bx bxs-user-circle"></i>
-                <h1 class="user-role">' . $_SESSION['role'] . '</h1>
-                <div class="down">
+                    <div class="circle"><i class="bx bxs-user"></i></div>
+                    <div class="user-group">
+                        <h1 class="user-role">' . $_SESSION['username'] . ' <br> <span class="role">'. $_SESSION['role'] .'</span> </h1>
+                    </div>
+                    
+                    <div class="down">
                 </div>
             </div>
             </div>

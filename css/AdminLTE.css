@@ -638,12 +638,8 @@ body > .header .logo .icon {
   width: 20px;
 }
 .user-panel {
-  padding: 10px;
-}
-.user-panel:before,
-.user-panel:after {
-  display: table;
-  content: " ";
+  padding-block: 10px;
+  padding-inline: 0px;
 }
 .user-panel:after {
   clear: both;

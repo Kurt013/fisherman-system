@@ -46,7 +46,7 @@
                                 "<span style='color: #52C8C8;'>{$_SESSION['role']}&nbsp;!</span>"; 
                             ?>
                         </h1>
-                        <p>Let’s get started! Feel free to explore and stay updated by clicking on the sections below:</p>
+                        <p>Let's get started! Feel free to explore and stay updated by clicking on the sections below:</p>
                         <div>
                         <div class="redirect-button-container"> <!-- Added container for buttons -->
                         <?php 
