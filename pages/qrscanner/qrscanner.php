@@ -6,7 +6,7 @@
     session_start();
     if(!isset($_SESSION['role']))
     {
-        header("Location: ../../login.php"); 
+        header("Location: ../../index.php"); 
     }
     else
     {

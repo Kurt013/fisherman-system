@@ -4,7 +4,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['role'])) {
-    header("Location: ../../login.php"); 
+    header("Location: ../../index.php"); 
 } else {
     ob_start();
     include('../head_css.php'); 
@@ -32,9 +32,9 @@ if (!isset($_SESSION['role'])) {
             <section class="content">
                 <div class="row">
                     <div class="box">
-                        <div class="col-md-3 col-sm-6 col-xs-12"><br>
+                        <div class="col-md-4 col-sm-6 col-xs-12"><br>
                             <div class="info-box">
-                                <a href="../household/household.php">
+                                <a href="../officials/officials.php">
                                     <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
                                 </a>
                                 <div class="info-box-content">
@@ -49,7 +49,7 @@ if (!isset($_SESSION['role'])) {
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-12"><br>
+                        <div class="col-md-4 col-sm-6 col-xs-12"><br>
                             <div class="info-box">
                                 <a href="../resident/resident.php">
                                     <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
@@ -66,9 +66,9 @@ if (!isset($_SESSION['role'])) {
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-12"><br>
+                        <div class="col-md-4 col-sm-6 col-xs-12"><br>
                             <div class="info-box">
-                                <a href="../clearance/clearance.php">
+                                <a href="../activity/activity.php">
                                     <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
                                 </a>
                                 <div class="info-box-content">
@@ -88,23 +88,26 @@ if (!isset($_SESSION['role'])) {
                 <!-- Bar charts and Donut chart -->
                 <div class="row">
     <!-- Age Distribution Bar Chart -->
-    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
-        <h4>Age Distribution of Members</h4>
-        <div id="morris-bar-chart2" style="height: 250px;"></div>
-    </div>
+                <div class="col-md-4 col-sm-6 col-xs-12"><br>
+                <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+                <h4 style="color:black;">Age Distribution of Members</h4>
+                    <div id="morris-bar-chart2" style="height: 250px;"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12"><br>
+            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+                    <h4 style="color:black;">Gender Distribution of Members</h4>
+                    <div id="morris-donut-chart" style="height: 250px;"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12"><br>
+            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+            <h4 style="color:black;">Members per Purok</h4>
+                    <div id="morris-bar-chart3" style="height: 250px;"></div>
+                </div>
+            </div>
 
-    <!-- Members per Purok Bar Chart -->
-    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
-        <h4>Members per Purok</h4>
-        <div id="morris-bar-chart3" style="height: 250px;"></div>
-    </div>
-
-    <!-- Gender Distribution Donut Chart -->
-    <div class="col-md-4 col-sm-12 col-xs-12" style="background-color: #598dcc; padding: 15px; border-radius: 5px; margin: 15px; width:420px;">                     
-        <h4>Gender Distribution of Members</h4>
-        <div id="morris-donut-chart" style="height: 250px;"></div>
-    </div>
-</div>
+            </div>
 
 
             </section>
@@ -140,7 +143,7 @@ if (!isset($_SESSION['role'])) {
         ],
         xkey: 'y',
         ykeys: ['a'],
-        labels: ['Number of Residents'],
+        labels: ['Number of Members'],
         barColors: ['#040384'], // Set bar color
         lineColors: ['#000'], // Set line color to black
         hideHover: 'auto',
@@ -163,7 +166,7 @@ if (!isset($_SESSION['role'])) {
         ],
         xkey: 'y',
         ykeys: ['a'],
-        labels: ['Residents per Purok'],
+        labels: ['Members per Purok'],
         barColors: ['#040384'], // Set bar color
         lineColors: ['#000'], // Set line color to black
         hideHover: 'auto',

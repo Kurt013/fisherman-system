@@ -183,6 +183,18 @@ body > .header .navbar .nav > li.user > a {
     content: '>\00a0';
 }
 
+
+/* User header */
+body > .header .navbar .dropdown-menu > .user-header {
+    background-color: #eff2ff !important;
+}
+
+/* User footer */
+body > .header .navbar .dropdown-menu > .user-footer {
+    background-color: #eff2ff !important;
+}
+
+
 @media screen and (max-width: 767px) {
     .right-side > .content-header > .breadcrumb {
         position: relative;

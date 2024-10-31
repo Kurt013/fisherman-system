@@ -5,7 +5,7 @@
     session_start();
     if(!isset($_SESSION['role']))
     {
-        header("Location: ../../login.php"); 
+        header("Location: ../../index.php"); 
     }
     else
     {
@@ -102,7 +102,7 @@
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
                                                                 <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>';
-                                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
+                                                                /*if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                                                     if($row['status'] == 'Ongoing Term') {
                                                                         echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';
                                                                     } else {
@@ -114,6 +114,7 @@
                                                                         echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
                                                                     }
                                                                 }
+                                                                    */
                                                             echo '</td>
                                                         
                                                         </tr>

@@ -129,7 +129,7 @@
     width: 90px;
     border-radius: 100%;
     overflow: hidden;
-    border: 10px solid #0605a6 ;
+    border: 10px solid #eff2ff; ;
 }
 
 
@@ -166,6 +166,7 @@
     line-height: 1;
     text-align: start;
     text-shadow: none !important;
+    color: #00195a !important;
 }
 
 
