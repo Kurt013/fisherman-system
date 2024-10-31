@@ -19,12 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Include the database connection
     include "../connection.php"; // Ensure this file sets $con properly
 
-    if (isset($_POST['btn_delete'])) {
-        // Handle the delete action
+    if (isset($_POST['btn_archive'])) {
         if (!empty($_POST['chk_delete'])) {
-            $idsToDelete = implode(',', $_POST['chk_delete']);
-            $deleteQuery = "DELETE FROM tblresident WHERE id IN ($idsToDelete)";
-            mysqli_query($con, $deleteQuery);
+            $idsToArchive = implode(',', $_POST['chk_delete']);
+            $archiveQuery = "UPDATE tblresident SET archive = 1 WHERE id IN ($idsToArchive)";
+            if (mysqli_query($con, $archiveQuery)) {
+                $_SESSION['archive'] = "Members archived successfully."; // Set the notification
+            }
             header("Location: " . $_SERVER['PHP_SELF']);
             exit;
         }
@@ -40,7 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         file_put_contents($tempImageFile, base64_decode($qrImageData)); // Save the QR code image
     
         // Fetch member details
-        $memberId = explode('=', $qrData)[1]; // Adjust to ensure the ID is extracted correctly
+// Fetch member details
+$memberId = explode('=', $qrData);
+
+// Check if the expected ID is present
+if (count($memberId) > 1) {
+    $memberId = trim($memberId[1]); // Safely extract the member ID
+} else {
+    echo "Invalid QR data format.";
+    exit; // Stop execution if the format is invalid
+}
         $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, CONCAT(zone, ', ', barangay) AS address, cpnumber, image FROM tblresident WHERE id = '$memberId'");
     
         // Check if a row was returned
@@ -146,10 +156,13 @@ include('../header.php');
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Delete</button> 
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Archive</button> 
                             <?php
                             }
                             ?>
+                            <form action="export.php" method="post">
+                                        <button class="btn btn-primary btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
+                                    </form>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -173,12 +186,19 @@ include('../header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                            <?php
-                            $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image FROM tblresident ORDER BY zone");
-                            while ($row = mysqli_fetch_array($squery)) {
+                                <?php
+                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image 
+                                FROM tblresident 
+                                WHERE archive = 0 
+                                ORDER BY zone");
+                                while ($row = mysqli_fetch_array($squery)) {
                                 // Generate QR Code for each resident
-                                $qrData = 'http://localhost/fisherman-system/pages/resident/display_member.php?id=' . $row['id'];
-                                $qrCode = new QrCode($qrData);
+                                $qrData = 'Member ID = ' . $row['id'] . 
+                                ', Name = ' . $row['cname'] . 
+                                ', Age = ' . $row['age'] . 
+                                ', Purok = ' . $row['zone'] . 
+                                ', Contact No = ' . $row['cpnumber'];
+                                                                $qrCode = new QrCode($qrData);
                                 $writer = new PngWriter();
                                 $qrCodeImage = $writer->write($qrCode);
                                 $qrCodeBase64 = base64_encode($qrCodeImage->getString());
@@ -208,7 +228,7 @@ include('../header.php');
                             </table>
 
                             
-                            <?php include "../deleteModal.php"; ?>
+                            <?php include "../archiveModal.php"; ?>
                             
                         </form>
 
@@ -216,7 +236,7 @@ include('../header.php');
                 </div>
                 <?php include "../edit_notif.php"; ?>
                 <?php include "../added_notif.php"; ?>
-                <?php include "../delete_notif.php"; ?>
+                <?php include "../archive_notif.php"; ?>
                 <?php include "../duplicate_error.php"; ?>
                 <?php include "add_modal.php"; ?>
 
@@ -288,6 +308,7 @@ include('../header.php');
         document.body.removeChild(form); // Clean up the form after submission
     }
 </script>
+
 
 </body>
 </html>

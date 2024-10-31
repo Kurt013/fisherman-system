@@ -179,13 +179,13 @@ if(isset($_POST['btn_save'])){
     }
 }
 
-if(isset($_POST['btn_delete'])){
+if(isset($_POST['btn_archive'])){
     if(isset($_POST['chk_delete'])){
         foreach($_POST['chk_delete'] as $value){
-            $delete_query = mysqli_query($con, "DELETE FROM tblresident WHERE id = '$value'") or die('Error: ' . mysqli_error($con));
+            $archive_query = mysqli_query($con, "UPDATE tblresident SET archive = 1 WHERE id = '$value'") or die('Error: ' . mysqli_error($con));
                     
-            if($delete_query == true){
-                $_SESSION['delete'] = 1;
+            if($archive_query == true){
+                $_SESSION['archive'] = 1;
                 header("location: ".$_SERVER['REQUEST_URI']);
             }
         }

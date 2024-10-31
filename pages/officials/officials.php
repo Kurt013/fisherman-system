@@ -54,7 +54,7 @@
                                             // Check if the user role is not 'Staff' before displaying the delete button
                                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                             ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Delete</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Archive</button> 
                                             <?php
                                             }
                                             ?>
@@ -88,7 +88,7 @@
                                                 if(!isset($_SESSION['staff']))
                                                 {
 
-                                                    $squery = mysqli_query($con, "select * from tblofficial ");
+                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE status = 'Ongoing Term' AND archive = 0 GROUP BY termend");
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
                                                         echo '
@@ -127,7 +127,7 @@
 
                                                 }
                                                 else{
-                                                    $squery = mysqli_query($con, "select * from tblofficial where status = 'Ongoing Term' group by termend");
+                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE status = 'Ongoing Term' AND archive = 0 GROUP BY termend");
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
                                                         echo '
@@ -149,7 +149,7 @@
                                         </tbody>
                                     </table>
 
-                                    <?php include "../deleteModal.php"; ?>
+                                    <?php include "../archiveModal.php"; ?>
 
                                     </form>
                                 </div><!-- /.box-body -->
@@ -160,7 +160,7 @@
 
                             <?php include "../added_notif.php"; ?>
 
-                            <?php include "../delete_notif.php"; ?>
+                            <?php include "../archive_notif.php"; ?>
 
             <?php include "add_modal.php"; ?>
 

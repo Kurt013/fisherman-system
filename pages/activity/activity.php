@@ -51,7 +51,7 @@
                                                     if(!isset($_SESSION['staff']))
                                                     {
                                                 ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i>Archive</button> 
                                                 <?php
                                                     }
                                             }
@@ -77,7 +77,7 @@
                                             <?php
                                             
 
-                                                $squery = mysqli_query($con, "select * from tblactivity");
+                                                $squery = mysqli_query($con, "select * from tblactivity WHERE archive = 0");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
@@ -102,7 +102,7 @@
                                         </tbody>
                                     </table>
 
-                                    <?php include "../deleteModal.php"; ?>
+                                    <?php include "../archiveModal.php"; ?>
 
                                     </form>
                                 </div><!-- /.box-body -->
@@ -112,7 +112,7 @@
 
                             <?php include "../added_notif.php"; ?>
 
-                            <?php include "../delete_notif.php"; ?>
+                            <?php include "../archive_notif.php"; ?>
 
                             <?php include "../duplicate_error.php"; ?>
 
