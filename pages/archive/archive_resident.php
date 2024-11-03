@@ -51,7 +51,7 @@ if (count($memberId) > 1) {
     echo "Invalid QR data format.";
     exit; // Stop execution if the format is invalid
 }
-        $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, image FROM tblresident WHERE archive = 0 and id = '$memberId'");
+        $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, image FROM tblresident WHERE id = '$memberId'");
     
         // Check if a row was returned
         if ($row = mysqli_fetch_assoc($query)) {
@@ -136,19 +136,17 @@ include('../header.php');
 
     <aside class="right-side">
         <section class="content-header">
-            <h1>
-                <a href="#" style="color: white;  border-bottom: 2px solid yellow; 
-    padding-bottom: 5px; 
-    display: inline-block;" >
+        <h1>
+                <a href="../resident/resident.php" style="color: white; margin-right: 30px;"  >
                 <i class="fa fa-users"></i> <span>Members</span>
                 </a>                           
-                <span style="display: inline-block; width: 2px; height: 20px; background-color: #ccc; margin-left:5px; margin-right:5px;"></span>
-
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: white;">                           
+                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: white; border-bottom: 2px solid yellow; /* Change color as needed */
+    padding-bottom: 5px; /* Adjust spacing */
+    display: inline-block;">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
@@ -162,21 +160,15 @@ include('../header.php');
                 <div class="box">
                     <div class="box-header">
                         <div style="padding:10px;">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i> Add Members
-                            </button>
 
                             <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="false"></i> Archive</button> 
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Unarchive</button> 
                             <?php
                             }
                             ?>
-                            <form action="export.php" method="post">
-                                        <button class="btn btn-third btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
-                                    </form>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -186,7 +178,7 @@ include('../header.php');
                                     <tr>
                                         <?php if (!isset($_SESSION['staff'])) { ?>
                                             <th style="width: 20px !important;">
-                                                <input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/>
+                                                <input type="checkbox" name="chk_unarchive[]" class="cbxMain" onchange="checkMain(this)"/>
                                             </th>
                                         <?php } ?>
                                         <th>Purok</th>
@@ -195,15 +187,15 @@ include('../header.php');
                                         <th>Age</th>
                                         <th>Gender</th>
                                         <th>Cellphone Number</th>
-                                        <th>ID Card</th>
-                                        <th style="width: 40px !important;">Option</th>
+                                        <th>Option</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image 
                                 FROM tblresident 
-                                WHERE archive = 0 
+                                WHERE archive = 1 
                                 ORDER BY zone");
                                 while ($row = mysqli_fetch_array($squery)) {
                                 // Generate QR Code for each resident
@@ -216,22 +208,17 @@ include('../header.php');
 
                                 echo '
                                 <tr>
-                                    <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['id'] . '" /></td>
+                                    <td><input type="checkbox" name="chk_unarchive[]" class="chk_delete" value="' . $row['id'] . '" /></td>
                                     <td>' . $row['zone'] . '</td>
                                     <td style="width:70px;"><img src="image/' . basename($row['image']) . '" style="width:60px;height:60px;"/></td>
                                     <td>' . $row['cname'] . '</td>
                                     <td>' . $row['age'] . '</td>
                                     <td>' . $row['gender'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
-                                    <td>
-                                        <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-info btn-sm">
-    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
-</button>
-
-                                    </td>
-                                    <td><button class="btn btn-secondary btn-sm" data-target="#editModal' . $row['id'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                                    <td><button class="btn btn-primary btn-sm" data-target="#editModal' . $row['id'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                 </tr>';
-                                include "edit_modal.php";
+                                include "../resident/edit_modal.php";
+
                             }
                             ?>
 </tbody>
@@ -249,9 +236,9 @@ include('../header.php');
                 <?php include "../added_notif.php"; ?>
                 <?php include "../archive_notif.php"; ?>
                 <?php include "../duplicate_error.php"; ?>
-                <?php include "add_modal.php"; ?>
+                <?php include "../resident/add_modal.php"; ?>
 
-<?php include "function.php"; ?>
+<?php include "../resident/function.php"; ?>
             </div>
         </section>
     </aside>
@@ -327,7 +314,6 @@ include('../header.php');
     $('div.dataTables_paginate ul.pagination li:last-child a').html('<i class="fa-solid fa-forward"></i>');
 });
 </script>
-
 
 </body>
 </html>

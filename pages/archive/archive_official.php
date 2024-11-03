@@ -35,16 +35,16 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                 <h1>
-                <a href="#" style="color: white;  border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; margin-right: 30px;" >
+                <a href="../officials/officials.php" style="color: white;margin-right: 30px;" >
                 <i class="fa fa-user"></i> <span>Official</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_official.php" class="redirect-button" style="color: white;">                           
+                            <a href="../archive/archive_official.php" class="redirect-button" style="color: white; border-bottom: 2px solid yellow; /* Change color as needed */
+    padding-bottom: 5px; 
+    display: inline-block; ">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
@@ -62,13 +62,12 @@
                                 <div class="box-header">
                                     <div style="padding:10px;">
                                         
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Officials</button>  
 
                                         <?php 
                                             // Check if the user role is not 'Staff' before displaying the delete button
                                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                             ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="false"></i> Archive</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa fa-trash-o" aria-hidden="false"></i> Unarchive</button> 
                                             <?php
                                             }
                                             ?>
@@ -84,7 +83,7 @@
                                                     if(!isset($_SESSION['staff']))
                                                     {
                                                 ?>
-                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
+                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_unarchive[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                 <?php
                                                     }
                                                 ?>
@@ -102,12 +101,12 @@
                                                 if(!isset($_SESSION['staff']))
                                                 {
 
-                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE archive = 0 GROUP BY termend");
+                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE archive = 1 GROUP BY termend");
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
                                                         echo '
                                                         <tr>
-                                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                            <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
                                                             <td>'.$row['sPosition'].'</td>
                                                             <td>'.$row['completeName'].'</td>
                                                             <td>'.$row['pcontact'].'</td>
@@ -134,14 +133,14 @@
                                                         </tr>
                                                         ';
 
-                                                        include "edit_modal.php";
-                                                        include "endterm_modal.php";
-                                                        include "startterm_modal.php";
+                                                        include "../officials/edit_modal.php";
+                                                        include "../officials/endterm_modal.php";
+                                                        include "../officials/startterm_modal.php";
                                                     }
 
                                                 }
                                                 else{
-                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE status = 'Ongoing Term' AND archive = 0 GROUP BY termend");
+                                                    $squery = mysqli_query($con, "SELECT * FROM tblofficial WHERE status = 'Ongoing Term' AND archive = 1 GROUP BY termend");
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
                                                         echo '
@@ -152,13 +151,11 @@
                                                             <td>'.$row['paddress'].'</td>
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
-                                                            <td>
-                                                            <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                            </td>
+                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                         </tr>
                                                         ';
 
-                                                        include "edit_modal.php";
+                                                        include "../officials/edit_modal.php";
                                                     }
                                                 }
                                             ?>
@@ -178,9 +175,9 @@
 
                             <?php include "../archive_notif.php"; ?>
 
-            <?php include "add_modal.php"; ?>
+            <?php include "../officials/add_modal.php"; ?>
 
-            <?php include "function.php"; ?>
+            <?php include "../officials/function.php"; ?>
 
 
                     </div>   <!-- /.row -->

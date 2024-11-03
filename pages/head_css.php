@@ -8,6 +8,7 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
     <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Ionicons -->
     <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="../../js/morris/morris-0.4.3.min.css" rel="stylesheet" type="text/css" />

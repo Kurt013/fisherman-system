@@ -25,7 +25,7 @@
 
         <aside class="right-side">
             <section class="content-header">
-            <h1><i class='bx bx-home' ></i> <span>Home</span></h1>
+            <h1><i class="fa-solid fa-house"></i> <span>Home</span></h1>
             </section>
             <div class="desc-content">
                 <div class="content-wrapper">
@@ -62,7 +62,7 @@
                         <a href="../resident/resident.php" class="redirect-button">
                             <span class="icon"><i class="fa fa-users"></i></span> <span>Members</span>
                         </a>
-                        <a href="../activity/resident.php" class="redirect-button">
+                        <a href="../activity/activity.php" class="redirect-button">
                             <span class="icon"><i class="fa fa-calendar"></i></span> <span>Activity</span>
                         </a>
                         </div>

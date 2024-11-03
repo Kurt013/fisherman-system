@@ -2,6 +2,7 @@ div.dataTables_length label {
 	font-weight: normal;
 	float: left;
 	text-align: left;
+	color: #F1DE8E;
 }
 
 div.dataTables_length select {
@@ -11,6 +12,7 @@ div.dataTables_length select {
 div.dataTables_filter label {
 	font-weight: normal;
 	float: right;
+	color: #F1DE8E;
 }
 
 div.dataTables_filter input {
@@ -19,6 +21,7 @@ div.dataTables_filter input {
 
 div.dataTables_info {
 	padding-top: 8px;
+	color: #F1DE8E;
 }
 
 div.dataTables_paginate {
@@ -29,6 +32,16 @@ div.dataTables_paginate {
 div.dataTables_paginate ul.pagination {
 	margin: 2px 0;
 	white-space: nowrap;
+	color: #0605a6; 
+}
+
+div.dataTables_paginate ul.pagination li a{
+	color: #0605a6; 
+}
+
+div.dataTables_paginate ul.pagination li:nth-child(2) a{
+	background-color: #0605a6;
+	color: white;
 }
 
 table.dataTable,

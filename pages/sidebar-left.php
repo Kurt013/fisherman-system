@@ -26,7 +26,7 @@
                 <ul class="sidebar-menu">
                      <li>
                         <a href="../home/home.php">
-                            <i class="bx bx-home"></i> <span>Home</span>
+                           <i class="fa-solid fa-house"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
@@ -56,7 +56,7 @@
                     </li>
                     <li>
                         <a href="../qrscanner/qrscanner.php">
-                            <i class="bx bx-qr-scan"></i> <span>Qr Scanner</span>
+                            <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>
                     </li>
                 </ul>';
@@ -67,7 +67,7 @@
                 <ul class="sidebar-menu">
                 <li>
                         <a href="../home/home.php">
-                            <i class="fa fa-dashboard"></i> <span>Home</span>
+                            <i class="fa-solid fa-house"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
@@ -92,7 +92,7 @@
                     </li>
                     <li>
                         <a href="../qrscanner/qrscanner.php">
-                            <i class="bx bx-qr-scan"></i> <span>Qr Scanner</span>
+                            <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>
                     </li>
                 </ul>';

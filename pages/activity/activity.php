@@ -51,7 +51,7 @@
                                                     if(!isset($_SESSION['staff']))
                                                     {
                                                 ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i>Archive</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Archive</button> 
                                                 <?php
                                                     }
                                             }
@@ -88,7 +88,7 @@
                                                         <td>'.$row['activity'].'</td>
                                                         <td>'.$row['description'].'</td>
                                                         <td>
-                                                            <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                                                            <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                         </td>
                                                     </tr>
                                                     ';
@@ -188,6 +188,15 @@ for (var i = 0; i < checkboxes.length; i++) {
     <?php
     }
     ?>
+
+$(document).ready(function() {
+    // Replace the "Previous" text with the backward icon
+    $('div.dataTables_paginate ul.pagination li:first-child a').html('<i class="fa-solid fa-backward"></i>');
+
+    // Replace the "Next" text with the forward icon
+    $('div.dataTables_paginate ul.pagination li:last-child a').html('<i class="fa-solid fa-forward"></i>');
+});
+
 </script>
     </body>
 </html>

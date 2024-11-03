@@ -191,4 +191,17 @@ if(isset($_POST['btn_archive'])){
         }
     }
 }
+
+if(isset($_POST['btn_unarchive'])){
+    if(isset($_POST['chk_unarchive'])){
+        foreach($_POST['chk_unarchive'] as $value){
+            $archive_query = mysqli_query($con, "UPDATE tblresident SET archive = 0 WHERE id = '$value'") or die('Error: ' . mysqli_error($con));
+                    
+            if($archive_query == true){
+                $_SESSION['unarchive'] = 0;
+                header("location: ".$_SERVER['REQUEST_URI']);
+            }
+        }
+    }
+}
 ?>
