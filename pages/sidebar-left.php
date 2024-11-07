@@ -86,11 +86,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../logs/logs.php">
-                            <i class="fa fa-history"></i> <span>Logs</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="../qrscanner/qrscanner.php">
                             <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>

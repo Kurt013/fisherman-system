@@ -38,7 +38,7 @@
     /* Skin blue (light) sidebar vars */
     --sidebar-light-bg: #f4f4f4;
     --sidebar-light-hover-bg: #f9f9f9;
-    --sidebar-light-font: #555;
+    --sidebar-light-font: #fff;
     --sidebar-light-border: #dbdbdb;
 
     /* Screen widths - Same as bootstrap default settings */

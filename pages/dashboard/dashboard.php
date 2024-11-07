@@ -41,7 +41,7 @@ if (!isset($_SESSION['role'])) {
                                     <span class="info-box-text">Total Officials</span>
                                     <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con, "SELECT * from tblofficial");
+                                            $q = mysqli_query($con, "SELECT * from tblofficial  WHERE archive = 0");
                                             echo mysqli_num_rows($q);
                                         ?>
                                     </span>
@@ -58,7 +58,7 @@ if (!isset($_SESSION['role'])) {
                                     <span class="info-box-text">Total Members</span>
                                     <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con, "SELECT * from tblresident");
+                                            $q = mysqli_query($con, "SELECT * from tblresident  WHERE archive = 0");
                                             echo mysqli_num_rows($q);
                                         ?>
                                     </span>
@@ -89,21 +89,21 @@ if (!isset($_SESSION['role'])) {
                 <div class="row">
     <!-- Age Distribution Bar Chart -->
                 <div class="col-md-4 col-sm-6 col-xs-12"><br>
-                <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+                <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
                 <h4 style="color:black;">Age Distribution of Members</h4>
-                    <div id="morris-bar-chart2" style="height: 250px;"></div>
+                    <div id="morris-bar-chart2" style="height: 340px;"></div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12"><br>
-            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
                     <h4 style="color:black;">Gender Distribution of Members</h4>
-                    <div id="morris-donut-chart" style="height: 250px;"></div>
+                    <div id="morris-donut-chart" style="height: 340px;"></div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12"><br>
-            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px;">
+            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
             <h4 style="color:black;">Members per Purok</h4>
-                    <div id="morris-bar-chart3" style="height: 250px;"></div>
+                    <div id="morris-bar-chart3" style="height: 340px;"></div>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@ if (!isset($_SESSION['role'])) {
 
                 foreach ($age_ranges as $range) {
                     list($min_age, $max_age) = explode('-', $range);
-                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE age BETWEEN $min_age AND $max_age");
+                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND age BETWEEN $min_age AND $max_age");
                     $row = mysqli_fetch_array($qry);
                     $count = $row['cnt'] ?? 0;
                     echo "{ y: '$range', a: $count },"; 
@@ -157,7 +157,7 @@ if (!isset($_SESSION['role'])) {
         data: [
             <?php
                 for ($purok = 1; $purok <= 6; $purok++) {
-                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE zone = '$purok'");
+                    $qry = mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND zone = '$purok'");
                     $row = mysqli_fetch_array($qry);
                     $count = $row['cnt'] ?? 0;
                     echo "{ y: 'Purok $purok', a: $count },"; 
@@ -180,8 +180,8 @@ if (!isset($_SESSION['role'])) {
         element: 'morris-donut-chart',
         data: [
             <?php
-                $male_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Male'"))['cnt'];
-                $female_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE gender = 'Female'"))['cnt'];
+                $male_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND gender = 'Male'"))['cnt'];
+                $female_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND gender = 'Female'"))['cnt'];
                 echo "{ label: 'Male', value: $male_count },"; 
                 echo "{ label: 'Female', value: $female_count }"; 
             ?>

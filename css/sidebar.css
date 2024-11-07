@@ -3,10 +3,6 @@
 --------------------------
 */
 
-.sidebar {
-    margin-bottom: 5px;
-}
-
 /* Remove shadow from form */
 .sidebar .sidebar-form input:focus {
     -webkit-box-shadow: none;
@@ -80,7 +76,7 @@
 
 .user-panel::before {
     content: '';
-    background-color: #ffde59;
+    background-color: #0605a6;
     top: 0;
     left: 0;
     right: 0;
@@ -110,11 +106,13 @@
 
 .user-role {
     font-size: 14px;
+    color: #fff !important;
 }
 
 .role {
     font-style: italic;
     font-size: 12px;
+    color: #fff !important;
 }
 
 .user-details i {
@@ -129,7 +127,7 @@
     width: 90px;
     border-radius: 100%;
     overflow: hidden;
-    border: 10px solid #eff2ff; ;
+    border: 10px solid #0605a6;
 }
 
 
@@ -141,8 +139,9 @@
         scale(1.2);
     position: absolute;
     font-size: 60px; /* Adjust icon size */
-    color: #ffde59;
+    color: #0605a6;
     background-color: transparent; /* Background color for the circle */
+    border-radius: 5px;
 }
 
 
@@ -155,7 +154,7 @@
 .circle-2 {
     position: relative;
     z-index: 1;
-    background-color: rgb(255, 255, 202);
+    background-color: #fff;
     height: 70px;
     width: 70px;
     border-radius: 100%;
@@ -166,7 +165,7 @@
     line-height: 1;
     text-align: start;
     text-shadow: none !important;
-    color: #00195a !important;
+    color: #ffffff !important;
 }
 
 
@@ -187,6 +186,7 @@
     padding: 5px 5px 5px 15px;
     font-size: 14px;
     line-height: 1;
+    padding-bottom: 10px;
 }
 
 .user-panel > .info > p {
@@ -206,11 +206,6 @@
 .user-panel > .info > a > .glyphicon {
     margin-right: 3px;
 }
-
-
-
-
-
 /*
  * Off Canvas
  * --------------------------------------------------

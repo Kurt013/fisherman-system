@@ -137,14 +137,14 @@ include('../header.php');
     <aside class="right-side">
         <section class="content-header">
         <h1>
-                <a href="../resident/resident.php" style="color: white; margin-right: 30px;"  >
+                <a href="../resident/resident.php" style="margin-right: 30px;"  >
                 <i class="fa fa-users"></i> <span>Members</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: white; border-bottom: 2px solid yellow; /* Change color as needed */
+                            <a href="../archive/archive_resident.php" class="redirect-button" style="border-bottom: 2px solid yellow; /* Change color as needed */
     padding-bottom: 5px; /* Adjust spacing */
     display: inline-block;">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>

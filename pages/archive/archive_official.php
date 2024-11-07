@@ -35,14 +35,14 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                 <h1>
-                <a href="../officials/officials.php" style="color: white;margin-right: 30px;" >
+                <a href="../officials/officials.php" style=" margin-right: 30px;" >
                 <i class="fa fa-user"></i> <span>Official</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_official.php" class="redirect-button" style="color: white; border-bottom: 2px solid yellow; /* Change color as needed */
+                            <a href="../archive/archive_official.php" class="redirect-button" style="border-bottom: 2px solid yellow; /* Change color as needed */
     padding-bottom: 5px; 
     display: inline-block; ">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>

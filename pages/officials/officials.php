@@ -35,7 +35,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                 <h1>
-                <a href="#" style="color: white;  border-bottom: 2px solid yellow; /* Change color as needed */
+                <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
     padding-bottom: 5px; 
     display: inline-block; margin-right: 30px;" >
                 <i class="fa fa-user"></i> <span>Official</span>
@@ -44,7 +44,7 @@
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_official.php" class="redirect-button" style="color: white;">                           
+                            <a href="../archive/archive_official.php" class="redirect-button" style="color:#0605a6;">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
@@ -115,7 +115,7 @@
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
-                                                                <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>';
+                                                                <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
                                                                 if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                                                     if($row['status'] == 'Ongoing Term') {
                                                                         echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';

@@ -10,7 +10,7 @@
 
 /* skin-blue navbar */
 .skin-blue .navbar {
-    background-color: #0200ff;
+    background-color: #FFDE59;
 }
 
 /* Add a background image for tablet and phone sizes */
@@ -37,7 +37,8 @@
 
 /* skin-blue logo */
 .skin-blue .logo {
-    background-color: #0200ff;
+    background-color: #FFDE59;
+    color: #0605a6;
 }
 
 .skin-blue .right-side{
@@ -49,8 +50,8 @@
 .skin-blue .right-side > .content-header {
     
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    color: #ffffff;
-    background: #1688e8; /* Updated background to linear gradient */
+    color: #0605a6;
+    background: #ffffff; /* Updated background to linear gradient */
 }
 
 /* Skin-blue user panel */
@@ -74,8 +75,8 @@
 
     /* The menu */
     .sidebar > .sidebar-menu > li {
-        border-top: 1px solid #eff2ff;;
-        border-bottom: 1px solid #eff2ff;;
+        border-top: 1px solid #0605a6;
+        border-bottom: 1px solid #0605a6;
 
         &:first-of-type {
             border-top: 1px solid var(--sidebar-light-border);
@@ -86,6 +87,7 @@
         
         > a {
             margin-right: 1px;
+            color: #ffffff;
         }
         
         /* Hover and active states */
@@ -102,7 +104,8 @@
 
     /* Sidebar color */
     .left-side {
-        background: #eff2ff;
+        background: #0605a6;
+        color: #ffffff;
         box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
         color: #00195a;
     }

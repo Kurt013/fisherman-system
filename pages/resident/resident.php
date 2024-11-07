@@ -137,7 +137,7 @@ include('../header.php');
     <aside class="right-side">
         <section class="content-header">
             <h1>
-                <a href="#" style="color: white;  border-bottom: 2px solid yellow; 
+                <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; 
     padding-bottom: 5px; 
     display: inline-block;" >
                 <i class="fa fa-users"></i> <span>Members</span>
@@ -148,7 +148,7 @@ include('../header.php');
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: white;">                           
+                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: #0605a6;">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
@@ -326,6 +326,8 @@ include('../header.php');
     // Replace the "Next" text with the forward icon
     $('div.dataTables_paginate ul.pagination li:last-child a').html('<i class="fa-solid fa-forward"></i>');
 });
+
+
 </script>
 
 

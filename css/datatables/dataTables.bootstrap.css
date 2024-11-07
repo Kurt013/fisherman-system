@@ -1,8 +1,14 @@
+body{
+	font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
 div.dataTables_length label {
 	font-weight: normal;
 	float: left;
 	text-align: left;
-	color: #F1DE8E;
+	color: #0605a6;
 }
 
 div.dataTables_length select {
@@ -12,7 +18,7 @@ div.dataTables_length select {
 div.dataTables_filter label {
 	font-weight: normal;
 	float: right;
-	color: #F1DE8E;
+	color: #0605a6;
 }
 
 div.dataTables_filter input {
@@ -21,7 +27,7 @@ div.dataTables_filter input {
 
 div.dataTables_info {
 	padding-top: 8px;
-	color: #F1DE8E;
+	color: #0605a6;
 }
 
 div.dataTables_paginate {

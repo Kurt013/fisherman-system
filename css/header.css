@@ -1,7 +1,9 @@
 /* Components: navbar, logo and content header */
 /*-------------------------------------------------*/
 body {
-    font-family: 'Cocogoose-Bold';
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 body > .header {
@@ -94,7 +96,7 @@ body > .header .navbar .nav > li > a:hover > .label {
 body > .header .logo {
     float: left;
     height: 60px; /* Set a specific height */
-    font-size: 30px; /* Adjust as needed */
+    font-size: 31px !important; /* Adjust as needed */
     line-height: 50px;
     text-align: center;
     padding: 0 10px;
@@ -107,7 +109,6 @@ body > .header .logo {
     
 
 }
-
 /* For logo imgs or icons */
 body > .header .logo .icon {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.9); 
@@ -186,12 +187,12 @@ body > .header .navbar .nav > li.user > a {
 
 /* User header */
 body > .header .navbar .dropdown-menu > .user-header {
-    background-color: #eff2ff !important;
+    background-color: #0605a6 !important;
 }
 
 /* User footer */
 body > .header .navbar .dropdown-menu > .user-footer {
-    background-color: #eff2ff !important;
+    background-color: #0605a6 !important;
 }
 
 

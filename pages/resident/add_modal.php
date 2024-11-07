@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Residents</h4>
+                        <h4 class="modal-title">Manage Members</h4>
                     </div>
                     <div class="modal-body">
                         
@@ -79,7 +79,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel"/>
-                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" id="btn_add" value="Add Resident"/>
+                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" id="btn_add" value="Add Member"/>
                     </div>
                 </div>
               </div>
