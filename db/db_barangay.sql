@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2024 at 01:19 PM
+-- Generation Time: Nov 07, 2024 at 03:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,15 +32,17 @@ CREATE TABLE `tblactivity` (
   `dateofactivity` date NOT NULL,
   `activity` text NOT NULL,
   `description` text NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `archive` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblactivity`
 --
 
-INSERT INTO `tblactivity` (`id`, `dateofactivity`, `activity`, `description`, `image`) VALUES
-(14, '2024-10-28', 'Ayuda', 'Distribution of ayuda', '1730191689375login-bg.png');
+INSERT INTO `tblactivity` (`id`, `dateofactivity`, `activity`, `description`, `image`, `archive`) VALUES
+(14, '2024-10-28', 'Ayuda', 'Distribution of ayuda', '1730191689375login-bg.png', 0),
+(15, '2024-10-31', 'Election', 'Election of officers', '1730369075356home-bg.png', 1);
 
 -- --------------------------------------------------------
 
@@ -225,7 +227,43 @@ INSERT INTO `tbllogs` (`id`, `user`, `logdate`, `action`) VALUES
 (128, 'administrator', '2024-10-29 16:47:31', 'Added Activity Ayuda'),
 (129, 'administrator', '2024-10-29 16:48:09', 'Updated Activity Ayuda'),
 (130, 'administrator', '2024-10-29 17:04:52', 'Updated Resident named Juan, Zofia Zurita'),
-(131, 'administrator', '2024-10-29 17:05:08', 'Updated Resident named Par, Era Dane');
+(131, 'administrator', '2024-10-29 17:05:08', 'Updated Resident named Par, Era Dane'),
+(132, 'administrator', '2024-10-29 21:49:48', 'Updated Resident named Juan, Zofia Dennise Zurita'),
+(133, 'administrator', '2024-10-29 22:25:27', 'Updated Resident named Juan, Zofia Dennise Zurita'),
+(134, 'administrator', '2024-10-30 23:15:01', 'Updated Resident named Juan, Zofia Dennise Zurita'),
+(135, 'administrator', '2024-10-31 12:36:27', 'Added Official named Delos Santos, Sergio'),
+(136, 'administrator', '2024-10-31 12:46:50', 'Added Official named Delos Santos, Sergio'),
+(137, 'staff', '2024-10-31 12:53:18', 'Updated Resident named Par, Era Dane'),
+(138, 'administrator', '2024-10-31 14:15:04', 'Added Official named Juan, Isaac'),
+(139, 'administrator', '2024-10-31 14:15:13', 'Update Official named Juan, Isaac'),
+(140, 'administrator', '2024-10-31 17:33:12', 'Updated Resident named Amarante, Juan Danilo'),
+(141, 'administrator', '2024-10-31 17:35:07', 'Added Resident named Padilla, Alden Barbara'),
+(142, 'administrator', '2024-10-31 17:35:38', 'Updated Resident named Padilla, Alden Barbara'),
+(143, 'administrator', '2024-10-31 17:40:59', 'Added Resident named Duterte, Sara hehe'),
+(144, 'administrator', '2024-10-31 17:41:07', 'Updated Resident named Duterte, Sara hehe'),
+(145, 'administrator', '2024-10-31 17:41:50', 'Updated Resident named Amarante, Juan Danilo'),
+(146, 'administrator', '2024-10-31 17:43:18', 'Added Resident named Duterte, digong hehe'),
+(147, 'administrator', '2024-10-31 17:43:26', 'Updated Resident named Duterte, digong hehe'),
+(148, 'administrator', '2024-10-31 17:46:56', 'Updated Resident named Casubha, Ashley Mendoza'),
+(149, 'administrator', '2024-10-31 17:47:34', 'Update Official named Dela Cruz, Juan C.'),
+(150, 'administrator', '2024-10-31 17:49:39', 'Updated Resident named Juan, Zofia Dennise Zurita'),
+(151, 'administrator', '2024-10-31 17:49:49', 'Updated Resident named Juan, Zofia Zurita'),
+(152, 'administrator', '2024-10-31 17:52:16', 'Updated Resident named Juan, Zofiaa Zurita'),
+(153, 'administrator', '2024-10-31 17:52:46', 'Updated Resident named Casubha, Ashley Mendoza'),
+(154, 'administrator', '2024-10-31 17:52:58', 'Update Official named Dela Cruz, Juan C.'),
+(155, 'administrator', '2024-10-31 17:56:07', 'Update Official named Dela Cruz, Juan C.'),
+(156, 'administrator', '2024-10-31 18:04:35', 'Added Activity Election'),
+(157, 'administrator', '2024-10-31 18:04:41', 'Updated Activity Election'),
+(158, 'administrator', '2024-10-31 21:07:12', 'Updated Resident named Casubha, Ashley Mendoza'),
+(159, 'administrator', '2024-10-31 23:04:05', 'Added Official named Padilla, Alden'),
+(160, 'administrator', '2024-10-31 23:09:01', 'Added Official named Barreto, leon'),
+(161, 'administrator', '2024-10-31 23:09:30', 'Update Official named Barreto, leon'),
+(162, 'administrator', '2024-11-03 22:08:16', 'Updated Resident named Juan, Zofia Zurita'),
+(163, 'administrator', '2024-11-07 21:41:13', 'Added Resident named Barroso, Lauriene Nofuente'),
+(164, 'administrator', '2024-11-07 21:42:41', 'Added Resident named Dela Cruz, Juan  Pepito'),
+(165, 'administrator', '2024-11-07 21:59:41', 'Updated Resident named Duterte, Sara hehe'),
+(166, 'administrator', '2024-11-07 21:59:50', 'Updated Resident named Duterte, digong hehe'),
+(167, 'administrator', '2024-11-07 22:00:08', 'Updated Resident named Casubha, Ashley Mendoza');
 
 -- --------------------------------------------------------
 
@@ -241,15 +279,19 @@ CREATE TABLE `tblofficial` (
   `paddress` text NOT NULL,
   `termStart` date NOT NULL,
   `termEnd` date NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL,
+  `archive` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblofficial`
 --
 
-INSERT INTO `tblofficial` (`id`, `sPosition`, `completeName`, `pcontact`, `paddress`, `termStart`, `termEnd`, `status`) VALUES
-(12, 'President', 'Dela Cruz, Juan C.', '09236781914', 'Purok 3 Sinalhan', '2024-10-16', '2024-11-08', 'Ongoing Term');
+INSERT INTO `tblofficial` (`id`, `sPosition`, `completeName`, `pcontact`, `paddress`, `termStart`, `termEnd`, `status`, `archive`) VALUES
+(12, 'President', 'Dela Cruz, Juan C.', '09236781914', 'Purok 1 Sinalhan', '2024-10-16', '2024-11-08', 'Ongoing Term', 0),
+(15, 'Vice President', 'Delos Santos, Sergio', '09901789111', '647 Purok 2 Sinalhan', '2023-03-01', '2024-11-09', 'Ongoing Term', 1),
+(17, 'Public Relations Officer', 'Padilla, Alden', '099087618913', 'Purok 2 Sinalhan', '2024-09-29', '2024-10-31', 'Ongoing Term', 0),
+(18, 'Sergeant at Arms', 'Barreto, leon', '09097618171', 'Purok 6', '2023-02-14', '2024-11-09', 'Ongoing Term', 0);
 
 -- --------------------------------------------------------
 
@@ -269,19 +311,24 @@ CREATE TABLE `tblresident` (
   `hnumber` int(100) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `cpnumber` varchar(15) DEFAULT NULL,
-  `image` text NOT NULL
+  `image` text NOT NULL,
+  `archive` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblresident`
 --
 
-INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `image`) VALUES
-(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '6', 655, 'Female', '2147483647', '1730049567353_idpic.png'),
-(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '1', 11, 'Female', '2147483647', '1730049581675_idpic.png'),
-(23, 'Par', 'Era', 'Dane', '1991-03-17', 33, 'SInalhan', '1', 121, 'Female', '2147483647', '1730049574672_idpic.png'),
-(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '1730049559567_idpic.png'),
-(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '1730044926206_idpic.png');
+INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `image`, `archive`) VALUES
+(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '5', 655, 'Female', '09909876181', '1730049567353_idpic.png', 0),
+(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '1', 11, 'Female', '09817776517', '1730049581675_idpic.png', 0),
+(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '1730049559567_idpic.png', 1),
+(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '1730044926206_idpic.png', 1),
+(32, 'Padilla', 'Alden', 'Barbara', '2005-04-05', 19, 'Sinalhan', '6', 12, 'Male', '09231567891', '1730367307049_idpic.png', 1),
+(33, 'Duterte', 'Sara', 'hehe', '2013-01-29', 11, 'Sinalhan', '3', 1212, 'Female', '09213218191', '1730367659245_idpic.png', 0),
+(34, 'Duterte', 'digong', 'hehe', '2024-10-05', 0, 'Sinalhan', '4', 1212, 'Female', '09213218191', '1730367798984_idpic.png', 0),
+(35, 'Barroso', 'Lauriene', 'Nofuente', '2008-03-04', 16, 'Sinalhan', '6', 123, 'Female', '09908767181', '1730986873397_idpic.png', 0),
+(36, 'Dela Cruz', 'Juan ', 'Pepito', '1997-03-04', 27, 'Sinalhan', '2', 52, 'Male', '09213218191', '1730986961660_idpic.png', 0);
 
 -- --------------------------------------------------------
 
@@ -383,7 +430,7 @@ ALTER TABLE `tblzone`
 -- AUTO_INCREMENT for table `tblactivity`
 --
 ALTER TABLE `tblactivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblactivityphoto`
@@ -395,19 +442,19 @@ ALTER TABLE `tblactivityphoto`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `tblofficial`
 --
 ALTER TABLE `tblofficial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblresident`
 --
 ALTER TABLE `tblresident`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
