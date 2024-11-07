@@ -36,10 +36,10 @@ echo  '<header class="header">
                              
                              <!-- Menu Footer-->
                              <li class="user-footer">
-                                 <div class="pull-left">
+                                 <div class="user-btn-1">
                                      <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#editProfileModal">Change Account</a>
                                  </div>
-                                 <div class="pull-right">
+                                 <div class="user-btn-2">
                                      <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                                  </div>
                              </li>

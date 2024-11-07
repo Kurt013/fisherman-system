@@ -196,6 +196,11 @@ body > .header .navbar .dropdown-menu > .user-footer {
 }
 
 
+/* Pede nyo iadjust ung spacing ng button dito */
+.user-btn-1 {
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 767px) {
     .right-side > .content-header > .breadcrumb {
         position: relative;
