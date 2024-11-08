@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2024 at 03:33 PM
+-- Generation Time: Nov 08, 2024 at 10:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -263,7 +263,28 @@ INSERT INTO `tbllogs` (`id`, `user`, `logdate`, `action`) VALUES
 (164, 'administrator', '2024-11-07 21:42:41', 'Added Resident named Dela Cruz, Juan  Pepito'),
 (165, 'administrator', '2024-11-07 21:59:41', 'Updated Resident named Duterte, Sara hehe'),
 (166, 'administrator', '2024-11-07 21:59:50', 'Updated Resident named Duterte, digong hehe'),
-(167, 'administrator', '2024-11-07 22:00:08', 'Updated Resident named Casubha, Ashley Mendoza');
+(167, 'administrator', '2024-11-07 22:00:08', 'Updated Resident named Casubha, Ashley Mendoza'),
+(168, 'administrator', '2024-11-08 13:24:58', 'Added Zone number '),
+(169, 'administrator', '2024-11-08 14:30:06', 'Updated Resident named Juan, Zofia Zurita'),
+(170, 'administrator', '2024-11-08 14:31:00', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(171, 'administrator', '2024-11-08 14:31:07', 'Updated Resident named Duterte, Sara hehe'),
+(172, 'administrator', '2024-11-08 14:31:15', 'Updated Resident named Casubha, Ashley Mendoza'),
+(173, 'administrator', '2024-11-08 14:31:21', 'Updated Resident named Barroso, Lauriene Nofuente'),
+(174, 'administrator', '2024-11-08 14:31:29', 'Updated Resident named Duterte, digong hehe'),
+(175, 'administrator', '2024-11-08 14:45:02', 'Updated Resident named Juan, Zofia Zurita'),
+(176, 'administrator', '2024-11-08 14:45:25', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(177, 'administrator', '2024-11-08 14:45:32', 'Updated Resident named Juan, Zofia Zurita'),
+(178, 'administrator', '2024-11-08 15:09:25', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(179, 'administrator', '2024-11-08 15:09:31', 'Updated Resident named Juan, Zofia Zurita'),
+(180, 'administrator', '2024-11-08 15:09:43', 'Updated Resident named Juan, Zofia Zurita'),
+(181, 'administrator', '2024-11-08 15:09:49', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(182, 'administrator', '2024-11-08 15:11:31', 'Updated Resident named Juan, Zofia Zurita'),
+(183, 'administrator', '2024-11-08 15:12:19', 'Updated Resident named Juan, Zofia Zurita'),
+(184, 'administrator', '2024-11-08 15:13:10', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(185, 'administrator', '2024-11-08 15:15:05', 'Updated Resident named Dela Cruz, Juan  Pepito'),
+(186, 'administrator', '2024-11-08 15:15:13', 'Updated Resident named Juan, Zofia Zurita'),
+(187, 'administrator', '2024-11-08 15:16:26', 'Added Resident named Casubha, Lucky Star M.'),
+(188, 'staff', '2024-11-08 15:51:24', 'Updated Resident named Dela Cruz, Juan  Pepita');
 
 -- --------------------------------------------------------
 
@@ -311,6 +332,7 @@ CREATE TABLE `tblresident` (
   `hnumber` int(100) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `cpnumber` varchar(15) DEFAULT NULL,
+  `type` text NOT NULL,
   `image` text NOT NULL,
   `archive` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -319,16 +341,17 @@ CREATE TABLE `tblresident` (
 -- Dumping data for table `tblresident`
 --
 
-INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `image`, `archive`) VALUES
-(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '5', 655, 'Female', '09909876181', '1730049567353_idpic.png', 0),
-(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '1', 11, 'Female', '09817776517', '1730049581675_idpic.png', 0),
-(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '1730049559567_idpic.png', 1),
-(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '1730044926206_idpic.png', 1),
-(32, 'Padilla', 'Alden', 'Barbara', '2005-04-05', 19, 'Sinalhan', '6', 12, 'Male', '09231567891', '1730367307049_idpic.png', 1),
-(33, 'Duterte', 'Sara', 'hehe', '2013-01-29', 11, 'Sinalhan', '3', 1212, 'Female', '09213218191', '1730367659245_idpic.png', 0),
-(34, 'Duterte', 'digong', 'hehe', '2024-10-05', 0, 'Sinalhan', '4', 1212, 'Female', '09213218191', '1730367798984_idpic.png', 0),
-(35, 'Barroso', 'Lauriene', 'Nofuente', '2008-03-04', 16, 'Sinalhan', '6', 123, 'Female', '09908767181', '1730986873397_idpic.png', 0),
-(36, 'Dela Cruz', 'Juan ', 'Pepito', '1997-03-04', 27, 'Sinalhan', '2', 52, 'Male', '09213218191', '1730986961660_idpic.png', 0);
+INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `type`, `image`, `archive`) VALUES
+(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '5', 655, 'Female', '09909876181', 'Fish Vendor', '1730049567353_idpic.png', 0),
+(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '3', 11, 'Male', '09817776517', 'Fish Vendor', '1730049581675_idpic.png', 0),
+(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '', '1730049559567_idpic.png', 1),
+(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '', '1730044926206_idpic.png', 1),
+(32, 'Padilla', 'Alden', 'Barbara', '2005-04-05', 19, 'Sinalhan', '6', 12, 'Male', '09231567891', '', '1730367307049_idpic.png', 1),
+(33, 'Duterte', 'Sara', 'hehe', '2013-01-29', 11, 'Sinalhan', '3', 1212, 'Female', '09213218191', 'Fisherman', '1730367659245_idpic.png', 0),
+(34, 'Duterte', 'digong', 'hehe', '2024-10-05', 0, 'Sinalhan', '4', 1212, 'Female', '09213218191', 'Fish Vendor', '1730367798984_idpic.png', 0),
+(35, 'Barroso', 'Lauriene', 'Nofuente', '2008-03-04', 16, 'Sinalhan', '6', 123, 'Female', '09908767181', 'Fisherman', '1730986873397_idpic.png', 0),
+(36, 'Dela Cruz', 'Juan ', 'Pepita', '1997-03-04', 27, 'Sinalhan', '1', 52, 'Male', '09213218191', 'Fish Vendor', '1730986961660_idpic.png', 0),
+(37, 'Casubha', 'Lucky', 'Star M.', '1988-03-09', 36, 'Sinalhan', '2', 121, 'Female', '09817776517', 'Fish Vendor', '1731050186578_idpic.png', 0);
 
 -- --------------------------------------------------------
 
@@ -338,23 +361,27 @@ INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `bar
 
 CREATE TABLE `tbluser` (
   `id` int(11) NOT NULL,
-  `First Name` varchar(100) NOT NULL,
-  `Last Name` varchar(100) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `role` varchar(20) NOT NULL
+  `role` varchar(20) NOT NULL,
+  `archive` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbluser`
 --
 
-INSERT INTO `tbluser` (`id`, `First Name`, `Last Name`, `username`, `password`, `role`) VALUES
-(1, '', '', 'admin', 'admin', 'administrator'),
-(2, '', '', 'zone', '1234', 'zoneleader'),
-(11, '', '', 'staff', 'staff', 'staff'),
-(25, '', '', 'bfarmcadmin', '$2y$10$bgRoIIX.GwwVUbu16S.neualH.xM4x..yLlJSh94RGRIwL4ibW8du', 'administrator'),
-(26, '', '', 'bfarmcstaff', '$2y$10$uhNu9u9jBFVLOsVgvTMbYun4SjxF7l7ZyosnG9ef2ztkJXZUYkTWq', 'staff');
+INSERT INTO `tbluser` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `role`, `archive`) VALUES
+(1, '', '', '', 'admin', 'admin', 'administrator', 0),
+(2, '', '', '', 'zone', '1234', 'zoneleader', 0),
+(11, '', '', '', 'staff', 'staff', 'staff', 1),
+(25, '', '', '', 'bfarmcadmin', '$2y$10$bgRoIIX.GwwVUbu16S.neualH.xM4x..yLlJSh94RGRIwL4ibW8du', 'administrator', 0),
+(26, '', '', '', 'bfarmcstaff', '$2y$10$uhNu9u9jBFVLOsVgvTMbYun4SjxF7l7ZyosnG9ef2ztkJXZUYkTWq', 'staff', 0),
+(27, 'Kim', 'Casubha', 'casubhalucky5@gmail.com', 'kim123', '$2y$10$GUAaUcIuMMzy.E5VVtMcqOdw0jiZPYfjfCCJgxz4nRrB22roVYhDq', 'staff', 0),
+(28, 'lucky', 'casubha', 'ajsansj', 'lucky123', '$2y$10$y.3Wz8ddA6XZ/W36rua3s.eQs0xHUI0J7K8rIzwjvwphOdpwoG4fi', 'staff', 0);
 
 -- --------------------------------------------------------
 
@@ -442,7 +469,7 @@ ALTER TABLE `tblactivityphoto`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `tblofficial`
@@ -454,13 +481,13 @@ ALTER TABLE `tblofficial`
 -- AUTO_INCREMENT for table `tblresident`
 --
 ALTER TABLE `tblresident`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
