@@ -89,21 +89,21 @@ if (!isset($_SESSION['role'])) {
                 <div class="row justify-content-center">
     <!-- Age Distribution Bar Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
             <h4 style="color: #0605a6; text-align: center;">Age Distribution of Members</h4>
             <div id="morris-bar-chart2" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>
     </div>
     <!-- Types of Members Donut Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
             <h4 style="color: #0605a6; text-align: center;">Types of Members</h4>
             <div id="morris-donut-chart" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>
     </div>
     <!-- Members per Purok Bar Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
             <h4 style="color: #0605a6; text-align: center;">Members per Purok</h4>
             <div id="morris-bar-chart3" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>

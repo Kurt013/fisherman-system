@@ -3036,6 +3036,7 @@ Component: timeline
   background-color: #ffffff !important;
   color: #0605a6 !important;
   padding-top: 5px;
+  border-radius: 15px;
 }
 .info-box-icon > img {
   max-width: 100%;

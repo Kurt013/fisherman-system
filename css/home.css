@@ -78,7 +78,6 @@ body {
     margin: 10px;
     flex: 0 1 calc(45% - 20px);
     text-align: left;
-    background-color: #fff;
     color: #000000;
     font-size: 24px;
     text-decoration: none;
@@ -89,21 +88,22 @@ body {
     transition: background-color 0.25s;
     display: flex;
     align-items: center;
-    color: #0605a6;
+    color: #fff;
+    background-color: #0605a6;
 }
 
 .redirect-button .icon {
-    background-color: #0200ff;
-    color: white;
+    background-color: #fff;
+    color: #0605a6;
     border-radius: 50%;
     padding: 0px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    width: 70px;
-    height: 70px;
-    font-size: 50px;
+    width: 80px !important;
+    height: 80px;
+    font-size: 55px;
 }
 
 .redirect-button:hover {
