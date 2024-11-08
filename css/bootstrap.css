@@ -2313,7 +2313,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: #ebebeb !important;
   border-color: #adadad;
 }
 
@@ -5910,7 +5910,7 @@ a.list-group-item.active:focus .list-group-item-text {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000000;
+  color: #FFDE59 !important;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -5918,7 +5918,7 @@ a.list-group-item.active:focus .list-group-item-text {
 
 .close:hover,
 .close:focus {
-  color: #000000;
+  color: #fdd843 !important;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
@@ -5931,7 +5931,9 @@ button.close {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
+  color: #FFDE59 !important;
 }
+
 
 .modal-open {
   overflow: hidden;

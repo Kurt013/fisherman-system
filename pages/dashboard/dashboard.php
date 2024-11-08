@@ -75,7 +75,7 @@ if (!isset($_SESSION['role'])) {
                                     <span class="info-box-text">Total Activities</span>
                                     <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con, "SELECT * from tblactivity");
+                                            $q = mysqli_query($con, "SELECT * from tblactivity WHERE archive = 0");
                                             echo mysqli_num_rows($q);
                                         ?>
                                     </span>
@@ -146,11 +146,15 @@ if (!isset($_SESSION['role'])) {
         xkey: 'y',
         ykeys: ['a'],
         labels: ['Number of Members'],
-        barColors: ['#040384'], // Set bar color
+        barColors: ['#FFDE59'], // Set bar color
         lineColors: ['#000'], // Set line color to black
         hideHover: 'auto',
-        labelColor: '#000', // Set label color to black
-        gridTextColor: '#000' // Set grid text color to black
+        labelColor: '#0605a6', // Set label color to black
+        gridTextColor: '#000', // Set grid text color to black
+        hoverCallback: function (index, options, content, row) {
+        return content.replace(row.a, '<span style="color: #0605a6;">' + row.a + '</span>')
+                      .replace('Number of Members', '<span style="color: #0605a6;">Number of Members</span>');
+    }
     });
 
     // Members per Purok Bar Chart
@@ -169,12 +173,18 @@ if (!isset($_SESSION['role'])) {
         xkey: 'y',
         ykeys: ['a'],
         labels: ['Members per Purok'],
-        barColors: ['#040384'], // Set bar color
+        barColors: ['#FFDE59'], // Set bar color
         lineColors: ['#000'], // Set line color to black
         hideHover: 'auto',
-        labelColor: '#000', // Set label color to black
+        labelColor: '#0605a6', // Set label color to black
         gridTextColor: '#000', // Set grid text color to black
-        resize: true
+        resize: true,
+        hoverCallback: function (index, options, content, row) {
+        // Change the hover content to have the number in blue, while label stays black
+        content = content.replace(row.a, '<span style="color: #0605a6;">' + row.a + '</span>'); 
+        content = content.replace('Members per Purok', '<span style="color: #0605a6;">Members per Purok</span>'); 
+        return content;
+    }
     });
 
     // Gender Distribution Donut Chart
@@ -188,8 +198,8 @@ if (!isset($_SESSION['role'])) {
                 echo "{ label: 'Fish Vendor', value: $fv_count }"; 
             ?>
         ],
-        colors: ['#007bff', '#ff6384'],
-        labelColor: '#000', // Set label color to black
+        colors: ['#FFDE59', '#0605a6'],
+        labelColor: '#0605a6', // Set label color to black for visibility
         resize: true
     });
 </script>
