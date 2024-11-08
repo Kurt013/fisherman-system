@@ -182,10 +182,9 @@ include('../header.php');
                                             </th>
                                         <?php } ?>
                                         <th>Purok</th>
-                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Age</th>
-                                        <th>Gender</th>
+                                        <th>Type</th>
                                         <th>Cellphone Number</th>
                                         <th>Option</th>
 
@@ -193,7 +192,7 @@ include('../header.php');
                                 </thead>
                                 <tbody>
                                 <?php
-                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image 
+                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, type, cpnumber 
                                 FROM tblresident 
                                 WHERE archive = 1 
                                 ORDER BY zone");
@@ -210,10 +209,9 @@ include('../header.php');
                                 <tr>
                                     <td><input type="checkbox" name="chk_unarchive[]" class="chk_delete" value="' . $row['id'] . '" /></td>
                                     <td>' . $row['zone'] . '</td>
-                                    <td style="width:70px;"><img src="image/' . basename($row['image']) . '" style="width:60px;height:60px;"/></td>
                                     <td>' . $row['cname'] . '</td>
                                     <td>' . $row['age'] . '</td>
-                                    <td>' . $row['gender'] . '</td>
+                                    <td>' . $row['type'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
                                     <td><button class="btn btn-primary btn-sm" data-target="#editModal' . $row['id'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                 </tr>';

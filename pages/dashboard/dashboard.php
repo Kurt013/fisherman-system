@@ -25,7 +25,7 @@ if (!isset($_SESSION['role'])) {
                                 <div class="box-header">
                                     <div style="padding:10px;">
                                     <form action="export.php" method="post">
-                                        <button class="btn btn-primary btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
+                                        <button class="btn btn-third btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
                                     </form>
                                     </div>                            
                                 </div>

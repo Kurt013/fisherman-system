@@ -232,7 +232,9 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 700;
+  font-style: normal;
 }
 /* Page Header */
 .page-header {

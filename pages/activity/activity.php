@@ -167,40 +167,49 @@ for (var i = 0; i < checkboxes.length; i++) {
     });
 }
 
-    <?php
-    if($_SESSION['role'] == "Administrator")
-    {
-    ?>
+<?php 
+    if ($_SESSION['role'] == "Administrator") { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,4 ] } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 0, 4 ] }  // Disable sorting for specific columns
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    elseif(isset($_SESSION['resident']))
-    {
-    ?>
+<?php 
+    } elseif (isset($_SESSION['resident'])) { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false }  // Disable sorting for all columns
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    else{
-    ?>
+<?php 
+    } else { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 4 ] } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 4 ] }  // Disable sorting for specific column
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    ?>
+<?php 
+    } 
+?>
+
 
 $(document).ready(function() {
     // Replace the "Previous" text with the backward icon

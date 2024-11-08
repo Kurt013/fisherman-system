@@ -63,7 +63,7 @@
                                                     if(!isset($_SESSION['staff']))
                                                     {
                                                 ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Unrchive</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Unarchive</button> 
                                                 <?php
                                                     }
                                             }
@@ -78,7 +78,6 @@
                                             <tr>
                                                 
                                                 <th style="width: 20px !important;"><input type="checkbox" name="chk_unarchive[]" class="cbxMain" onchange="checkMain(this)"/></th>
-                                                <th>Image</th>
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
                                                 <th>Description</th>
@@ -95,7 +94,6 @@
                                                     echo '
                                                     <tr>
                                                         <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
-                                                        <td><img src="photo/' . $row['image'] . '" alt="Activity Image" style="width: 100px; height: auto;"/></td> <!-- Displaying photo -->
                                                         <td>'.$row['dateofactivity'].'</td>
                                                         <td>'.$row['activity'].'</td>
                                                         <td>'.$row['description'].'</td>
@@ -166,40 +164,48 @@ for (var i = 0; i < checkboxes.length; i++) {
     });
 }
 
-    <?php
-    if($_SESSION['role'] == "Administrator")
-    {
-    ?>
+<?php 
+    if ($_SESSION['role'] == "Administrator") { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,4 ] } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 0, 4 ] }  // Disable sorting for specific columns
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    elseif(isset($_SESSION['resident']))
-    {
-    ?>
+<?php 
+    } elseif (isset($_SESSION['resident'])) { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false }  // Disable sorting for all columns
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    else{
-    ?>
+<?php 
+    } else { 
+?>
         $(function() {
-            $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 4 ] } ],"aaSorting": []
+            $("#table").DataTable({
+                "responsive": true,   // Enable responsiveness
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 4 ] }  // Disable sorting for specific column
+                ],
+                "aaSorting": [],
+                "autoWidth": false      // Disable automatic column width calculation
             });
-            $(".select2").select2();
         });
-    <?php
-    }
-    ?>
+<?php 
+    } 
+?>
 
 $(document).ready(function() {
     // Replace the "Previous" text with the backward icon

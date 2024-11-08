@@ -59,7 +59,7 @@
                                             if(!isset($_SESSION['staff']))
                                             {
                                         ?>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i>Unarchive</button> 
+                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Unarchive</button> 
                                         <?php
                                             }
                                         ?>
@@ -152,6 +152,14 @@
            "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,3 ] } ],"aaSorting": []
         });
     });
+
+    $(document).ready(function() {
+    // Replace the "Previous" text with the backward icon
+    $('div.dataTables_paginate ul.pagination li:first-child a').html('<i class="fa-solid fa-backward"></i>');
+
+    // Replace the "Next" text with the forward icon
+    $('div.dataTables_paginate ul.pagination li:last-child a').html('<i class="fa-solid fa-forward"></i>');
+});
 </script>
     </body>
 </html>

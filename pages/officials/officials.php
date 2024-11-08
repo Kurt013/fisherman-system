@@ -115,17 +115,17 @@
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
-                                                                <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
+                                                                <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
                                                                 if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                                                     if($row['status'] == 'Ongoing Term') {
                                                                         echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';
                                                                     } else {
-                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
+                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Continue</button>';
                                                                     }
                                                                 } else {
                                                                     // If the user is 'Staff', show only the Edit button and the Start button if applicable
                                                                     if ($row['status'] !== 'Ongoing Term') {
-                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
+                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Continue</button>';
                                                                     }
                                                                 }
                                                                 
@@ -153,7 +153,7 @@
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
                                                             <td>
-                                                            <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                            <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             </td>
                                                         </tr>
                                                         ';
