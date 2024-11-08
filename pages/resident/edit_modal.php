@@ -10,7 +10,6 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
         <div class="modal-body">';
 
         $edit_query = mysqli_query($con,"SELECT * from tblresident where id = '".$row['id']."' ");
-        
         $erow = mysqli_fetch_array($edit_query);
 
         echo '
@@ -31,12 +30,22 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
                             <input name="txt_edit_mname" class="form-control input-sm" type="text" value="'.$erow['mname'].'"/>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Purok #:</label>
-                            <input name="txt_edit_zone" class="form-control input-sm" type="text" value="'.$erow['zone'].'"/>
+                            <label class="control-label">Purok:</label>
+                            <select name="txt_edit_zone" class="form-control input-sm">
+                                <option disabled="">-Select Purok-</option>';
+                                for ($i = 1; $i <= 6; $i++) {
+                                    $selected = ($erow['zone'] == $i) ? 'selected' : '';
+                                    echo '<option value="'.$i.'" '.$selected.'>Purok '.$i.'</option>';
+                                }
+                        echo '</select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Cellphone Number:</label>
                             <input name="txt_edit_cpnumber" class="form-control input-sm" type="text" value="'.$erow['cpnumber'].'"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Image:</label>
+                            <input name="txt_edit_image" class="form-control input-sm" type="file" />
                         </div>
                     </div>
 
@@ -48,9 +57,8 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
                         <div class="form-group">
                             <label class="control-label">Gender:</label>
                             <select name="ddl_edit_gender" class="form-control input-sm">
-                                <option value="'.$erow['gender'].'" selected="">'.$erow['gender'].'</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="Male" '.($erow['gender'] == 'Male' ? 'selected' : '').'>Male</option>
+                                <option value="Female" '.($erow['gender'] == 'Female' ? 'selected' : '').'>Female</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -61,9 +69,13 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
                             <label class="control-label">Barangay:</label>
                             <input name="txt_edit_brgy" class="form-control input-sm" type="text" value="'.$erow['barangay'].'"/>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label">Image:</label>
-                            <input name="txt_edit_image" class="form-control input-sm" type="file" />
+                        <div class="form-group">     
+                            <label class="control-label">Type:</label>
+                            <select name="ddl_edit_type" class="form-control input-sm">
+                                <option disabled="">-Select Type-</option>
+                                <option value="Fisherman" '.($erow['type'] == 'Fisherman' ? 'selected' : '').'>Fisherman</option>
+                                <option value="Fish Vendor" '.($erow['type'] == 'Fish Vendor' ? 'selected' : '').'>Fish Vendor</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -77,6 +89,4 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
   </div>
 </form>
 </div>';
-
 ?>
-

@@ -8,10 +8,10 @@ if (isset($_POST['export'])) {
     $SQL3 = "SELECT COUNT(*) AS NumberofActivities FROM tblactivity"; // Total Activities
     $SQL4 = "SELECT COUNT(*) AS NumberofMembers, Zone FROM tblresident GROUP BY Zone"; // Total Residents per Zone
     $SQL5 = "SELECT COUNT(*) AS NumberofMembers, Age FROM tblresident GROUP BY Age"; // Total Residents by Age
-    $SQL6 = "SELECT COUNT(*) AS NumberofMembers, Gender FROM tblresident GROUP BY Gender"; // Total Residents by Age
+    $SQL6 = "SELECT COUNT(*) AS NumberofMembers, type FROM tblresident GROUP BY type"; // Total Residents by Age
 
     $arrsql = array($SQL1, $SQL2, $SQL3, $SQL4, $SQL5, $SQL6);
-    $arrhead = array("Total Officials", "Total Members", "Total Activities", "Population per Purok", "Members by Age", "Members by Gender");
+    $arrhead = array("Total Officials", "Total Members", "Total Activities", "Population per Purok", "Members by Age", "Members by Type");
 
     $output = '';
 

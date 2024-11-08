@@ -92,5 +92,17 @@ if(isset($_POST['btn_archive'])){
         }
     }
 }
-// Remaining code for managing photos follows...
+
+if(isset($_POST['btn_unarchive'])){
+    if(isset($_POST['chk_unarchive'])){
+        foreach($_POST['chk_unarchive'] as $value){
+            $archive_query = mysqli_query($con, "UPDATE tblactivity SET archive = 0 WHERE id = '$value'") or die('Error: ' . mysqli_error($con));
+                    
+            if($archive_query == true){
+                $_SESSION['unarchive'] = 1;
+                header("location: ".$_SERVER['REQUEST_URI']);
+            }
+        }
+    }
+}
 ?>

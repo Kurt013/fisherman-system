@@ -50,6 +50,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="../staff/staff.php">
+                            <i class="fa fa-user"></i> <span>Staff</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="../logs/logs.php">
                             <i class="fa fa-history"></i> <span>Logs</span>
                         </a>

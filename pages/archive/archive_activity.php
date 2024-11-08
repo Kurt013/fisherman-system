@@ -28,16 +28,16 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                    <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; margin-right: 30px;" >
+                    <a href="../activity/activity.php" style="color: #0605a6; margin-right: 30px;" >
                 <i class="fa fa-calendar"></i> <span>Activity</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_activity.php" class="redirect-button" style="color: #0605a6;">                           
+                            <a href="#" class="redirect-button" style="color: #0605a6; border-bottom: 2px solid yellow; /* Change color as needed */
+    padding-bottom: 5px; 
+    display: inline-block; ">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
@@ -58,13 +58,12 @@
                                             {
                                         ?>
 
-                                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Activity</button>  
                                                 
                                                 <?php 
                                                     if(!isset($_SESSION['staff']))
                                                     {
                                                 ?>
-                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Archive</button> 
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Unrchive</button> 
                                                 <?php
                                                     }
                                             }
@@ -78,7 +77,7 @@
                                         <thead>
                                             <tr>
                                                 
-                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
+                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_unarchive[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                 <th>Image</th>
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
@@ -90,12 +89,12 @@
                                             <?php
                                             
 
-                                                $squery = mysqli_query($con, "select * from tblactivity WHERE archive = 0");
+                                                $squery = mysqli_query($con, "select * from tblactivity WHERE archive = 1");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                        <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
                                                         <td><img src="photo/' . $row['image'] . '" alt="Activity Image" style="width: 100px; height: auto;"/></td> <!-- Displaying photo -->
                                                         <td>'.$row['dateofactivity'].'</td>
                                                         <td>'.$row['activity'].'</td>
@@ -106,8 +105,8 @@
                                                     </tr>
                                                     ';
 
-                                                    include "edit_modal.php";
-                                                    include "view_modal.php";
+                                                    include "../activity/edit_modal.php";
+                                                    include "../activity/view_modal.php";
                                                 }
 
                                             
@@ -129,9 +128,9 @@
 
                             <?php include "../duplicate_error.php"; ?>
 
-            <?php include "add_modal.php"; ?>
+            <?php include "../activity/add_modal.php"; ?>
 
-            <?php include "function.php"; ?>
+            <?php include "../activity/function.php"; ?>
 
 
                     </div>   <!-- /.row -->

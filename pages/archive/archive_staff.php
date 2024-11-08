@@ -11,7 +11,7 @@
     {
     ob_start();
     include('../head_css.php'); ?>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <?php 
         
@@ -28,7 +28,21 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Zone Leader
+                    <a href="../staff/staff.php" style="color: #0605a6; margin-right: 30px;" >
+                <i class="fa fa-user"></i> <span>Staff</span>
+                </a>                           
+                 <?php 
+                            // Check if the user role is not 'Staff' before displaying the delete button
+                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
+                            ?>
+                            <a href="#" class="redirect-button" style="color: #0605a6; border-bottom: 2px solid yellow; /* Change color as needed */
+    padding-bottom: 5px; 
+    display: inline-block; ">                           
+                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
+                        </a>
+                        <?php
+                            }
+                            ?>
                     </h1>
                     
                 </section>
@@ -41,12 +55,11 @@
                                 <div class="box-header">
                                     <div style="padding:10px;">
                                         
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addZoneModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Zone Leader</button>  
                                         <?php 
                                             if(!isset($_SESSION['staff']))
                                             {
                                         ?>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
+                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unarchiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i>Unarchive</button> 
                                         <?php
                                             }
                                         ?>
@@ -62,11 +75,11 @@
                                                 if(!isset($_SESSION['staff']))
                                                 {
                                                 ?>
-                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
+                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_unarchive[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                 <?php
                                                     }
                                                 ?>
-                                                <th>Zone</th>
+                                                <th>Name</th>
                                                 <th>Userame</th>
                                                 <th style="width: 40px !important;">Option</th>
                                             </tr>
@@ -74,41 +87,41 @@
                                         <tbody>
                                             <?php
                                             if(!isset($_SESSION['staff'])){
-                                                $squery = mysqli_query($con, "select * from tblzone ");
+                                                $squery = mysqli_query($con, "select * from tbluser WHERE role = 'staff' AND archive = 1 ");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
-                                                        <td>'.$row['zone'].'</td>
+                                                        <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
+                                                        <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
                                                         <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
-                                                    include "edit_modal.php";
+                                                    include "../staff/edit_modal.php";
                                                 }
                                             }
                                             else{
-                                                $squery = mysqli_query($con, "select * from tblzone ");
+                                                $squery = mysqli_query($con, "select * from tbluser WHERE role = 'staff' AND archive = 1");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td>'.$row['zone'].'</td>
+                                                        <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
                                                         <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
-                                                    include "edit_modal.php";
+                                                    include "../staff/edit_modal.php";
                                                 }
                                             }
                                             ?>
                                         </tbody>
                                     </table>
 
-                                    <?php include "../deleteModal.php"; ?>
+                                    <?php include "../archiveModal.php"; ?>
 
                                     </form>
                                 </div><!-- /.box-body -->
@@ -117,13 +130,13 @@
                             <?php include "../edit_notif.php"; ?>
 
                             <?php include "../added_notif.php"; ?>
-
-                            <?php include "../delete_notif.php"; ?>
+                            <?php include "../mismatch_notif.php"; ?>
+                            <?php include "../archive_notif.php"; ?>
                             <?php include "../duplicate_error.php"; ?>
 
-            <?php include "add_modal.php"; ?>
+            <?php include "../staff/add_modal.php"; ?>
 
-            <?php include "function.php"; ?>
+            <?php include "../staff/function.php"; ?>
 
 
                     </div>   <!-- /.row -->

@@ -86,28 +86,30 @@ if (!isset($_SESSION['role'])) {
                 </div> <!-- /.row -->
 
                 <!-- Bar charts and Donut chart -->
-                <div class="row">
+                <div class="row justify-content-center">
     <!-- Age Distribution Bar Chart -->
-                <div class="col-md-4 col-sm-6 col-xs-12"><br>
-                <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
-                <h4 style="color:black;">Age Distribution of Members</h4>
-                    <div id="morris-bar-chart2" style="height: 340px;"></div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12"><br>
-            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
-                    <h4 style="color:black;">Gender Distribution of Members</h4>
-                    <div id="morris-donut-chart" style="height: 340px;"></div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12"><br>
-            <div class="info-box" style="padding: 10px; background-color: #598dcc; border-radius: 5px; height:400px">
-            <h4 style="color:black;">Members per Purok</h4>
-                    <div id="morris-bar-chart3" style="height: 340px;"></div>
-                </div>
-            </div>
+    <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+            <h4 style="color: #0605a6; text-align: center;">Age Distribution of Members</h4>
+            <div id="morris-bar-chart2" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
+        </div>
+    </div>
+    <!-- Types of Members Donut Chart -->
+    <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+            <h4 style="color: #0605a6; text-align: center;">Types of Members</h4>
+            <div id="morris-donut-chart" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
+        </div>
+    </div>
+    <!-- Members per Purok Bar Chart -->
+    <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
+        <div class="info-box" style="padding: 10px; background-color: #ffffff; border-radius: 5px; height:400px;">
+            <h4 style="color: #0605a6; text-align: center;">Members per Purok</h4>
+            <div id="morris-bar-chart3" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
+        </div>
+    </div>
+</div>
 
-            </div>
 
 
             </section>
@@ -180,10 +182,10 @@ if (!isset($_SESSION['role'])) {
         element: 'morris-donut-chart',
         data: [
             <?php
-                $male_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND gender = 'Male'"))['cnt'];
-                $female_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND gender = 'Female'"))['cnt'];
-                echo "{ label: 'Male', value: $male_count },"; 
-                echo "{ label: 'Female', value: $female_count }"; 
+                $f_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND type = 'Fisherman'"))['cnt'];
+                $fv_count = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as cnt FROM tblresident WHERE archive = 0 AND type = 'Fish Vendor'"))['cnt'];
+                echo "{ label: 'Fisherman', value: $f_count },"; 
+                echo "{ label: 'Fish Vendor', value: $fv_count }"; 
             ?>
         ],
         colors: ['#007bff', '#ff6384'],

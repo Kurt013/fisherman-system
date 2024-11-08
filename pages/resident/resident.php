@@ -137,13 +137,11 @@ include('../header.php');
     <aside class="right-side">
         <section class="content-header">
             <h1>
-                <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; 
+            <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
     padding-bottom: 5px; 
-    display: inline-block;" >
+    display: inline-block; margin-right: 30px;" >
                 <i class="fa fa-users"></i> <span>Members</span>
                 </a>                           
-                <span style="display: inline-block; width: 2px; height: 20px; background-color: #ccc; margin-left:5px; margin-right:5px;"></span>
-
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
@@ -193,7 +191,7 @@ include('../header.php');
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Age</th>
-                                        <th>Gender</th>
+                                        <th>Type</th>
                                         <th>Cellphone Number</th>
                                         <th>ID Card</th>
                                         <th style="width: 40px !important;">Option</th>
@@ -201,7 +199,7 @@ include('../header.php');
                                 </thead>
                                 <tbody>
                                 <?php
-                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, gender, cpnumber, image 
+                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, type, cpnumber, image 
                                 FROM tblresident 
                                 WHERE archive = 0 
                                 ORDER BY zone");
@@ -221,7 +219,7 @@ include('../header.php');
                                     <td style="width:70px;"><img src="image/' . basename($row['image']) . '" style="width:60px;height:60px;"/></td>
                                     <td>' . $row['cname'] . '</td>
                                     <td>' . $row['age'] . '</td>
-                                    <td>' . $row['gender'] . '</td>
+                                    <td>' . $row['type'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
                                     <td>
                                         <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-info btn-sm">

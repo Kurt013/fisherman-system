@@ -4,6 +4,7 @@ if(isset($_POST['btn_add'])){
     $txt_fname = mysqli_real_escape_string($con, $_POST['txt_fname']);
     $txt_mname = mysqli_real_escape_string($con, $_POST['txt_mname']);
     $ddl_gender = mysqli_real_escape_string($con, $_POST['ddl_gender']);
+    $ddl_type = mysqli_real_escape_string($con, $_POST['ddl_type']);
     $txt_bdate = mysqli_real_escape_string($con, $_POST['txt_bdate']);
 
     // Age calculation
@@ -50,6 +51,7 @@ if(isset($_POST['btn_add'])){
                                         hnumber,
                                         gender,
                                         cpnumber,
+                                        type,
                                         image
                                     ) 
                                     VALUES (
@@ -63,6 +65,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_hnumber',
                                         '$ddl_gender', 
                                         '$txt_cpnumber',
+                                        '$ddl_type', 
                                         '$txt_image'
                                     )") 
                             or die('Error: ' . mysqli_error($con));
@@ -84,6 +87,7 @@ if(isset($_POST['btn_add'])){
                                         hnumber,
                                         gender,
                                         cpnumber,
+                                        type,
                                         image
                                     ) 
                                     VALUES (
@@ -97,6 +101,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_hnumber',
                                         '$ddl_gender', 
                                         '$txt_cpnumber',
+                                        '$ddl_type', 
                                         '$txt_image'
                                     )") 
                             or die('Error: ' . mysqli_error($con));
@@ -127,6 +132,8 @@ if(isset($_POST['btn_save'])){
     $txt_edit_hnumber = mysqli_real_escape_string($con, $_POST['txt_edit_hnumber']);
     $txt_edit_cpnumber = mysqli_real_escape_string($con, $_POST['txt_edit_cpnumber']);
     $ddl_edit_gender = mysqli_real_escape_string($con, $_POST['ddl_edit_gender']);
+    $ddl_edit_type = mysqli_real_escape_string($con, $_POST['ddl_edit_type']);
+
 
     // File upload logic
     $name = basename($_FILES['txt_edit_image']['name']);
@@ -169,6 +176,7 @@ if(isset($_POST['btn_save'])){
         hnumber = '".$txt_edit_hnumber."',
         cpnumber = '".$txt_edit_cpnumber."',
         gender = '".$ddl_edit_gender."',
+        type = '".$ddl_edit_type."',
         image = '".$txt_edit_image."'
         WHERE id = '".$txt_id."'
     ") or die('Error: ' . mysqli_error($con));

@@ -32,13 +32,25 @@
                                         <input name="txt_age" class="form-control input-sm input-size" type="number" placeholder="Age"/>
                                     </div> -->
 
-                                    <div class="form-group">
-                                        <label class="control-label">Purok #:</label>
-                                        <input name="txt_zone" class="form-control input-sm" type="text"  placeholder="Purok #"/>
+                                    <div class="form-group">     
+                                        <label class="control-label">Purok:</label>
+                                        <select name="txt_zone" class="form-control input-sm">
+                                            <option selected="" disabled="">-Select Purok-</option>
+                                            <option value="1">Purok 1</option>
+                                            <option value="2">Purok 2</option>
+                                            <option value="3">Purok 3</option>
+                                            <option value="4">Purok 4</option>
+                                            <option value="5">Purok 5</option>
+                                            <option value="6">Purok 6</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Cellphone Number:</label>
                                         <input name="txt_cpnumber" class="form-control input-sm" type="number" placeholder="Cellphone Number:"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Image:</label>
+                                        <input name="txt_image" class="form-control input-sm" type="file" />
                                     </div>
                                     
                                 </div>
@@ -64,10 +76,15 @@
                                         <label class="control-label">Barangay:</label>
                                         <input name="txt_brgy" class="form-control input-sm input-size" type="text" placeholder="Barangay"/>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Image:</label>
-                                        <input name="txt_image" class="form-control input-sm" type="file" />
+                                    <div class="form-group">     
+                                        <label class="control-label">Type:</label>
+                                        <select name="ddl_type" class="form-control input-sm">
+                                            <option selected="" disabled="">-Select Type-</option>
+                                            <option value="Fisherman">Fisherman</option>
+                                            <option value="Fish Vendor">Fish Vendor</option>
+                                        </select>
                                     </div>
+                            
 
 
 

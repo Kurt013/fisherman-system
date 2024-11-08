@@ -30,20 +30,17 @@
             <div class="desc-content">
                 <div class="content-wrapper">
                     <div class="homepage-images">
-                        <img class="resort-image" src="../../img/home-bg.png" alt="resort-place">
+                        <img class="resort-image" src="../../img/bfarmc-sinalhan-logo.png" alt="resort-place">
                     </div>
 
-                    <div class="border-wrapper">
-                        <div class="yellow-border"></div>
-                        <div class="blue-border"></div>
-                    </div>
+                   
                         
                     <div class="text-wrapper">
                         <h1>Hello, 
                             <?php 
                             echo ($_SESSION['role'] == 'administrator') ? 
-                                "<span style='color: #F4D248;'>{$_SESSION['role']}&nbsp;!</span>" : 
-                                "<span style='color: #52C8C8;'>{$_SESSION['role']}&nbsp;!</span>"; 
+                                "<span style='color: #F4D248;'>{$_SESSION['role']}!</span>" : 
+                                "<span style='color: #52C8C8;'>{$_SESSION['role']}!</span>"; 
                             ?>
                         </h1>
                         <p>Let's get started! Feel free to explore and stay updated by clicking on the sections below:</p>

@@ -1,174 +1,161 @@
 body {
-    background-color: #040384; /* Set background color */
+    background: #eff2ff;
     color: white;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    font-style: normal;
 }
 
 .desc-content {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    height: 100vh; /* Make sure it takes full height of the viewport */
-    background-color: #040384; /* Set background color */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    position: relative; /* Establish positioning context for absolute children */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #eff2ff;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center; /* Align text centrally */
+}
+
+.desc-content h1 {
+    font-size: 50px;
+    margin-bottom: 10px; /* Space between h1 and p */
+    font-family: "Roboto", sans-serif !important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.desc-content p {
+    font-size: 25px;
+    margin-bottom: 20px; /* Space between p and button */
 }
 
 .content-wrapper {
-    display: flex; /* Create a flex container */
-    width: 100%; /* Ensure it uses the full width */
-}
-
-.text-wrapper p {
-    font-size: 20px;
-    width: 500px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
 }
 
 .homepage-images {
-    flex: 1; /* Allow this section to take up available space */
+    flex: 1;
     display: flex;
-    justify-content: flex-start; /* Align image to the left */
-    align-items: center;  
-    position: relative; /* Establish a positioning context */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .resort-image {
-    border: 30px solid #040384; /* Set border for all sides */
-    border-left: none; /* Remove the right border */
-    border-radius: 0 400px 400px 0; /* Round corners only on the right */
-    width: 100%; /* Use full width of the container */
-    height: 100%; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the area */
-    position: relative; /* Establish a positioning context */
-    z-index: 2; /* Ensure image is above the borders */
+    border-left: none;
+    border-radius: 0 400px 400px 0;
+    width: 80%;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+.text-wrapper {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.text-wrapper h1, .text-wrapper p {
+    color: #0605a6;
 }
 
 .redirect-button-container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap into multiple rows */
-    justify-content: space-around; /* Space out the buttons evenly */
-    margin-top: 20px; /* Space between the buttons and text */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center buttons */
+    margin-top: 20px;
 }
 
 .redirect-button {
-    margin: 10px; /* Space around each button */
-    flex: 0 1 calc(45% - 20px); /* Make buttons take up to 45% width with space */
-    text-align: left; /* Align text to the left */
-    background-color: #eff2ff; /* Button background */
-    color: #000000; /* Button text color */
+    margin: 10px;
+    flex: 0 1 calc(45% - 20px);
+    text-align: left;
+    background-color: #fff;
+    color: #000000;
     font-size: 24px;
     text-decoration: none;
     border: 4px solid transparent;
     border-radius: 30px;
-    padding: 10px; /* Padding for button */
+    padding: 10px;
     font-weight: 900;
     transition: background-color 0.25s;
-    display: flex; /* Use flexbox for the button layout */
-    align-items: center; /* Center icon and text vertically */
+    display: flex;
+    align-items: center;
 }
 
 .redirect-button .icon {
-    background-color: #0200ff; /* Icon background color */
-    color: white; /* Icon color */
-    border-radius: 50%; /* Make icon circular */
-    padding: 0px; /* No padding around the icon */
-    display: inline-flex; /* Flex to center the icon */
-    align-items: center; /* Center icon vertically */
-    justify-content: center; /* Center icon horizontally */
-    margin-right: 10px; /* Space between icon and text */
-    width: 70px; /* Width of the icon */
-    height: 70px; /* Height of the icon */
-    font-size: 50px; /* Font size for the icon */
+    background-color: #0200ff;
+    color: white;
+    border-radius: 50%;
+    padding: 0px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
 }
 
 .redirect-button:hover {
-    background-color: #0200ff; /* Change button color on hover */
-    color: white;
-    .redirect-button .icon{
-        background-color: white; /* Icon background color */
-        color: #0200ff;
-    }
-    border: 5px solid white; /* Set border for all sides */
-}
-
-
-
-.yellow-border {
-    position: absolute;
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    width: 50%; /* Adjust width as needed */
-    height: 90%; /* Full height */
-    background-color: #f1de8e; /* Yellow background color */
-    clip-path: polygon(0 0, 25% 0, 100% 100%, 0 100%); /* Straight left side and slanted right */
-    z-index: 1; /* Set a lower z-index than the image */
-}
-  
-.blue-border {
-    position: absolute;
-    top: 0; /* Adjust this value to create space between borders */
-    left: 15%; /* Adjust this value to create space between borders */
-    width: 40%; /* Adjust width as needed */
-    height: 50%; /* Full height */
     background-color: #0200ff;
-    clip-path: polygon(0 0, 50% 100%, 100% 0); /* Inverted triangle shape with straight top */
-    z-index: 0; /* Set a lower z-index than the image */
+    color: white;
+    border: 5px solid white;
 }
 
-.text-wrapper {
-    flex: 1; /* Allow this section to take up available space */
-    padding: 20px; /* Add some padding */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center text vertically */
-    overflow: hidden; /* Prevent overflow of text */
+.redirect-button:hover .icon {
+    background-color: white;
+    color: #0200ff;
 }
 
-/* My edited part */
-
-
-
-/* Media queries for smaller screens */
+/* Responsive Design */
 @media only screen and (max-width: 991px) {
     .content-wrapper {
-        flex-direction: column; /* Stack elements vertically */
-    }
-
-    .desc-content {
-        flex-direction: column; /* Stack content vertically */
-        align-items: center; /* Center items */
-        padding: 20px; /* Add padding */
-        box-sizing: border-box; /* Include padding in width calculations */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
     }
 
     .resort-image {
-        border: 30px solid #f1de8e; /* Set border for all sides */
+        width: 80%;
+        max-width: 300px;
+        border-radius: 400px;
     }
 
     .text-wrapper {
-        order: 1; /* Position text wrapper at the top */
-        margin-top: 20px; /* Add margin to the top of the text wrapper */
-        margin-bottom: 20px; /* Add margin at the bottom to create space with h1 */
-        overflow: visible; /* Allow text to be fully visible */
-    }
-
-    .text-wrapper p {
-        font-size: 18px; /* Adjust font size for smaller screens */
-        width: auto; /* Allow text to use available width */
-        line-height: 1.4; /* Add line-height to improve readability */
+        margin-top: 20px;
+        text-align: center;
     }
 
     .redirect-button {
-        font-size: 18px; /* Reduce font size for smaller screens */
-        padding: 8px; /* Adjust padding for buttons */
-        flex: 0 1 calc(90% - 20px); /* Make buttons take up more space, but smaller */
+        font-size: 18px;
+        padding: 8px;
+        flex: 0 1 calc(90% - 20px);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .content-wrapper {
+        flex-direction: column;
     }
 
-    /* Remove yellow and blue borders on smaller screens */
-    .yellow-border,
-    .blue-border {
-        display: none; /* Hide the borders */
+    .resort-image {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .text-wrapper {
+        margin-top: 0;
+        padding: 10px;
     }
 }

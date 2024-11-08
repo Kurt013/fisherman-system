@@ -1,14 +1,10 @@
 <?php
-
-echo  '<header class="header">
-          <a href="../home/home.php" class="logo">
-             <!-- Add the logo image -->
-             <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 55px; margin-right: 10px;"> <!-- Adjust height as needed -->
+echo '<header class="header">
+         <a href="../home/home.php" class="logo">
+             <img class="icon" src="../../img/bfarmc-sinalhan-logo.png" alt="BFARMC - SINALHAN Logo" style="height: 55px; margin-right: 10px;">
              BFARMC
          </a>
-         <!-- Header Navbar: style can be found in header.less -->
          <nav class="navbar navbar-static-top" role="navigation">
-             <!-- Sidebar toggle button-->
              <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                  <span class="sr-only">Toggle navigation</span>
                  <span class="icon-bar"></span>
@@ -17,27 +13,20 @@ echo  '<header class="header">
              </a>
              <div class="navbar-right">
                  <ul class="nav navbar-nav">
-
-                     <!-- User Account: style can be found in dropdown.less -->
                      <li class="dropdown user user-menu">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                             <i class="bx bxs-user-circle" ></i><span><i class="caret"></i></span>
+                             <i class="bx bxs-user-circle"></i><span><i class="caret"></i></span>
                          </a>
                          <ul class="dropdown-menu">
-                             <!-- User image -->
                              <li class="user-header bg-light-blue">
-                                  <div class="circle-2"><i class="bx bxs-user"></i></div>
-                                 <p>
-                                     '.$_SESSION['username'].' <br>
-                                     <span class="role">'.$_SESSION['role'].'</span>
+                                 <div class="circle-2"><i class="bx bxs-user"></i></div>
+                                 <p>' . $_SESSION['username'] . '<br>
+                                     <span class="role">' . $_SESSION['role'] . '</span>
                                  </p>
                              </li>
-                             <!-- Menu Body -->
-                             
-                             <!-- Menu Footer-->
                              <li class="user-footer">
                                  <div class="user-btn-1">
-                                     <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#editProfileModal">Change Account</a>
+                                     <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#editProfileModal">Change Password</a>
                                  </div>
                                  <div class="user-btn-2">
                                      <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -48,86 +37,80 @@ echo  '<header class="header">
                  </ul>
              </div>
          </nav>
-     </header>'; ?>
+     </header>';
+?>
+
+<div id="editProfileModal" class="modal fade">
+    <form method="post" onsubmit="return validatePasswords()">
+        <div class="modal-dialog modal-sm" style="width:300px !important;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #0605a6;">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label style="color: #0605a6;">Old Password:</label>
+                        <input name="old_password" id="old_password" class="form-control input-sm" type="password" required />
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #0605a6;">New Password:</label>
+                        <input name="new_password" id="new_password" class="form-control input-sm" type="password" required />
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #0605a6;">Confirm New Password:</label>
+                        <input name="confirm_password" id="confirm_password" class="form-control input-sm" type="password" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" name="btn_saveeditProfile">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 
-      <div id="editProfileModal" class="modal fade">
-         <form method="post">
-           <div class="modal-dialog modal-sm" style="width:300px !important;">
-             <div class="modal-content">
-                 <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                     <h4 class="modal-title">Change Account</h4>
-                 </div>
-                 <div class="modal-body">
-                     <div class="row">
-                         <div class="col-md-12">
-                     <?php
-                     if($_SESSION['role'] == "Administrator"){
-                         $user = mysqli_query($con,"SELECT * from tbluser where id = '".$_SESSION['userid']."' ");
-                         while($row = mysqli_fetch_array($user)){
-                             echo '
-                                 <div class="form-group">
-                                     <label>Username:</label>
-                                     <input name="txt_username" id="txt_username" class="form-control input-sm" type="text" value="'.$row['username'].'" />
-                                 </div>
-                                 <div class="form-group">
-                                     <label>Password:</label>
-                                     <input name="txt_password" id="txt_password" class="form-control input-sm" type="password"  value="'.$row['password'].'"/>
-                                 </div>';
-                         } 
-                     }
-                     elseif (isset($_SESSION['role']) && $_SESSION['role'] == "Staff") { // Check if 'role' is set and equals 'Staff'
-                         $user = mysqli_query($con, "SELECT * from tbluser where id = '" . $_SESSION['userid'] . "' ");
-                         while ($row = mysqli_fetch_array($user)) {
-                             echo '
-                                 <div class="form-group">
-                                     <label>Username:</label>
-                                     <input name="txt_username" id="txt_username" class="form-control input-sm" type="text" value="' . $row['username'] . '" />
-                                 </div>
-                                 <div class="form-group">
-                                     <label>Password:</label>
-                                     <input name="txt_password" id="txt_password" class="form-control input-sm" type="password" value="' . $row['password'] . '"/>
-                                 </div>';
-                         }
-                     }
-                     ?>
-                      
-                         </div>
-                     </div>
-                 </div>
-                 <div class="modal-footer">
-                     <input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel"/>
-                     <input type="submit" class="btn btn-primary btn-sm" id="btn_saveeditProfile" name="btn_saveeditProfile" value="Save"/>
-                 </div>
-             </div>
-           </div>
-           </form>
-         </div>
+<?php
 
+include "../mismatch_notif.php";
 
-         <?php
-         if(isset($_POST['btn_saveeditProfile'])){
-             $username = $_POST['txt_username'];
-             $password = $_POST['txt_password'];
+if (isset($_POST['btn_saveeditProfile'])) {
+    $old_password = $_POST['old_password'];
+    $new_password = $_POST['new_password'];
+    $confirm_password = $_POST['confirm_password'];
 
-             if (isset($_SESSION['role']) && $_SESSION['role'] == "Administrator") {
-                 $updadmin = mysqli_query($con, "UPDATE tbluser set username = '$username', password = '$password' where id = '" . $_SESSION['userid'] . "' ");
-                 if ($updadmin) {
-                     header("location: " . $_SERVER['REQUEST_URI']);
-                 }
-             } elseif (isset($_SESSION['role']) && $_SESSION['role'] == "Zone Leader") {
-                 $updzone = mysqli_query($con, "UPDATE tblzone set username = '$username', password = '$password' where id = '" . $_SESSION['userid'] . "' ");
-                 if ($updzone) {
-                     header("location: " . $_SERVER['REQUEST_URI']);
-                 }
-             } elseif (isset($_SESSION['staff']) && $_SESSION['staff'] == "Staff") { // Check if 'staff' is set
-                 $updstaff = mysqli_query($con, "UPDATE tblstaff set username = '$username', password = '$password' where id = '" . $_SESSION['userid'] . "' ");
-                 if ($updstaff) {
-                     header("location: " . $_SERVER['REQUEST_URI']);
-                 }
-             }
-             
-         }
+    // Fetch the current hashed password from the database
+    $userQuery = mysqli_query($con, "SELECT password FROM tbluser WHERE id = '" . $_SESSION['userid'] . "'");
+    $userData = mysqli_fetch_assoc($userQuery);
 
-         ?>
+    // Verify that the old password is correct
+    if ($userData && password_verify($old_password, $userData['password'])) {
+        if ($new_password === $confirm_password) {
+            // Hash the new password
+            $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+            
+            // Update the password in the database
+            $updateQuery = "UPDATE tbluser SET password = '$hashed_new_password' WHERE id = '" . $_SESSION['userid'] . "'";
+            if (mysqli_query($con, $updateQuery)) {
+                $_SESSION['edited'] = 1;
+                header("location: ".$_SERVER['REQUEST_URI']);
+                exit();
+            } else {
+                $_SESSION['error'] = 1;
+               header("location: ".$_SERVER['REQUEST_URI']);
+                exit();
+            }
+        } else {
+            $_SESSION['password_mismatch'] = 1;
+            header("location: ".$_SERVER['REQUEST_URI']);
+            exit();
+        }
+    } else {
+        $_SESSION['old_mismatch'] = 1;
+            header("location: ".$_SERVER['REQUEST_URI']);
+            exit();
+    }
+}
+?>

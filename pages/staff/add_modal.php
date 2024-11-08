@@ -12,8 +12,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Zone #:</label>
-                                    <input name="txt_zone" class="form-control input-sm" type="text" placeholder="Zone #"/>
+                                    <label>First Name:</label>
+                                    <input name="txt_fname" class="form-control input-sm" type="text" placeholder="First Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input name="txt_lname" class="form-control input-sm" type="text" placeholder="last Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input name="txt_email" class="form-control input-sm" type="text" placeholder="email"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Username:</label>
@@ -21,8 +29,12 @@
                                     <label id="user_msg" style="color:#CC0000;" ></label>
                                 </div>
                                 <div class="form-group">
-                                    <label>Username:</label>
+                                    <label>Password:</label>
                                     <input name="txt_pass" class="form-control input-sm" type="password" placeholder="*******"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password:</label>
+                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="*******"/>
                                 </div>
                             </div>
                         </div>

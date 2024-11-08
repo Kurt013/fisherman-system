@@ -41,14 +41,17 @@ div.dataTables_paginate ul.pagination {
 	color: #0605a6; 
 }
 
+
+
 div.dataTables_paginate ul.pagination li a{
 	color: #0605a6; 
 }
 
-div.dataTables_paginate ul.pagination li:nth-child(2) a{
-	background-color: #0605a6;
-	color: white;
+div.dataTables_paginate ul.pagination li.active a {
+    background-color: #0605a6 !important;
+    color: white;
 }
+
 
 table.dataTable,
 table.dataTable td,

@@ -157,6 +157,19 @@ body > .header {
   width: 220px;
   top: 0;
 }
+
+.modal-content{
+  color: #0605a6;
+
+}
+
+.modal-content > .modal-header {
+  background-color: #FFDE59;
+  color: #0605a6;
+  font-weight: 600;
+  text-align: center;
+}
+
 @media screen and (min-width: 992px) {
   .left-side {
     top: 50px;
@@ -1032,7 +1045,9 @@ body > .header .logo .icon {
   clear: both;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-footer .btn-default {
-  color: #666666;
+  color: #ffffff;
+  background-color: #0605a6;
+  width: 255px;
 }
 /* Add fade animation to dropdown menus */
 .open > .dropdown-menu {
@@ -1884,7 +1899,7 @@ Component: timeline
 .btn.btn-default:hover,
 .btn.btn-default:active,
 .btn.btn-default.hover {
-  background-color: #f4f4f4!important;
+  background-color: #0200ff !important;
 }
 .btn.btn-default.btn-flat {
   border-bottom-color: #d9dadc;
@@ -3005,6 +3020,7 @@ Component: timeline
   font-size: 45px;
   line-height: 90px;
   background: rgba(0, 0, 0, 0.2);
+  background-color: #0605a6 !important;
 }
 .info-box-icon > img {
   max-width: 100%;
@@ -3016,7 +3032,8 @@ Component: timeline
 .info-box-number {
   display: block;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
+  color: #0605a6;
 }
 .progress-description,
 .info-box-text {
@@ -3029,6 +3046,7 @@ Component: timeline
 .info-box-text {
   text-transform: uppercase;
   font-size: 20px;
+  color: #0605a6;
 }
 .info-box-more {
   display: block;
