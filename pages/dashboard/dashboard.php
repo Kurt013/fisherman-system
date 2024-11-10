@@ -89,22 +89,22 @@ if (!isset($_SESSION['role'])) {
                 <div class="row justify-content-center">
     <!-- Age Distribution Bar Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
-            <h4 style="color: #0605a6; text-align: center;">Age Distribution of Members</h4>
+        <div class="info-box" style="padding: 10px; height:400px;">
+            <h4 class="info-box-text" style= "text-align: center;">Age Distribution of Members</h4>
             <div id="morris-bar-chart2" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>
     </div>
     <!-- Types of Members Donut Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
-            <h4 style="color: #0605a6; text-align: center;">Types of Members</h4>
+        <div class="info-box" style="padding: 10px; height:400px;">
+            <h4 class="info-box-text" style= "text-align: center;">Types of Members</h4>
             <div id="morris-donut-chart" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>
     </div>
     <!-- Members per Purok Bar Chart -->
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-        <div class="info-box" style="padding: 10px; background-color: #ffffff; height:400px;">
-            <h4 style="color: #0605a6; text-align: center;">Members per Purok</h4>
+        <div class="info-box" style="padding: 10px; height:400px;">
+            <h4 class="info-box-text" style= "text-align: center;">Members per Purok</h4>
             <div id="morris-bar-chart3" style="height: 340px; display: flex; justify-content: center; align-items: center;"></div>
         </div>
     </div>
@@ -157,6 +157,22 @@ if (!isset($_SESSION['role'])) {
     }
     });
 
+    $(document).ready(function() {
+    // jQuery to apply hover effect on labels and grid text in the bar chart
+    $('#morris-bar-chart2').hover(
+        function() {
+            // On hover, change the label color to #FFDE59
+            $('#morris-bar-chart2 text').css('fill', '#FFDE59'); // Change both labels and grid text to hover color
+        },
+        function() {
+            // On mouse leave, revert to original color
+            $('#morris-bar-chart2 text').css('fill', '#0605a6'); // Revert back to original color for labels
+            $('.morris-grid-labels text').css('fill', '#000'); // Revert grid text to original color
+        }
+    );
+});
+
+
     // Members per Purok Bar Chart
     Morris.Bar({
         element: 'morris-bar-chart3',
@@ -187,6 +203,23 @@ if (!isset($_SESSION['role'])) {
     }
     });
 
+    $(document).ready(function() {
+    // jQuery to apply hover effect on labels and grid text in the bar chart
+    $('#morris-bar-chart3').hover(
+        function() {
+            // On hover, change the label color to #FFDE59
+            $('#morris-bar-chart3 text').css('fill', '#FFDE59'); // Change both labels and grid text to hover color
+        },
+        function() {
+            // On mouse leave, revert to original color
+            $('#morris-bar-chart3 text').css('fill', '#0605a6'); // Revert back to original color for labels
+            $('.morris-grid-labels text').css('fill', '#000'); // Revert grid text to original color
+        }
+    );
+});
+
+
+
     // Gender Distribution Donut Chart
     Morris.Donut({
         element: 'morris-donut-chart',
@@ -202,6 +235,18 @@ if (!isset($_SESSION['role'])) {
         labelColor: '#0605a6', // Set label color to black for visibility
         resize: true
     });
+
+    // jQuery to apply hover effect on labels
+$('#morris-donut-chart').hover(
+    function() {
+        // On hover, change the label color
+        $('#morris-donut-chart text').css('fill', '#FFDE59'); // Hover color
+    }, 
+    function() {
+        // On mouse leave, revert to original color
+        $('#morris-donut-chart text').css('fill', '#0605a6'); // Original color
+    }
+);
 </script>
 
 

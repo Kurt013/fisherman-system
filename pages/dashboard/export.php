@@ -2,13 +2,13 @@
 if (isset($_POST['export'])) {
     include "../connection.php";
 
-    // Updated SQL queries to match the dashboard data
-    $SQL1 = "SELECT COUNT(*) AS NumberofOfficial FROM tblofficial"; // Total Officials
-    $SQL2 = "SELECT COUNT(*) AS NumberofMembers FROM tblresident"; // Total Residents per Zone
-    $SQL3 = "SELECT COUNT(*) AS NumberofActivities FROM tblactivity"; // Total Activities
-    $SQL4 = "SELECT COUNT(*) AS NumberofMembers, Zone FROM tblresident GROUP BY Zone"; // Total Residents per Zone
-    $SQL5 = "SELECT COUNT(*) AS NumberofMembers, Age FROM tblresident GROUP BY Age"; // Total Residents by Age
-    $SQL6 = "SELECT COUNT(*) AS NumberofMembers, type FROM tblresident GROUP BY type"; // Total Residents by Age
+    // Updated SQL queries to match the dashboard data, including the condition WHERE archive = 0
+    $SQL1 = "SELECT COUNT(*) AS NumberofOfficial FROM tblofficial WHERE archive = 0"; // Total Officials
+    $SQL2 = "SELECT COUNT(*) AS NumberofMembers FROM tblresident WHERE archive = 0"; // Total Residents per Zone
+    $SQL3 = "SELECT COUNT(*) AS NumberofActivities FROM tblactivity WHERE archive = 0"; // Total Activities
+    $SQL4 = "SELECT COUNT(*) AS NumberofMembers, Zone FROM tblresident WHERE archive = 0 GROUP BY Zone"; // Total Residents per Purok
+    $SQL5 = "SELECT COUNT(*) AS NumberofMembers, Age FROM tblresident WHERE archive = 0 GROUP BY Age"; // Total Residents by Age
+    $SQL6 = "SELECT COUNT(*) AS NumberofMembers, type FROM tblresident WHERE archive = 0 GROUP BY type"; // Total Residents by Type
 
     $arrsql = array($SQL1, $SQL2, $SQL3, $SQL4, $SQL5, $SQL6);
     $arrhead = array("Total Officials", "Total Members", "Total Activities", "Population per Purok", "Members by Age", "Members by Type");
@@ -21,31 +21,39 @@ if (isset($_POST['export'])) {
         $result = mysqli_query($con, $query);
         
         if ($result) {
-            $fields = mysqli_num_fields($result);
+            // For the last 3 queries, we need to display two columns: Category (Purok, Age, Type) and Number of Members
+            if ($header == "Population per Purok") {
+                // Column header for Purok (Zone)
+                $output .= "Purok\tNumber of Members\n";
 
-            // Fetching the header fields
-            $headerRow = '';
-            while ($field = mysqli_fetch_field($result)) {
-                $headerRow .= '"' . $field->name . '"' . "\t";
-            }
-            $output .= trim($headerRow) . "\n";
-
-            // Fetching data rows
-            while ($row = mysqli_fetch_row($result)) {
-                $line = '';
-                foreach ($row as $value) {
-                    if (!isset($value) || $value == "") {
-                        $value = "\t";
-                    } else {
-                        $value = str_replace('"', '""', $value);
-                        $value = '"' . $value . '"' . "\t";
-                    }
-                    $line .= $value;
+                // Fetching the data rows
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $output .= '"' . $row['Zone'] . '"' . "\t" . '"' . $row['NumberofMembers'] . '"' . "\n"; 
                 }
-                $output .= trim($line) . "\n";
+            } elseif ($header == "Members by Age") {
+                // Column header for Age
+                $output .= "Age\tNumber of Members\n";
+
+                // Fetching the data rows
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $output .= '"' . $row['Age'] . '"' . "\t" . '"' . $row['NumberofMembers'] . '"' . "\n"; 
+                }
+            } elseif ($header == "Members by Type") {
+                // Column header for Type
+                $output .= "Type\tNumber of Members\n";
+
+                // Fetching the data rows
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $output .= '"' . $row['type'] . '"' . "\t" . '"' . $row['NumberofMembers'] . '"' . "\n"; 
+                }
+            } else {
+                // For the first 3 queries, display just the count
+                while ($row = mysqli_fetch_row($result)) {
+                    $output .= '"' . $row[0] . '"' . "\n"; 
+                }
             }
         } else {
-            $output .= "\nNo Record(s) Found!\n";                        
+            $output .= "\nNo Record(s) Found!\n";                         
         }
 
         // Separate each query output with a newline
@@ -54,7 +62,7 @@ if (isset($_POST['export'])) {
 
     // Prepare the Excel download
     header("Content-Type: application/vnd.ms-excel");
-    header("Content-Disposition: attachment; filename=export.xls");
+    header("Content-Disposition: attachment; filename=Report.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
     echo "$output";

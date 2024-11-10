@@ -18,8 +18,8 @@ body {
     font-size: 50px;
     margin-bottom: 10px; /* Space between h1 and p */
     font-family: "Roboto", sans-serif !important;
-  font-weight: 700;
-  font-style: normal;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .desc-content p {
@@ -135,16 +135,26 @@ body {
         padding: 8px;
         flex: 0 1 calc(90% - 20px);
     }
+    .desc-content h1{
+        font-size: 40px;
+    }
+    .desc-content p{
+        font-size: 20px;
+    }
 }
 
 @media only screen and (max-width: 576px) {
     .content-wrapper {
         flex-direction: column;
     }
-
-
     .text-wrapper {
         margin-top: 0;
         padding: 10px;
+    }
+    .desc-content h1{
+        font-size: 40px;
+    }
+    .desc-content p{
+        font-size: 20px;
     }
 }

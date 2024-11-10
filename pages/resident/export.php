@@ -2,15 +2,15 @@
 if (isset($_POST['export'])) {
     include "../connection.php";
 
-    // Updated SQL query to retrieve concatenated names and cellphone numbers of residents, including Zone
-    $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, cpnumber, zone FROM tblresident"; 
+    // Updated SQL query to retrieve concatenated names and cellphone numbers of residents, ordered by Purok (zone)
+    $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, cpnumber, zone FROM tblresident WHERE archive = 0 ORDER BY zone"; 
 
-    $arrhead = array("Name", "Cellphone Number", "Purok"); 
+    $arrhead = array( "Purok", "Name", "Cellphone Number"); 
 
     $output = '';
 
     // Prepare the export data
-    $output .= "Residents Information\n"; 
+    $output .= "List of Members\n"; 
     $output .= implode("\t", $arrhead) . "\n"; 
 
     $result = mysqli_query($con, $SQL);
@@ -20,27 +20,24 @@ if (isset($_POST['export'])) {
         die("Query failed: " . mysqli_error($con));
     }
 
-    // Debugging: Output number of rows
-    $numRows = mysqli_num_rows($result);
-    echo "Number of rows: " . $numRows; 
-
-    if ($numRows > 0) {
+    // Check if there are rows in the result
+    if (mysqli_num_rows($result) > 0) {
         // Fetching data rows
         while ($row = mysqli_fetch_assoc($result)) {
             $line = '';
             // Use the correct keys based on your SQL query
+            $line .= '"' . $row['zone'] . '"' . "\t"; // Accessing the zone (Purok)
             $line .= '"' . $row['cname'] . '"' . "\t"; // Accessing the concatenated name
             $line .= '"' . $row['cpnumber'] . '"' . "\t"; // Accessing the cellphone number
-            $line .= '"' . $row['zone'] . '"' . "\t"; // Accessing the zone
             $output .= trim($line) . "\n"; 
         }
     } else {
-        $output .= "\nNo Record(s) Found!\n";                        
+        $output .= "\nNo Record(s) Found!\n";                         
     }
 
     // Prepare the Excel download
     header("Content-Type: application/vnd.ms-excel");
-    header("Content-Disposition: attachment; filename=export.xls");
+    header("Content-Disposition: attachment; filename=List_of_Members.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
     echo "$output";

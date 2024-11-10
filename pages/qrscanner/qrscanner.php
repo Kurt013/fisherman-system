@@ -14,6 +14,7 @@
         include('../head_css.php'); ?>
         <!-- Include Instascan Library -->
         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+        <link href="../../css/scanner.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <?php 
@@ -84,6 +85,9 @@
                                 await scanner.start(cameras[cameraIndex]);
                                 isScanning = true;
                                 console.log(`Camera ${cameraIndex} started.`);
+
+                                const preview = document.getElementById('preview');
+                                preview.style.backgroundColor = ''; 
                             } catch (e) {
                                 console.error("Error starting camera:", e);
                                 alert('Error starting camera: ' + e);
@@ -100,6 +104,8 @@
                             isScanning = false;
                             console.log("Camera stopped.");
                         }
+                        const preview = document.getElementById('preview');
+                        preview.style.backgroundColor = '#FFDE59';
                     }
 
                     // Event listeners for open and close buttons

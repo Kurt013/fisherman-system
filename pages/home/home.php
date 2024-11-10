@@ -36,13 +36,13 @@
                    
                         
                     <div class="text-wrapper">
-                        <h1>Hello, 
-                            <?php 
-                            echo ($_SESSION['role'] == 'administrator') ? 
-                                "<span style='color: #F4D248;'>{$_SESSION['role']}!</span>" : 
-                                "<span style='color: #52C8C8;'>{$_SESSION['role']}!</span>"; 
-                            ?>
-                        </h1>
+                    <h1>Hello, 
+                    <?php 
+                        echo ($_SESSION['role'] == 'administrator') ? 
+                            "<span style='color: #F4D248;'>".ucfirst($_SESSION['role'])."!</span>" : 
+                            "<span style='color: #52C8C8;'>".ucfirst($_SESSION['role'])."!</span>"; 
+                        ?>
+                    </h1>
                         <p>Let's get started! Feel free to explore and stay updated by clicking on the sections below:</p>
                         <div>
                         <div class="redirect-button-container"> <!-- Added container for buttons -->
@@ -61,6 +61,16 @@
                         </a>
                         <a href="../activity/activity.php" class="redirect-button">
                             <span class="icon"><i class="fa fa-calendar"></i></span> <span>Activity</span>
+                        </a>
+                        <?php 
+                        if ($_SESSION['role'] == 'administrator') {
+                            echo '<a href="../logs/logs.php" class="redirect-button">                           
+                                <span class="icon"><i class="fa fa-history"></i></span> <span>Logs</span>
+                            </a>';
+                        }
+                        ?>
+                        <a href="../qrscanner/qrscanner.php" class="redirect-button">
+                            <span class="icon"><i class="fa-solid fa-qrcode"></i></span> <span>QR Scanner</span>
                         </a>
                         </div>
                     </div>
