@@ -17,11 +17,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name:</label>
-                                    <input name="txt_lname" class="form-control input-sm" type="text" placeholder="last Name"/>
+                                    <input name="txt_lname" class="form-control input-sm" type="text" placeholder="Last Name"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input name="txt_email" class="form-control input-sm" type="text" placeholder="email"/>
+                                    <input name="txt_email" class="form-control input-sm" type="text" placeholder="Email"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Username:</label>
@@ -30,11 +30,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Password:</label>
-                                    <input name="txt_pass" class="form-control input-sm" type="password" placeholder="*******"/>
+                                    <input name="txt_pass" class="form-control input-sm" type="password" />
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password:</label>
-                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="*******"/>
+                                    <input name="txt_cpass" class="form-control input-sm" type="password"/>
                                 </div>
                             </div>
                         </div>
