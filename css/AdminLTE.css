@@ -1058,6 +1058,12 @@ body > .header .logo .icon {
   color: #ffffff;
   background-color: #0605a6;
   width: 255px;
+  border: none;
+  text-align: left;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-footer .btn-default > .fa-solid{
+  margin-right: 10px;
 }
 /* Add fade animation to dropdown menus */
 .open > .dropdown-menu {
@@ -3006,6 +3012,12 @@ Component: timeline
   border-radius: 15px;
   margin-bottom: 15px;
 }
+
+#morris-bar-chart2 text, 
+    #morris-bar-chart3 text, 
+    #morris-donut-chart text {
+        font-family: 'Roboto', sans-serif !important;
+    }
 
 .info-box:hover {
   background: #0605a6;

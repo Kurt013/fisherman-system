@@ -27,7 +27,7 @@ if(isset($_POST['btn_add'])){
     $image = $milliseconds.'_'.$name;
 
     if(isset($_SESSION['role'])){
-        $action = 'Added Members named '.$txt_lname.', '.$txt_fname.' '.$txt_mname;
+        $action = 'Added Member named '.$txt_lname.', '.$txt_fname.' '.$txt_mname;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
@@ -144,7 +144,7 @@ if(isset($_POST['btn_save'])){
     $image = $milliseconds.'_'.$name;
 
     if(isset($_SESSION['role'])){
-        $action = 'Updated Members named '.$txt_edit_lname.', '.$txt_edit_fname.' '.$txt_edit_mname;
+        $action = 'Updated Member named '.$txt_edit_lname.', '.$txt_edit_fname.' '.$txt_edit_mname;
         $iquery = mysqli_query($con, "INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 

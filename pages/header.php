@@ -26,10 +26,10 @@ echo '<header class="header">
                              </li>
                              <li class="user-footer">
                                  <div class="user-btn-1">
-                                     <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#editProfileModal">Change Password</a>
+                                     <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#editProfileModal"><i class="fa-solid fa-unlock"></i> <span> Change Password </span> </a>
                                  </div>
                                  <div class="user-btn-2">
-                                     <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                     <a href="../../logout.php" class="btn btn-default btn-flat"> <i class="fa-solid fa-arrow-right-from-bracket"></i> <span> Sign out <span> </a>
                                  </div>
                              </li>
                          </ul>
