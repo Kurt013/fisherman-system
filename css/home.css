@@ -4,20 +4,15 @@ body {
 }
 
 .desc-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     background-color: #eff2ff;
     margin: 0;
     padding: 0;
-    position: relative;
     font-family: "Poppins", serif;
     font-weight: 500;
     font-style: normal;
-    overflow: hidden;
     text-align: center; /* Align text centrally */
 }
+
 
 .desc-content h1 {
     font-size: 50px;
@@ -34,8 +29,6 @@ body {
 
 .content-wrapper {
     display: flex;
-    width: 100%;
-    flex-direction: row;
 }
 
 .homepage-images {
@@ -43,15 +36,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .resort-image {
-    border-left: none;
-    border-radius: 0 400px 400px 0;
     width: 80%;
+    min-width: 250px;
     max-width: 500px;
-    object-fit: cover;
 }
 
 .text-wrapper {
@@ -95,14 +85,14 @@ body {
 .redirect-button .icon {
     background-color: #fff;
     color: #0605a6;
-    border-radius: 50%;
-    padding: 0px;
-    display: inline-flex;
+    border-radius: 100%;
+    padding: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
     width: 80px !important;
-    height: 80px;
+    height: 80px !important;
     font-size: 55px;
 }
 
@@ -117,18 +107,22 @@ body {
     color: #0200ff;
 }
 
+@media only screen and (min-width: 992px) {
+    .desc-content {
+        display: flex;
+        height: calc(100vh - 126.4px);
+    }
+}
+
+
 /* Responsive Design */
 @media only screen and (max-width: 991px) {
-    .content-wrapper {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
+    .desc-content {
+        padding: 0;
     }
 
-    .resort-image {
-        width: 80%;
-        max-width: 300px;
-        border-radius: 400px;
+    .content-wrapper {
+        padding: 20px;
     }
 
     .text-wrapper {
@@ -148,12 +142,6 @@ body {
         flex-direction: column;
     }
 
-    .resort-image {
-        width: 100%;
-        max-width: 250px;
-        border-radius: 20px;
-        margin-bottom: 20px;
-    }
 
     .text-wrapper {
         margin-top: 0;
