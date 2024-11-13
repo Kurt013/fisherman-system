@@ -108,6 +108,10 @@ h1 {
   transition: background-color 0.2s;
 }
 
+.submit-btn:hover{
+  background-color: #0605a6;
+}
+
 .forgot-redirect {
   display: inline-block;
   color: white;

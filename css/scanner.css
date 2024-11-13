@@ -1,68 +1,160 @@
-/* Content section styling */
 .right-side {
     background-color: #eff2ff !important;
+    position: relative;
 }
 
-.content {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 1600px;
+/* Wrapper to place preview on the left and content on the right */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(70vh - 30px);
+    gap: 60px;
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center content inside */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-/* Video styling */
-/* Video styling */
-#preview {
-    width: 100%;
-    max-width: 600px;  /* Fixed width */
-    height: 380px;     /* Fixed height */
-    border: 1px solid #FFDE59;
-    background-color: #FFDE59;  /* Default background color when camera is off */
+    margin-top: 30px;
+    width: 90%;
+    max-width: 1200px;
     border-radius: 20px;
-    margin-bottom: 20px;
-    object-fit: cover; /* Ensure the video fits inside the container */
+    border: 5px solid #FFDE59;
+    box-sizing: border-box;
+    margin: 30px auto; /* Add this line to center the wrapper */
 }
 
 
-/* Label styling */
-label {
-    font-size: 14px;
-    margin-right: 10px;
+/* Video preview container on the left */
+.preview-container {
+    flex: 1;
+    max-width: 550px;
+}
+
+/* Container to overlay text on video */
+.video-overlay-container {
+    position: relative;
+}
+
+/* Positioning for the overlay text */
+.overlay-text {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 30px;
     font-weight: bold;
-    display: inline-block; /* Prevents labels from wrapping */
-    color: #0200ff;
+    text-align: center;
+    z-index: 1;
+    width: 550px;
+}
+
+/* Line after the overlay text */
+.overlay-text::after {
+    content: "";
+    display: block;
+    margin: 8px auto 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFDE59;
+}
+
+
+/* Adjust preview container to fit the overlay */
+#preview {
+    width: 600px;
+    height: 450px;
+    background-color: #0605a6;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#preview::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2px; /* Adjust the height as needed */
+    background-color: #fff; /* Adjust the color as needed */
+    transform: translateY(-50%);
+}
+
+/* Content section on the right */
+.content {
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+    padding-top: 0px !important;
+    border-radius: 8px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* Styling for the .scan h2 element */
+.scan {
+    color: #0605a6;
+    font-size: 80px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Dropdown menu styling */
 #cameraSelect {
     padding: 8px;
-    margin-bottom: 20px;
+    margin: 10px 0 20px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 14px;
-    width: 100%; /* Ensures the dropdown takes full width */
-    box-sizing: border-box; /* Prevents overflow */
+    width: 100%;
+    box-sizing: border-box;
+    color: #0605a6;
+    background-color: #FFDE59;
 }
 
+label[for="cameraSelect"] {
+    color: #0605a6 !important; /* Force the label color */
+    font-size: 16px; /* You can adjust the font size as needed */
+    display: block; /* Ensure label is displayed above the select box */
+    margin-bottom: 5px; /* Add space below the label for better alignment */
+}
+
+
 /* Button styling */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 button {
     padding: 10px 15px;
-    font-size: 14px;
+    margin-top: 10px;
+    font-size: 20px;
     background-color: #0605a6;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 5px;
     transition: background-color 0.3s ease;
-    width: auto; /* Ensures the button width adapts based on content */
-    display: inline-block;
+    display: inline-flex;
+    align-items: center; /* This aligns the icon and text vertically */
 }
+
+button i.bx {
+    font-size: 25px; /* Larger size for the icon */
+    margin-right: 8px; /* Optional: Add space between the icon and text */
+    vertical-align: middle; /* Align the icon vertically with the text */
+}
+
 
 button:hover {
     background-color: #0200ff;
@@ -73,19 +165,66 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Responsive design for smaller devices */
-@media (max-width: 600px) {
-    .content {
+/* Responsive design for tablets */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 20px;
+    }
+
+    .preview-container, .content {
+        max-width: 90%;
         width: 100%;
+    }
+
+    #preview {
+        max-width: 100%;
+        height: 450px
+    }
+
+    .scan {
+        font-size: 50px;
+    }
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
         padding: 10px;
+        width: 100%;
+    }
+
+    .preview-container, .content {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .overlay-text {
+        font-size: 20px;
+        width: 300px;
+    }
+
+    #preview {
+        max-width: 100%;
+        height: 350px
+    }
+
+    .scan {
+        font-size: 40px;
+    }
+
+    #cameraSelect {
+        font-size: 14px;
+        width: 100%;
     }
 
     button {
         width: 100%;
-        margin: 5px 0;
-    }
-
-    #cameraSelect {
-        width: 100%;
+        padding: 10px;
     }
 }

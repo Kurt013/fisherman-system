@@ -124,6 +124,13 @@ body > .header .navbar .dropdown-toggle {
     justify-content: center;
 }
 
+body > .header .navbar .dropdown-toggle:hover,
+body > .header .navbar .dropdown-toggle:active {
+    background-color: transparent !important; /* Ensures no background change on hover or active */
+    border: none !important; /* Optional: removes any border if it's affecting appearance */
+    box-shadow: none !important; /* Optional: removes any box-shadow if present */
+}
+
 /* User circle styling */
 body > .header .navbar .nav > li.user > a {
     display: flex;

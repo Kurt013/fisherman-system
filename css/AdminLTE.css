@@ -1082,6 +1082,7 @@ body > .header .logo .icon {
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease;
   -moz-animation-fill-mode: forwards;
+  background-color: transparent !important;
 }
 @keyframes fadeAnimation {
   from {
@@ -1907,10 +1908,8 @@ Component: timeline
   box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.09);
 }
 .btn.btn-default {
-  background-color: #fafafa;
-  color: #666;
-  border-color: #ddd;
-  border-bottom-color: #ddd;
+  background-color: #8890C3;
+  color: #ffffff;
 }
 .btn.btn-default:hover,
 .btn.btn-default:active,

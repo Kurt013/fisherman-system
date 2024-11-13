@@ -13,28 +13,28 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>First Name:</label>
-                                    <input name="txt_fname" class="form-control input-sm" type="text" placeholder="First Name"/>
+                                    <input name="txt_fname" class="form-control input-sm" type="text" placeholder="First Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name:</label>
-                                    <input name="txt_lname" class="form-control input-sm" type="text" placeholder="last Name"/>
+                                    <input name="txt_lname" class="form-control input-sm" type="text" placeholder="Last Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input name="txt_email" class="form-control input-sm" type="text" placeholder="email"/>
+                                    <input name="txt_email" class="form-control input-sm" type="text" placeholder="Email" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Username:</label>
-                                    <input name="txt_uname" class="form-control input-sm" id="username" type="text" placeholder="Username"/>
+                                    <input name="txt_uname" class="form-control input-sm" id="username" type="text" placeholder="Username" required/>
                                     <label id="user_msg" style="color:#CC0000;" ></label>
                                 </div>
                                 <div class="form-group">
                                     <label>Password:</label>
-                                    <input name="txt_pass" class="form-control input-sm" type="password" placeholder="*******"/>
+                                    <input name="txt_pass" class="form-control input-sm" type="password" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password:</label>
-                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="*******"/>
+                                    <input name="txt_cpass" class="form-control input-sm" type="password" required/>
                                 </div>
                             </div>
                         </div>

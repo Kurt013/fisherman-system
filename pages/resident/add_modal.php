@@ -16,15 +16,15 @@
                                     
                                         <div class="form-group">
                                             <label class="control-label">Last Name:</label>
-                                            <input name="txt_lname" class="form-control input-sm input-size type="text" placeholder="Lastname"/>
+                                            <input name="txt_lname" class="form-control input-sm input-size type="text" placeholder="Lastname" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">First Name:</label>
-                                            <input name="txt_fname" class="form-control input-sm input-size" type="text" placeholder="Firstname"/>
+                                            <input name="txt_fname" class="form-control input-sm input-size" type="text" placeholder="Firstname" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Middle Name:</label>
-                                            <input name="txt_mname" class="form-control input-sm input-size" type="text" placeholder="Middlename"/>
+                                            <input name="txt_mname" class="form-control input-sm input-size" type="text" placeholder="Middlename" required/>
                                         </div>
                                     <!--
                                     <div class="form-group">
@@ -34,7 +34,7 @@
 
                                     <div class="form-group">     
                                         <label class="control-label">Purok:</label>
-                                        <select name="txt_zone" class="form-control input-sm input-size">
+                                        <select name="txt_zone" class="form-control input-sm input-size" required>
                                             <option selected="" disabled="">-Select Purok-</option>
                                             <option value="1">Purok 1</option>
                                             <option value="2">Purok 2</option>
@@ -46,11 +46,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Cellphone Number:</label>
-                                        <input name="txt_cpnumber" class="form-control input-sm input-size" type="number" placeholder="Cellphone Number:"/>
+                                        <input name="txt_cpnumber" class="form-control input-sm input-size" type="number" placeholder="Cellphone Number:" required/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Image:</label>
-                                        <input name="txt_image" class="form-control input-sm input-size" type="file" />
+                                        <input name="txt_image" class="form-control input-sm input-size" type="file" required/>
                                     </div>
                                     
                                 </div>
@@ -58,11 +58,11 @@
                                 <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                         <label class="control-label">Birthdate:</label>
-                                        <input name="txt_bdate" class="form-control input-sm input-size" type="date" placeholder="Birthdate"/>
+                                        <input name="txt_bdate" class="form-control input-sm input-size" type="date" placeholder="Birthdate" required/>
                                     </div>
                                     <div class="form-group">     
                                         <label class="control-label">Gender:</label>
-                                        <select name="ddl_gender" class="form-control input-sm input-size">
+                                        <select name="ddl_gender" class="form-control input-sm input-size" required>
                                             <option selected="" disabled="">-Select Gender-</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -70,15 +70,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">House Number:</label>
-                                        <input name="txt_hnumber" class="form-control input-sm input-size" type="text" placeholder="House Number"/>
+                                        <input name="txt_hnumber" class="form-control input-sm input-size" type="text" placeholder="House Number" required/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Barangay:</label>
-                                        <input name="txt_brgy" class="form-control input-sm input-size" type="text" placeholder="Barangay"/>
+                                        <input name="txt_brgy" class="form-control input-sm input-size" type="text" placeholder="Barangay" required/>
                                     </div>
                                     <div class="form-group">     
                                         <label class="control-label">Type:</label>
-                                        <select name="ddl_type" class="form-control input-sm input-size">
+                                        <select name="ddl_type" class="form-control input-sm input-size" required>
                                             <option selected="" disabled="">-Select Type-</option>
                                             <option value="Fisherman">Fisherman</option>
                                             <option value="Fish Vendor">Fish Vendor</option>

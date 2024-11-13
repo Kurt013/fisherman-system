@@ -36,7 +36,7 @@
                 <section class="content-header">
                 <h1>
                 <a href="../officials/officials.php" style=" margin-right: 30px;" >
-                <i class="fa fa-user"></i> <span>Official</span>
+                <i class="fa fa-user"></i> <span>Officers</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button

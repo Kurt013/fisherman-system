@@ -28,7 +28,7 @@ session_start();
         $password = $_POST['password'];
 
         // Prepare the query
-        $query = "SELECT id, username, password, role FROM tbluser WHERE username = ?";
+        $query = "SELECT id, username, password, role FROM tbluser WHERE archive = 0 AND username = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();

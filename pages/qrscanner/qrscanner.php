@@ -31,14 +31,25 @@
                     <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
                     </h1>
                 </section>
-                <section class="content">
-                <video id="preview" style="width: 100%; max-width: 600px; height: auto;"></video>
-                <br>
-                <label for="cameraSelect">Select Camera:</label>
-                <select id="cameraSelect"></select>
+                <div class="content-wrapper">
+                    <!-- Video preview on the left -->
+                    <div class="video-overlay-container">
+            <h2 class="overlay-text">BFARMC Member Profile Access</h2>
+            <video id="preview"></video>
+        </div>
 
-                <button id="open">Open Camera</button>
-                <button id="close">Close Camera</button>
+                    <!-- Content on the right -->
+                    <section class="content">
+                        <h2 class="scan">Scan Here</h2>
+                        <label for="cameraSelect">Select Camera:</label>
+                        <select id="cameraSelect"></select>
+                        
+                        <div class="button-group">
+                        <button id="close"> <span><i class="bx bx-camera-off"></i> </span> Camera Off</button>
+                            <button id="open">  <span><i class="bx bx-camera"></i></span>Camera On</button>
+                        </div>
+                    </section>
+                </div>
 
                 <script type="text/javascript">
                     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });

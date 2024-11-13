@@ -26,7 +26,7 @@
                 <ul class="sidebar-menu">
                      <li>
                         <a href="../home/home.php">
-                           <i class="fa-solid fa-house"></i> <span>Home</span>
+                           <i class="fa fa-house"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <a href="../officials/officials.php">
-                            <i class="fa fa-user"></i> <span>BFARMC Officials</span>
+                            <i class="fa fa-user"></i> <span>BFARMC Officer</span>
                         </a>
                     </li>
                     <li>
@@ -61,7 +61,7 @@
                     </li>
                     <li>
                         <a href="../qrscanner/qrscanner.php">
-                            <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
+                            <i class="fa fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>
                     </li>
                 </ul>';
@@ -72,12 +72,12 @@
                 <ul class="sidebar-menu">
                 <li>
                         <a href="../home/home.php">
-                            <i class="fa-solid fa-house"></i> <span>Home</span>
+                            <i class="fa fa-house"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
                         <a href="../officials/officials.php">
-                            <i class="fa fa-user"></i> <span>BFARMC Officials</span>
+                            <i class="fa fa-user"></i> <span>BFARMC Officer</span>
                         </a>
                     </li>
                     <li>
@@ -92,7 +92,7 @@
                     </li>
                     <li>
                         <a href="../qrscanner/qrscanner.php">
-                            <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
+                            <i class="fa fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>
                     </li>
                 </ul>';

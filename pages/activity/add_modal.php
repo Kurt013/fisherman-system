@@ -13,19 +13,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Date of Activity:</label>
-                                    <input name="txt_doc" class="form-control input-sm" type="date" placeholder="Date of Activity"/>
+                                    <input name="txt_doc" class="form-control input-sm" type="date" placeholder="Date of Activity" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Activity Name:</label>
-                                    <input name="txt_act" class="form-control input-sm" type="text" placeholder="Activity Name"/>
+                                    <input name="txt_act" class="form-control input-sm" type="text" placeholder="Activity Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Description:</label>
-                                    <textarea name="txt_desc" class="form-control input-sm" placeholder="Description"></textarea>
+                                    <textarea name="txt_desc" class="form-control input-sm" placeholder="Description" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Image:</label>
-                                    <input name="files[]" class="form-control input-sm" type="file"/>
+                                    <input name="files[]" class="form-control input-sm" type="file" required/>
                                 </div>
                             </div>
                         </div>
