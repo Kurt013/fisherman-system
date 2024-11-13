@@ -4,8 +4,8 @@ ob_start();
 session_start();
 
 // Include necessary libraries and files
-require 'C:\xampp\htdocs\fisherman-system\vendor\autoload.php'; // Adjust the path based on your structure
-require 'C:\xampp\htdocs\fisherman-system\fpdf\fpdf.php'; // Include the FPDF library
+require '../../vendor/autoload.php'; // Adjust the path based on your structure
+require '../../fpdf/fpdf.php'; // Include the FPDF library
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 
