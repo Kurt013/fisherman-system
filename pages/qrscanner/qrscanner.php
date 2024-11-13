@@ -28,23 +28,18 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
+                    <i class="fa-solid fa-qrcode"></i> <span>Qr Scanner</span>
                     </h1>
                 </section>
-                
-                <!-- Wrapper for centering content -->
-                <div class="content-wrapper">
-                    <section class="content">
-                        <h2 class="scan">Scan Now!</h2>
-                        <video id="preview"></video>
-                        <br>
-                        <label for="cameraSelect">Select Camera:</label>
-                        <select id="cameraSelect"></select>
+                <section class="content">
+                <video id="preview" style="width: 100%; max-width: 600px; height: auto;"></video>
+                <br>
+                <label for="cameraSelect">Select Camera:</label>
+                <select id="cameraSelect"></select>
 
-                        <button id="open">Open Camera</button>
-                        <button id="close">Close Camera</button>
-                    </section>
-                </div>
+                <button id="open">Open Camera</button>
+                <button id="close">Close Camera</button>
+
                 <script type="text/javascript">
                     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
                     let cameras = [];
@@ -52,14 +47,13 @@
 
                     // Listener for QR code content
                     scanner.addListener('scan', function (content) {
-                        console.log("Scanned content:", content);
+        console.log("Scanned content:", content);
         
-                        let link = document.createElement("a");
-                        link.href = content;
-                        link.target = "_blank";
-                        link.click();
-                    });
-
+        let link = document.createElement("a");
+        link.href = content;
+        link.target = "_blank";
+        link.click();
+      });
                     // Fetch available cameras and populate the dropdown
                     async function getCameras() {
                         try {
@@ -111,7 +105,7 @@
                             console.log("Camera stopped.");
                         }
                         const preview = document.getElementById('preview');
-                        preview.style.backgroundColor = '#FFDE59'; // Background when closed
+                        preview.style.backgroundColor = '#FFDE59';
                     }
 
                     // Event listeners for open and close buttons
@@ -124,6 +118,8 @@
                 <?php }
                 include "../footer.php"; 
                 ?>
+                        </section>
+
             </aside>
         </div>
     </body>

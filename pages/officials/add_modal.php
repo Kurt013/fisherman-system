@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Officers</h4>
+                        <h4 class="modal-title">Manage Officials</h4>
                     </div>
                     <div class="modal-body">
                         
@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Name:</label>
-                                    <input name="txt_cname" class="form-control input-sm" type="text" placeholder="Lastname, Firstname, Middlename"/>
+                                    <input name="txt_cname" class="form-control input-sm" type="text" placeholder="Lastname, Firstname Middlename"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact #:</label>

@@ -38,7 +38,7 @@
                 <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
     padding-bottom: 5px; 
     display: inline-block; margin-right: 30px;" >
-                <i class="fa fa-user"></i> <span>Officer</span>
+                <i class="fa fa-user"></i> <span>Official</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
@@ -62,7 +62,7 @@
                                 <div class="box-header">
                                     <div style="padding:10px;">
                                         
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Officers</button>  
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Officials</button>  
 
                                         <?php 
                                             // Check if the user role is not 'Staff' before displaying the delete button
