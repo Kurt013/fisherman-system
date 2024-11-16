@@ -1920,6 +1920,34 @@ Component: timeline
 .btn.btn-default.btn-flat {
   border-bottom-color: #d9dadc;
 }
+
+.redirect-button {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 90px;
+  font-size: 12px;
+  background-color: #0605a6;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 100%; /* Position below the icon */
+  left: 50%;
+  margin-left: -60px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.redirect-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 .btn.btn-primary {
   background-color: #0605a6;
   color:#eff2ff;
@@ -1935,6 +1963,10 @@ Component: timeline
 .btn.btn-third {
   background-color: #127C07;
   color:#eff2ff;
+}
+
+.btn.btn-pdf{
+  background-color: #FFDE59;
 }
 
 .btn.btn-primary:hover,

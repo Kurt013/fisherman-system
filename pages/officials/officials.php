@@ -35,17 +35,17 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                 <h1>
-                <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; margin-right: 30px;" >
-                <i class="fa fa-user"></i> <span>Officers</span>
+                <a href="#">
+                <i class="fa fa-user"></i> <span> BFARMC Officers</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_official.php" class="redirect-button" style="color:#0605a6;">                           
-                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
+                            <a href="../archive/archive_official.php" class="redirect-button" style="color:#0605a6; float: right;">                           
+                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span>                             
+                            <span class="tooltip-text">Archive List</span>
+
                         </a>
                         <?php
                             }

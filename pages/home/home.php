@@ -69,9 +69,6 @@
                             </a>';
                         }
                         ?>
-                        <a href="../qrscanner/qrscanner.php" class="redirect-button">
-                            <span class="icon"><i class="fa-solid fa-qrcode"></i></span> <span>QR Scanner</span>
-                        </a>
                         </div>
                     </div>
                     </div>

@@ -11,8 +11,16 @@
             <div class="col-md-12">
                 <input type="hidden" value="'.$row['id'].'" name="hidden_id" id="hidden_id"/>
                 <div class="form-group">
-                    <label>Position: </label>
-                    <input class="form-control input-sm" type="text" value="'.$row['sPosition'].'" readonly/>
+                    <label class="control-label">Positions:</label>
+                    <select name="ddl_edit_pos" class="form-control input-sm" required>
+                        <option selected="" disabled="">-- Select Positions -- </option>
+                        <option value="President" '.($row['sPosition'] == 'President' ? 'selected' : '').'>President</option>
+                        <option value="Vice President" '.($row['sPosition'] == 'Vice President' ? 'selected' : '').'>Vice President</option>
+                        <option value="Secretary" '.($row['sPosition'] == 'Secretary' ? 'selected' : '').'>Secretary</option>
+                        <option value="Treasurer" '.($row['sPosition'] == 'Treasurer' ? 'selected' : '').'>Treasurer</option>
+                        <option value="Public Relations Officer" '.($row['sPosition'] == 'Public Relations Officer' ? 'selected' : '').'>Public Relations Officer</option>
+                        <option value="Sergeant at Arms" '.($row['sPosition'] == 'Sergeant at Arms' ? 'selected' : '').'>Sergeant at Arms</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Name: <span style="color:gray; font-size: 10px;">(Lastname, Firstname Middlename)</span></label>

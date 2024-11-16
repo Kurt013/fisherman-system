@@ -44,15 +44,14 @@ if(isset($_POST['btn_add'])){
 }
 
 
-if(isset($_POST['btn_save']))
-{
+if(isset($_POST['btn_save'])){
     $txt_id = $_POST['hidden_id'];
-    $txt_edit_fname = $_POST['txt_edit_fname'];
-    $txt_edit_lname = $_POST['txt_edit_lname'];
-    $txt_edit_email = $_POST['txt_edit_email'];
-    $txt_edit_uname = $_POST['txt_edit_uname'];
-    $txt_edit_pass = $_POST['txt_edit_pass'];
-    $txt_edit_cpass = $_POST['txt_edit_cpass'];
+    $txt_edit_fname = $_POST['txt_fname'];
+    $txt_edit_lname = $_POST['txt_lname'];
+    $txt_edit_email = $_POST['txt_email'];
+    $txt_edit_uname = $_POST['txt_uname'];
+    $txt_edit_pass = $_POST['txt_pass'];
+    $txt_edit_cpass = $_POST['txt_cpass'];
     $role = 'staff';
 
     // Check if username already exists (for other users, not the current one)
@@ -63,22 +62,32 @@ if(isset($_POST['btn_save']))
     $ct = $result->num_rows;
     
     if($ct == 0){
-        // Check if passwords match
-        if($txt_edit_pass === $txt_edit_cpass){
+        // If new password is provided, check if it matches the confirm password
+        if($txt_edit_pass !== '' && $txt_edit_pass === $txt_edit_cpass){
+            // Hash the new password
             $hashed_password = password_hash($txt_edit_pass, PASSWORD_DEFAULT);
-
-            // Update user information
-            $update_stmt = $con->prepare("UPDATE tbluser SET first_name = ?, last_name = ?, email = ?, username = ?, password = ? WHERE id = ?");
-            $update_stmt->bind_param("sssssi", $txt_edit_fname, $txt_edit_lname, $txt_edit_email, $txt_edit_uname, $hashed_password, $txt_id);
-            $update_query = $update_stmt->execute();
-
-            if($update_query){
-                $_SESSION['edited'] = 1;
-                header("location: ".$_SERVER['REQUEST_URI']);
-                exit();
-            }
         } else {
-            $_SESSION['password_mismatch'] = 1;
+            // If no new password is provided, retain the old password
+            $stmt = $con->prepare("SELECT password FROM tbluser WHERE id = ?");
+            $stmt->bind_param("i", $txt_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $hashed_password = $row['password'];  // Use the old password if none is provided
+        }
+
+        // Update user information
+        $update_stmt = $con->prepare("UPDATE tbluser SET first_name = ?, last_name = ?, email = ?, username = ?, password = ? WHERE id = ?");
+        $update_stmt->bind_param("sssssi", $txt_edit_fname, $txt_edit_lname, $txt_edit_email, $txt_edit_uname, $hashed_password, $txt_id);
+        $update_query = $update_stmt->execute();
+
+        if($update_query){
+            $_SESSION['edited'] = 1;
+            header("location: ".$_SERVER['REQUEST_URI']);
+            exit();
+        } else {
+            // Handle any SQL execution error
+            $_SESSION['edit_error'] = 1;
             header("location: ".$_SERVER['REQUEST_URI']);
             exit();
         }
@@ -88,6 +97,7 @@ if(isset($_POST['btn_save']))
         exit();
     }
 }
+
 
 if(isset($_POST['btn_archive'])){
     if(isset($_POST['chk_delete'])){

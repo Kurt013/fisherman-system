@@ -137,17 +137,17 @@ include('../header.php');
     <aside class="right-side">
         <section class="content-header">
             <h1>
-            <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; margin-right: 30px;" >
+            <a href="#" >
                 <i class="fa fa-users"></i> <span>Members</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: #0605a6;">                           
-                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
+                            <a href="../archive/archive_resident.php" class="redirect-button" style="color: #0605a6; float:right;">                           
+                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> 
+                            <span class="tooltip-text">Archive List</span>
+
                         </a>
                         <?php
                             }
@@ -172,9 +172,12 @@ include('../header.php');
                             <?php
                             }
                             ?>
-                            <form action="export.php" method="post">
-                                        <button class="btn btn-third btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
-                                    </form>
+                            <div style="text-align: right;">
+    <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#exportModal">
+        <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export
+    </button>
+</div>
+
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -222,7 +225,7 @@ include('../header.php');
                                     <td>' . $row['type'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
                                     <td>
-                                        <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-info btn-sm">
+                                        <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-pdf btn-sm">
     <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
 </button>
 
@@ -245,6 +248,7 @@ include('../header.php');
                 </div>
                 <?php include "../edit_notif.php"; ?>
                 <?php include "../added_notif.php"; ?>
+                <?php include "../export_format.php"; ?>
                 <?php include "../archive_notif.php"; ?>
                 <?php include "../duplicate_error.php"; ?>
                 <?php include "add_modal.php"; ?>

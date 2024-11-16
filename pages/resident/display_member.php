@@ -5,95 +5,47 @@ include "../connection.php"; // Include your database connection
 // Check if the ID is set in the URL
 if (isset($_GET['id'])) {
     $memberId = intval($_GET['id']); // Sanitize the input
-    $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, gender, age, bdate, hnumber, zone, barangay, cpnumber, image FROM tblresident WHERE id = '$memberId'");
+    $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, gender, age, bdate, hnumber, zone, barangay, type, cpnumber, image FROM tblresident WHERE id = '$memberId'");
     $member = mysqli_fetch_assoc($query);
 
     if ($member) {
         // Display the member's information in a two-column table
         ?>
         <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Member Details</title>
-            <link rel="icon" href="../../img/bfarmc-sinalhan-logo.png"> <!-- Adjusted path -->
-            <link rel="stylesheet" href="path/to/your/bootstrap.css"> <!-- Adjust path as necessary -->
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 20px;
-                    max-width: 800px; /* Limit the max width for better readability */
-                    margin: auto;
-                }
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-top: 20px; /* Add some space above the table */
-                }
-                th, td {
-                    border: 1px solid #ddd;
-                    padding: 10px;
-                    text-align: left;
-                }
-                th {
-                    background-color: #f2f2f2;
-                }
-                img {
-                    width: 60px;
-                    height: 60px;
-                    object-fit: cover; /* Maintain aspect ratio of the image */
-                }
-                @media print {
-                    @page {
-                        size: A4 portrait; /* Set the page size to A4 portrait */
-                        margin: 0; /* Remove margins for printing */
-                    }
-                    body {
-                        margin: 20mm; /* Add a margin for printed content */
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Member Details</h1>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <td><?php echo $member['id']; ?></td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td><?php echo $member['cname']; ?></td>
-                </tr>
-                <tr>
-                    <th>Gender</th>
-                    <td><?php echo $member['gender']; ?></td>
-                </tr>
-                <tr>
-                    <th>Age</th>
-                    <td><?php echo $member['age'], " years old"; ?></td>
-                </tr>
-                <tr>
-                    <th>Birthday</th>
-                    <td><?php echo $member['bdate']; ?></td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>
-                        <?php 
-                        // Concatenate address components
-                        echo $member['hnumber'] . ", Purok " . $member['zone'] . ", " . $member['barangay']; 
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Contact No</th>
-                    <td><?php echo $member['cpnumber']; ?></td>
-                </tr>
-                <tr>
-                    <th>Image</th>
-                    <td><img src="image/<?php echo basename($member['image']); ?>" alt="Member Image"></td>
-                </tr>
-            </table>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Member Details</title>
+        <link rel="icon" href="../../img/bfarmc-sinalhan-logo.png"> <!-- Adjusted path -->
+        <link href="../../css/display_member.css" rel="stylesheet" type="text/css" />
+        <style>
+            /* Insert the CSS code here */
+        </style>
+    </head>
+    <body>
+    <div class="container">
+    <div class="header">
+    <h1 class="left">Member Details</h1>
+    <img src="../../img/bfarmc-sinalhan-logo.png" alt="Logo" class="logo">
+    <h1 class="right">BFARMC - Sinalhan</h1>
+</div>
+
+        <div class="member-info">
+                <img src="image/<?php echo htmlspecialchars($member['image']); ?>" alt="Member Image">
+                <div class="info-details">
+                    <h1><?php echo htmlspecialchars($member['cname']); ?></h1>
+                    <p><span class="label">ID:</span> <span class="value"><?php echo htmlspecialchars($member['id']); ?></span></p>
+                    <p><span class="label">Gender:</span> <span class="value"><?php echo htmlspecialchars($member['gender']); ?></span></p>
+                    <p><span class="label">Age:</span> <span class="value"><?php echo htmlspecialchars($member['age']) . " years old"; ?></span></p>
+                    <p><span class="label">Type:</span> <span class="value"><?php echo htmlspecialchars($member['type']); ?></span></p>
+                    <p><span class="label">Birthday:</span> <span class="value"><?php echo htmlspecialchars($member['bdate']); ?></span></p>
+                    <p><span class="label">Address:</span> <span class="value"><?php echo htmlspecialchars($member['hnumber'] . ", Purok " . $member['zone'] . ", " . $member['barangay']); ?></span></p>
+                    <p><span class="label">Contact No:</span> <span class="value"><?php echo htmlspecialchars($member['cpnumber']); ?></span></p>
+
+                </div>
+            </div>
+        </div>
         </body>
         </html>
         <?php

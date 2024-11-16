@@ -23,10 +23,10 @@ if (!isset($_SESSION['role'])) {
             <div class="main-content">
             <div class="box">
                                 <div class="box-header">
-                                    <div style="padding:10px;">
-                                    <form action="export.php" method="post">
-                                        <button class="btn btn-third btn-sm" type="submit" name="export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>  
-                                    </form>
+                                    <div style="padding:10px; text-align:right;">
+                                    <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#reportModal">
+        <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export
+    </button>
                                     </div>                            
                                 </div>
             <section class="content">
@@ -109,6 +109,8 @@ if (!isset($_SESSION['role'])) {
         </div>
     </div>
 </div>
+<?php include "../report_format.php"; ?>
+
 
 
 

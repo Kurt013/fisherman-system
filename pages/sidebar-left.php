@@ -59,11 +59,6 @@
                             <i class="fa fa-history"></i> <span>Logs</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="../qrscanner/qrscanner.php">
-                            <i class="fa fa-qrcode"></i> <span>Qr Scanner</span>
-                        </a>
-                    </li>
                 </ul>';
             }
             // Check if the role is Staff
@@ -88,11 +83,6 @@
                     <li>
                         <a href="../activity/activity.php">
                             <i class="fa fa-calendar"></i> <span>Activity</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../qrscanner/qrscanner.php">
-                            <i class="fa fa-qrcode"></i> <span>Qr Scanner</span>
                         </a>
                     </li>
                 </ul>';

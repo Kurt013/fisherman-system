@@ -36,6 +36,7 @@ if(isset($_POST['btn_add'])){
 if(isset($_POST['btn_save']))
 {
     $txt_id = $_POST['hidden_id'];
+    $ddl_edit_pos = $_POST['ddl_edit_pos'];
     $txt_edit_cname = $_POST['txt_edit_cname'];
     $txt_edit_contact = $_POST['txt_edit_contact'];
     $txt_edit_address = $_POST['txt_edit_address'];
@@ -48,7 +49,7 @@ if(isset($_POST['btn_save']))
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-    $update_query = mysqli_query($con,"UPDATE tblofficial set completeName = '".$txt_edit_cname."', pcontact = '".$txt_edit_contact."', paddress = '".$txt_edit_address."', termStart = '".$txt_edit_sterm."', termEnd = '".$txt_edit_eterm."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    $update_query = mysqli_query($con,"UPDATE tblofficial set sPosition = '".$ddl_edit_pos."', completeName = '".$txt_edit_cname."', pcontact = '".$txt_edit_contact."', paddress = '".$txt_edit_address."', termStart = '".$txt_edit_sterm."', termEnd = '".$txt_edit_eterm."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if($update_query == true){
         $_SESSION['edited'] = 1;

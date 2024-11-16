@@ -28,17 +28,17 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                    <a href="#" style="color: #0605a6; margin-right: 30px; border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; " >
+                    <a href="#">
                 <i class="fa fa-user"></i> <span>Staff</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_staff.php" class="redirect-button" style="color: #0605a6;">                           
-                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
+                            <a href="../archive/archive_staff.php" class="redirect-button" style="color: #0605a6; float:right;">                           
+                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> 
+                            <span class="tooltip-text">Archive List</span>
+
                         </a>
                         <?php
                             }
@@ -96,7 +96,7 @@
                                                         <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 
@@ -111,7 +111,7 @@
                                                     <tr>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 

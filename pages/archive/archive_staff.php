@@ -27,23 +27,24 @@
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                    <a href="../staff/staff.php" style="color: #0605a6; margin-right: 30px;" >
-                <i class="fa fa-user"></i> <span>Staff</span>
-                </a>                           
+                <h1>                          
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="#" class="redirect-button" style="color: #0605a6; border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; ">                           
+                            <a href="#" class="redirect-button">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
                             }
-                            ?>
-                    </h1>
+                            
+                            ?>          
+                            <a href="../staff/staff.php" class="redirect-button" style="color: #0605a6; float:right;" >
+                <i class="fa fa-user"></i>
+                <span class="tooltip-text">Staff List</span>
+
+                </a> 
+                        </h1>
                     
                 </section>
 
@@ -95,7 +96,7 @@
                                                         <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 
@@ -110,7 +111,7 @@
                                                     <tr>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 

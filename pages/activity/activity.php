@@ -28,17 +28,16 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                    <a href="#" style="color: #0605a6;  border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; margin-right: 30px;" >
+                    <a href="#" >
                 <i class="fa fa-calendar"></i> <span>Activity</span>
                 </a>                           
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_activity.php" class="redirect-button" style="color: #0605a6;">                           
-                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
+                            <a href="../archive/archive_activity.php" class="redirect-button" style="color: #0605a6; float: right;">                           
+                            <span class="icon"><i class="fa-solid fa-box-archive"></i></span>
+                            <span class="tooltip-text">Archive List</span>
                         </a>
                         <?php
                             }
@@ -61,8 +60,7 @@
                                                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Activity</button>  
                                                 
                                                 <?php 
-                                                    if(!isset($_SESSION['staff']))
-                                                    {
+                                            if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                                                 ?>
                                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Archive</button> 
                                                 <?php

@@ -34,23 +34,25 @@
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                <h1>
-                <a href="../officials/officials.php" style=" margin-right: 30px;" >
-                <i class="fa fa-user"></i> <span>Officers</span>
-                </a>                           
+                <h1>                          
                  <?php 
                             // Check if the user role is not 'Staff' before displaying the delete button
                             if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
                             ?>
-                            <a href="../archive/archive_official.php" class="redirect-button" style="border-bottom: 2px solid yellow; /* Change color as needed */
-    padding-bottom: 5px; 
-    display: inline-block; ">                           
+                            <a href="#" class="redirect-button">                           
                             <span class="icon"><i class="fa-solid fa-box-archive"></i></span> <span> Archive List</span>
                         </a>
                         <?php
                             }
-                            ?>
-            </h1>
+                            
+                            ?>          
+                            <a href="../officials/officials.php" class="redirect-button" style="color: #0605a6; float:right;" >
+                <i class="fa fa-user"></i>
+                <span class="tooltip-text">Officer List</span>
+
+                </a> 
+                        </h1>
+                    
                     
                 </section>
 
