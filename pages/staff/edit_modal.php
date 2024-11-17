@@ -31,7 +31,6 @@ echo '
               <div class="form-group">
                 <label>Username:</label>
                 <input name="txt_uname" class="form-control input-sm" id="username" type="text" value="' . $erow['username'] . '" />
-                <label id="user_msg" style="color:#CC0000;"></label>
               </div>
               <div class="form-group">
                 <label>New Password:</label>

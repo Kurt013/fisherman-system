@@ -26,15 +26,14 @@
                                 <div class="form-group">
                                     <label>Username:</label>
                                     <input name="txt_uname" class="form-control input-sm" id="username" type="text" placeholder="Username" required/>
-                                    <label id="user_msg" style="color:#CC0000;" ></label>
                                 </div>
                                 <div class="form-group">
                                     <label>Password:</label>
-                                    <input name="txt_pass" class="form-control input-sm" type="password" required/>
+                                    <input name="txt_pass" class="form-control input-sm" type="password" placeholder="Password" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password:</label>
-                                    <input name="txt_cpass" class="form-control input-sm" type="password" required/>
+                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="Confirm Password" required/>
                                 </div>
                             </div>
                         </div>

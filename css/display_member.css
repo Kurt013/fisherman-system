@@ -142,7 +142,7 @@ body {
 }
 
 /* Media Query for Screens Below 950px */
-@media (max-width: 1024px) and (min-height: 1024px) {
+@media (max-width: 1024px) and (min-height: 700px) {
         .member-info {
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center the content */
@@ -213,3 +213,198 @@ body {
     }
 }
 
+/* Styles for Else Container */
+.elsecontainer {
+    background: #eff2ff;
+    box-shadow: 0 8px 100px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    text-align: center;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.elseheader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 15px;
+    padding: 20px;
+    background-color: #ffd700;
+    color: #0605a6;
+    width: 100%;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.elseheader h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+.notfound {
+    margin-top: 80px; /* Adjusted for header height */
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: space-between; /* To ensure space between the two sections */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+}
+
+.notfound .leftinfo, .notfound .rightinfo {
+    width: 50%; /* Each section takes up half the width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.notfound .leftinfo {
+    text-align: left;
+    margin-left: 100px; /* Adjusted for better centering */
+    margin-top: 150px; /* Adjusted for better centering */
+}
+
+.notfound .rightinfo {
+    text-align: right;
+    margin-top: 50px; /* Adjusted for better centering */
+    display: flex;
+    justify-content: center;  /* Align items horizontally */
+    align-items: center;      /* Align items vertically */
+    text-align: center;       /* Ensure text inside is centered */
+}
+
+.notfound h1.blue, .notfound h1.yellow {
+    font-size: 100px; /* Reduced font size for better balance */
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.notfound h1.blue {
+    color: #0605a6;
+}
+
+.notfound h1.yellow {
+    color: #ffd700;
+}
+
+.notfound h2 {
+    font-size: 20px; /* Reduced font size for better balance */
+    color: #0605a6;
+    margin: 15px 0;
+    font-weight: 400;
+
+}
+
+.notfound img.invalid {
+    width: 100%; /* Make image responsive to its container */
+    max-width: 700px; /* Limit maximum size for better control */
+    height: auto;
+    margin-top: 20px;
+    
+}
+
+
+/* For smaller screens, adjust layout */
+@media (max-width: 1024px) and (min-height: 700px) {
+    .notfound {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center the content vertically */
+        text-align: center;
+    }
+
+    /* Ensure rightinfo is at the top and leftinfo at the bottom on very small screens */
+    .notfound .rightinfo {
+        order: -1; /* Move to the top */
+        margin-top: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        
+        /* Center content horizontally and vertically */
+        display: flex;
+        justify-content: center;  /* Align items horizontally */
+        align-items: center;      /* Align items vertically */
+        text-align: center;       /* Ensure text inside is centered */
+    }
+    
+
+    .notfound .leftinfo {
+        order: 1;
+        margin: 0px;
+        margin-top: 20px;
+        width: 500px;
+
+    }
+
+    .notfound img.invalid {
+        width: 400px; /* Adjust size for very small screens */
+    }
+
+    .notfound h1.blue, .notfound h1.yellow {
+        font-size: 80px;
+        text-align: center;
+    }
+
+    .notfound h2 {
+        font-size: 20px;
+        text-align: center;
+
+    }
+}
+
+@media (max-width: 540px) {
+    .notfound {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center the content vertically */
+        text-align: center;
+    }
+
+    /* Ensure rightinfo is at the top and leftinfo at the bottom on very small screens */
+    .notfound .rightinfo {
+        order: -1; /* Move to the top */
+        margin-top: 20px;
+        margin-left: 0px;
+        margin-right: 0px !important;
+        
+        /* Center content horizontally and vertically */
+        display: flex;
+        justify-content: center;  /* Align items horizontally */
+        align-items: center;      /* Align items vertically */
+        text-align: center;       /* Ensure text inside is centered */
+    }
+    
+
+    .notfound .leftinfo {
+        order: 1;
+        margin: 0px;
+        margin-top: 20px;
+        width: 500px;
+    }
+
+    .notfound img.invalid {
+        width: 300px; /* Adjust size for very small screens */
+        margin-right: 0px;
+    }
+
+    .notfound h1.blue, .notfound h1.yellow {
+        font-size: 35px;
+        text-align: center;
+
+    }
+
+    .notfound h2 {
+        font-size: 16px;
+        text-align: center;
+
+    }
+}

@@ -55,8 +55,8 @@ echo '<header class="header">
                     </div>
                     <div class="form-group">
                         <label style="color: #0605a6;">New Password:</label>
-                        <input name="new_password" id="new_password" class="form-control input-sm" type="password" required />
-                        <small style="color: #888;">Password must be 8 characters or more, and include letters, numbers, and special characters.</small>
+                        <input name="new_password" id="new_password" class="form-control input-sm" type="password" required oninput="checkPasswordValidity()" />
+                        <div id="password-feedback" style="margin-top: 5px; font-size: 12px;"></div>
                     </div>
                     <div class="form-group">
                         <label style="color: #0605a6;">Confirm New Password:</label>
@@ -71,16 +71,44 @@ echo '<header class="header">
         </div>
     </form>
 </div>
+<script>
+    function checkPasswordValidity() {
+        const passwordField = document.getElementById('new_password');
+        const feedback = document.getElementById('password-feedback');
+        const password = passwordField.value;
 
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (regex.test(password)) {
+            passwordField.style.borderColor = '#FFDE59';
+            feedback.style.color = '#FFDE59';
+            feedback.textContent = ''; // Clear the feedback message
+        } else {
+            borderColor = 'red';
+            passwordField.style.borderColor = 'red';
+            feedback.style.color = 'red';
+            feedback.textContent = 'Password must be at least 8 characters and include letters, numbers, and special characters.';
+        }
+    }
+</script>
 
 <?php
 
 include "../mismatch_notif.php";
+include "../edit_notif.php";
+
 
 if (isset($_POST['btn_saveeditProfile'])) {
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
+
+    if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $new_password)) {
+        $_SESSION['invalid_password'] = 1;
+        header("location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+    
 
     // Fetch the current hashed password from the database
     $userQuery = mysqli_query($con, "SELECT password FROM tbluser WHERE id = '" . $_SESSION['userid'] . "'");

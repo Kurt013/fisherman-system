@@ -24,6 +24,20 @@
     Error updating password.
 </div>
 
+<?php if (isset($_SESSION['invalid_password'])): ?>
+    <script>
+        $(document).ready(function () {
+            $('#invalidPasswordNotification').fadeIn().delay(3000).fadeOut(); // Show and auto-hide the notification
+        });
+    </script>
+    <?php unset($_SESSION['invalid_password']); ?>
+<?php endif; ?>
+
+<div id="invalidPasswordNotification" class="alert alert-danger" style="position: fixed; top: 10em; right: 1em; z-index: 9999; display: none;">
+    Password must be at least 8 characters long, including letters, numbers, and special characters.
+</div>
+
+
 <?php if (isset($_SESSION['old_mismatch'])): ?>
     <script>
         $(document).ready(function () {
