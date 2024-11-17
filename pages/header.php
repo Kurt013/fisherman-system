@@ -56,6 +56,7 @@ echo '<header class="header">
                     <div class="form-group">
                         <label style="color: #0605a6;">New Password:</label>
                         <input name="new_password" id="new_password" class="form-control input-sm" type="password" required />
+                        <small style="color: #888;">Password must be 8 characters or more, and include letters, numbers, and special characters.</small>
                     </div>
                     <div class="form-group">
                         <label style="color: #0605a6;">Confirm New Password:</label>

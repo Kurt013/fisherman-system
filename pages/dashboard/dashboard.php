@@ -25,7 +25,7 @@ if (!isset($_SESSION['role'])) {
                                 <div class="box-header">
                                     <div style="padding:10px; text-align:right;">
                                     <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#reportModal">
-        <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export
+                                    <i class="fa-solid fa-file-export" aria-hidden="true"></i> Export
     </button>
                                     </div>                            
                                 </div>

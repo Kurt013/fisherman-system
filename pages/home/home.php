@@ -54,7 +54,7 @@
                         } 
                         ?>
                         <a href="../officials/officials.php" class="redirect-button">                           
-                            <span class="icon"><i class="fa fa-user"></i></span> <span>BFARMC Officials</span>
+                            <span class="icon"><i class="fa fa-user"></i></span> <span>BFARMC Officers</span>
                         </a>
                         <a href="../resident/resident.php" class="redirect-button">
                             <span class="icon"><i class="fa fa-users"></i></span> <span>Members</span>

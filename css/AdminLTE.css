@@ -1951,6 +1951,8 @@ Component: timeline
 .btn.btn-primary {
   background-color: #0605a6;
   color:#eff2ff;
+  font-size: 15px !important;
+  border-radius: 5px;
 }
 
 .btn.btn-secondary {
@@ -1963,6 +1965,8 @@ Component: timeline
 .btn.btn-third {
   background-color: #127C07;
   color:#eff2ff;
+  font-size: 15px !important;
+  border-radius: 5px;
 }
 
 .btn.btn-pdf{
@@ -2013,6 +2017,8 @@ Component: timeline
 .btn.btn-danger {
   background-color: #f4543c;
   color:#eff2ff;
+  font-size: 15px !important;
+  border-radius: 5px;
 }
 .btn.btn-danger:hover,
 .btn.btn-danger:active,

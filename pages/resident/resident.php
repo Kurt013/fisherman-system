@@ -51,12 +51,12 @@ if (count($memberId) > 1) {
     echo "Invalid QR data format.";
     exit; // Stop execution if the format is invalid
 }
-        $query = mysqli_query($con, "SELECT id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, image FROM tblresident WHERE archive = 0 and id = '$memberId'");
+        $query = mysqli_query($con, "SELECT id, lname, fname, mname, image FROM tblresident WHERE archive = 0 and id = '$memberId'");
     
         // Check if a row was returned
         if ($row = mysqli_fetch_assoc($query)) {
             // Create a new PDF document
-            $pdf = new FPDF('L', 'mm', [180, 180]); // Landscape orientation with short bond paper size (8.5 x 11 inches)
+            $pdf = new FPDF('P', 'mm', [43.18, 53.34]); // Landscape orientation with custom size (1.7 x 2.1 inches)
             $pdf->AddPage();
             $pdf->SetAutoPageBreak(false);
     
@@ -65,19 +65,19 @@ if (count($memberId) > 1) {
     
             // Logo and Title
             $pdf->SetXY(10, 3);
-            $pdf->Image('C:\xampp\htdocs\fisherman-system\img\bg-id.png', 0, 0, 186, 185); // Adjust the logo path and size
+            $pdf->Image('C:\xampp\htdocs\fisherman-system\img\bg-id.png', 0, 0, 43.18, 53.34); // Adjust the logo path and size
             $pdf->SetFont('Arial', 'B', 12);
             
             // Member Image
-            $pdf->SetDrawColor(6, 5, 166); // Set border color
-            $pdf->SetLineWidth(1.1); // Adjust this value for thickness
+            $pdf->SetDrawColor(6, 15, 166); // Set border color
+            $pdf->SetLineWidth(0.3); // Adjust this value for thickness
     
             // Draw a border rectangle around the image
-            $pdf->Rect(57, 50, 61, 60); // Draw border
+            $pdf->Rect(14, 16, 16, 16); // Draw border
             if ($row['image']) {
-                $pdf->Image('image/' . basename($row['image']), 58, 52, 59, 58); // Adjust the member image path
+                $pdf->Image('image/' . basename($row['image']), 14, 16, 16, 16); // Adjust the member image path
             } else {
-                $pdf->SetXY(10, 30);
+                $pdf->SetXY(10, 26);
                 $pdf->SetFont('Arial', 'I', 8);
                 $pdf->SetTextColor(128, 128, 128); // Gray text color
                 $pdf->Cell(30, 10, 'IMAGE', 0, 2, 'C');
@@ -85,17 +85,23 @@ if (count($memberId) > 1) {
             }
     
             // Member Details
-            $pdf->SetFont('Helvetica', 'B', 20);
-            $pdf->SetXY(70, 135);
-            $pdf->Cell(0, 10, $row['cname'], 0, 1); // Use 10 for height to fit the text better
-            $pdf->SetFont('Helvetica', 'B', 20);
-    
+            $pdf->SetFont('Helvetica', 'B', 5);
+            $pdf->SetXY(16, 35);
+            
+            // Combine the last name and first name properly and print them together in one cell
+            $pdf->Cell(0, 10, $row['lname'] . ', ' . $row['fname'], 0, 1);
+            
+            // Now print the middle name
+            $pdf->SetXY(16, 37);
+            $pdf->Cell(0, 10, $row['mname'], 0, 1);
+            
+
             // QR Code
             $pdf->SetDrawColor(6, 5, 166); // Set border color
-            $pdf->SetLineWidth(1.1); // Adjust this value for thickness
+            $pdf->SetLineWidth(0.3); // Adjust this value for thickness
             // Draw a border rectangle around the image
-            $pdf->Rect(20, 115, 47, 47); // Draw border
-            $pdf->Image($tempImageFile, 21, 116, 45, 45); // QR Code
+            $pdf->Rect(4, 34, 12, 12); // Draw border
+            $pdf->Image($tempImageFile, 4, 34, 12, 12); // QR Code
     
             // Clean output buffer before sending PDF
             ob_end_clean();
@@ -174,7 +180,7 @@ include('../header.php');
                             ?>
                             <div style="text-align: right;">
     <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#exportModal">
-        <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export
+        <i class="fa fa-file-export" aria-hidden="true"></i> Export
     </button>
 </div>
 
