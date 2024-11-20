@@ -67,6 +67,12 @@
                                                     }
                                             }
                                                 ?>
+
+<div style="text-align: right;">
+    <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#exportModal">
+        <i class="fa fa-file-export" aria-hidden="true"></i> Export
+    </button>
+</div>
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->
@@ -134,6 +140,8 @@
                             <?php include "../edit_notif.php"; ?>
 
                             <?php include "../added_notif.php"; ?>
+                            <?php include "../exportlist.php"; ?>
+
 
                             <?php include "../archive_notif.php"; ?>
 
