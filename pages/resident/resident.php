@@ -191,11 +191,11 @@ include('../header.php');
                             <table id="table" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <?php if (!isset($_SESSION['staff'])) { ?>
-                                            <th style="width: 20px !important;">
-                                                <input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/>
-                                            </th>
-                                        <?php } ?>
+                                    <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'staff') { ?>
+                                    <th style="width: 20px !important;">
+                                        <input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/>
+                                    </th>
+                                <?php } ?>
                                         <th>Purok</th>
                                         <th>Image</th>
                                         <th>Name</th>
@@ -221,9 +221,14 @@ include('../header.php');
                                 $qrCodeImage = $writer->write($qrCode);
                                 $qrCodeBase64 = base64_encode($qrCodeImage->getString());
 
-                                echo '
-                                <tr>
-                                    <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['id'] . '" /></td>
+                                echo '<tr>';
+        
+                                    // Check if the user is not staff before showing the checkbox
+                                    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'staff') {
+                                        echo '<td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['id'] . '" /></td>';
+                                    }
+                                    
+                                    echo '
                                     <td>' . $row['zone'] . '</td>
                                     <td style="width:70px;"><img src="image/' . basename($row['image']) . '" style="width:60px;height:60px;"/></td>
                                     <td>' . $row['cname'] . '</td>

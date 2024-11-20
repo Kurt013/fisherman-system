@@ -8,39 +8,40 @@ if(isset($_POST['btn_add'])){
     $txt_cpass = $_POST['txt_cpass'];
     $role = 'staff';
 
-    // Check if username already exists
-    $stmt = $con->prepare("SELECT * FROM tbluser WHERE username = ?");
-    $stmt->bind_param("s", $txt_uname);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $ct = $result->num_rows;
+    // Check if username or email already exists
+$stmt = $con->prepare("SELECT * FROM tbluser WHERE username = ? OR email = ?");
+$stmt->bind_param("ss", $txt_uname, $txt_email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    if($ct == 0){
-        // Check if passwords match
-        if($txt_pass === $txt_cpass){
-            // Hash the password
-            $hashed_password = password_hash($txt_pass, PASSWORD_DEFAULT);
+if($result->num_rows > 0){
+    $row = $result->fetch_assoc();
+    if ($row['username'] === $txt_uname) {
+        $_SESSION['duplicateuser'] = 1; // Username conflict
+    } elseif ($row['email'] === $txt_email) {
+        $_SESSION['duplicateemail'] = 1; // Email conflict
+    }
+    header("location: ".$_SERVER['REQUEST_URI']);
+    exit();
+} else {
+    // Proceed with adding user if no conflicts
+    if($txt_pass === $txt_cpass){
+        $hashed_password = password_hash($txt_pass, PASSWORD_DEFAULT);
+        $insert_stmt = $con->prepare("INSERT INTO tbluser (first_name, last_name, email, username, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+        $insert_stmt->bind_param("ssssss", $txt_fname, $txt_lname, $txt_email, $txt_uname, $hashed_password, $role);
+        $insert_query = $insert_stmt->execute();
 
-            // Insert new user
-            $insert_stmt = $con->prepare("INSERT INTO tbluser (first_name, last_name, email, username, password, role) VALUES (?, ?, ?, ?, ?, ?)");
-            $insert_stmt->bind_param("ssssss", $txt_fname, $txt_lname, $txt_email, $txt_uname, $hashed_password, $role);
-            $insert_query = $insert_stmt->execute();
-
-            if($insert_query){
-                $_SESSION['added'] = 1;
-                header("location: ".$_SERVER['REQUEST_URI']);
-                exit();
-            }
-        } else {
-            $_SESSION['password_mismatch'] = 1;
+        if($insert_query){
+            $_SESSION['added'] = 1;
             header("location: ".$_SERVER['REQUEST_URI']);
             exit();
         }
     } else {
-        $_SESSION['duplicateuser'] = 1;
+        $_SESSION['password_mismatch'] = 1;
         header("location: ".$_SERVER['REQUEST_URI']);
         exit();
     }
+}
 }
 
 
@@ -54,14 +55,22 @@ if(isset($_POST['btn_save'])){
     $txt_edit_cpass = $_POST['txt_cpass'];
     $role = 'staff';
 
-    // Check if username already exists (for other users, not the current one)
-    $stmt = $con->prepare("SELECT * FROM tbluser WHERE username = ? AND id != ?");
-    $stmt->bind_param("si", $txt_edit_uname, $txt_id);
+    // Check if username or email already exists (excluding current user)
+    $stmt = $con->prepare("SELECT * FROM tbluser WHERE (username = ? OR email = ?) AND id != ?");
+    $stmt->bind_param("ssi", $txt_edit_uname, $txt_edit_email, $txt_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    $ct = $result->num_rows;
-    
-    if($ct == 0){
+
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        if ($row['username'] === $txt_edit_uname) {
+            $_SESSION['duplicateuser'] = 1; // Username conflict
+        } elseif ($row['email'] === $txt_edit_email) {
+            $_SESSION['duplicateemail'] = 1; // Email conflict
+        }
+        header("location: ".$_SERVER['REQUEST_URI']);
+        exit();
+    } else {
         // If new password is provided, check if it matches the confirm password
         if($txt_edit_pass !== '' && $txt_edit_pass === $txt_edit_cpass){
             // Hash the new password
@@ -91,10 +100,6 @@ if(isset($_POST['btn_save'])){
             header("location: ".$_SERVER['REQUEST_URI']);
             exit();
         }
-    } else {
-        $_SESSION['duplicateuser'] = 1;
-        header("location: ".$_SERVER['REQUEST_URI']);
-        exit();
     }
 }
 

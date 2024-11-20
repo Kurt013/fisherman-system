@@ -76,8 +76,15 @@
                                         <thead>
                                             <tr>
                                                 
-                                                <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
-                                                <th>Image</th>
+                                            <?php 
+                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
+                                            ?>
+                                            <th style="width: 20px !important;">
+                                                <input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/>
+                                            </th>
+                                            <?php
+                                                }
+                                            ?>                                                <th>Image</th>
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
                                                 <th>Description</th>
@@ -91,9 +98,14 @@
                                                 $squery = mysqli_query($con, "select * from tblactivity WHERE archive = 0");
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
+                                                    echo '<tr>';
+        
+                                                    // Check if the user is not staff before showing the checkbox
+                                                    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'staff') {
+                                                        echo '<td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="' . $row['id'] . '" /></td>';
+                                                    }
+                                                    
                                                     echo '
-                                                    <tr>
-                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
                                                         <td><img src="photo/' . $row['image'] . '" alt="Activity Image" style="width: 100px; height: auto;"/></td> <!-- Displaying photo -->
                                                         <td>'.$row['dateofactivity'].'</td>
                                                         <td>'.$row['activity'].'</td>

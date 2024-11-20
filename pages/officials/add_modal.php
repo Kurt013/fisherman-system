@@ -20,8 +20,6 @@
                                         <option value="Secretary">Secretary</option>
                                         <option value="Treasurer">Treasurer</option>
                                         <option value="Public Relations Officer">Public Relations Officer</option>
-                                        <option value="Public Relations Officer">Public Relations Officer</option>
-                                        <option value="Sergeant at Arms">Sergeant at Arms</option>
                                         <option value="Sergeant at Arms">Sergeant at Arms</option>
 
                                     </select>

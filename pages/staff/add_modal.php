@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password:</label>
-                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="Confirm Password" required/>
+                                    <input name="txt_cpass" class="form-control input-sm" type="password" placeholder="Re-Enter Password" required/>
                                 </div>
                             </div>
                         </div>

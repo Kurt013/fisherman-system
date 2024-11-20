@@ -12,7 +12,7 @@ if(isset($_POST['btn_add'])){
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-    $q = mysqli_query($con,"SELECT * from tblofficial where sPosition = '".$ddl_pos."' and termStart = '".$txt_sterm."' and termEnd = '".$txt_eterm."' ");
+    $q = mysqli_query($con,"SELECT * from tblofficial where completeName = '".$txt_cname."'");
     $ct = mysqli_num_rows($q);
 
 

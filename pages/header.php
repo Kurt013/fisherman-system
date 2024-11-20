@@ -51,16 +51,16 @@ echo '<header class="header">
                 <div class="modal-body">
                     <div class="form-group">
                         <label style="color: #0605a6;">Old Password:</label>
-                        <input name="old_password" id="old_password" class="form-control input-sm" type="password" required />
+                        <input name="old_password" id="old_password" class="form-control input-sm" type="password" placeholder="Enter Old Password" required />
                     </div>
                     <div class="form-group">
                         <label style="color: #0605a6;">New Password:</label>
-                        <input name="new_password" id="new_password" class="form-control input-sm" type="password" required oninput="checkPasswordValidity()" />
+                        <input name="new_password" id="new_password" class="form-control input-sm" type="password" placeholder="Enter New Password" required oninput="checkPasswordValidity()" />
                         <div id="password-feedback" style="margin-top: 5px; font-size: 12px;"></div>
                     </div>
                     <div class="form-group">
                         <label style="color: #0605a6;">Confirm New Password:</label>
-                        <input name="confirm_password" id="confirm_password" class="form-control input-sm" type="password" required />
+                        <input name="confirm_password" id="confirm_password" class="form-control input-sm" type="password" placeholder="Re-Enter Password"required />
                     </div>
                 </div>
                 <div class="modal-footer">

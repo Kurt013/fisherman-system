@@ -112,7 +112,7 @@ if(isset($_POST['btn_add'])){
             header("location: ".$_SERVER['REQUEST_URI']);
         }
     } else {
-        $_SESSION['duplicateuser'] = 1;
+        $_SESSION['duplicate'] = 1;
         header("location: ".$_SERVER['REQUEST_URI']);
     }    
 }
