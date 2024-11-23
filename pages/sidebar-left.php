@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <a href="../officials/officials.php">
-                            <i class="fa fa-user"></i> <span>BFARMC Officer</span>
+                            <i class="fa fa-user"></i> <span>BFARMC Officials</span>
                         </a>
                     </li>
                     <li>
@@ -72,7 +72,7 @@
                     </li>
                     <li>
                         <a href="../officials/officials.php">
-                            <i class="fa fa-user"></i> <span>BFARMC Officer</span>
+                            <i class="fa fa-user"></i> <span>BFARMC Officials</span>
                         </a>
                     </li>
                     <li>

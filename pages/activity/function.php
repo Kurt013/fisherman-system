@@ -4,9 +4,9 @@ if(isset($_POST['btn_add'])){
     $txt_act = $_POST['txt_act'];
     $txt_desc = $_POST['txt_desc'];
 
-    if(isset($_SESSION['role'])){
+    if(isset($_SESSION['username'])){
         $action = 'Added Activity '.$txt_act;
-        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user, logdate, action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
+        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user, logdate, action) values ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     // Handle the file upload
@@ -48,10 +48,10 @@ if(isset($_POST['btn_save'])) {
             description = '".$txt_edit_desc."' 
         WHERE id = '".$txt_id."'") or die('Error: ' . mysqli_error($con));
 
-    if(isset($_SESSION['role'])) {
+    if(isset($_SESSION['username'])) {
         $action = 'Updated Activity '.$txt_edit_act;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user, logdate, action) 
-            VALUES ('".$_SESSION['role']."', NOW(), '".$action."')");
+            VALUES ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     // Handle file uploads for editing

@@ -35,7 +35,7 @@
                 <section class="content-header">
                 <h1>
                 <a href="#">
-                <i class="fa fa-user"></i> <span> BFARMC Officers</span>
+                <i class="fa fa-user"></i> <span> BFARMC Officials</span>
                 </a>                           
                 <?php 
                             // Check if the user role is not 'Staff' before displaying the archive button
@@ -61,7 +61,7 @@
                                 <div class="box-header">
                                     <div style="padding:10px;">
                                         
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Officer</button>  
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCourseModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Official</button>  
 
                                         <?php 
                                             // Check if the user role is not 'Staff' before displaying the delete button

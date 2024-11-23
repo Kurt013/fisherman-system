@@ -7,9 +7,9 @@ if(isset($_POST['btn_add'])){
     $txt_sterm = $_POST['txt_sterm'];
     $txt_eterm = $_POST['txt_eterm'];
 
-    if(isset($_SESSION['role'])){
+    if(isset($_SESSION['username'])){
         $action = 'Added Official named '.$txt_cname;
-        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
+        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     $q = mysqli_query($con,"SELECT * from tblofficial where completeName = '".$txt_cname."'");
@@ -44,9 +44,9 @@ if(isset($_POST['btn_save']))
     $txt_edit_eterm = $_POST['txt_edit_eterm'];
 
 
-    if(isset($_SESSION['role'])){
+    if(isset($_SESSION['username'])){
         $action = 'Update Official named '.$txt_edit_cname;
-        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
+        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     $update_query = mysqli_query($con,"UPDATE tblofficial set sPosition = '".$ddl_edit_pos."', completeName = '".$txt_edit_cname."', pcontact = '".$txt_edit_contact."', paddress = '".$txt_edit_address."', termStart = '".$txt_edit_sterm."', termEnd = '".$txt_edit_eterm."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));

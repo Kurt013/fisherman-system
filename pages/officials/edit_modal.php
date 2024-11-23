@@ -4,7 +4,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Edit Officer</h4>
+            <h4 class="modal-title">Edit Official</h4>
         </div>
         <div class="modal-body">
         <div class="row">
@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Name: <span style="color:gray; font-size: 10px;">(Lastname, Firstname Middlename)</span></label>
+                    <label>Name: <span style="color:gray; font-size: 10px;">(Lastname, Firstname, Middlename)</span></label>
                     <input name="txt_edit_cname" class="form-control input-sm" type="text" value="'.$row['completeName'].'"/>
                 </div>
                 <div class="form-group">

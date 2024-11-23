@@ -26,9 +26,9 @@ if(isset($_POST['btn_add'])){
     $milliseconds = round(microtime(true) * 1000);
     $image = $milliseconds.'_'.$name;
 
-    if(isset($_SESSION['role'])){
+    if(isset($_SESSION['username'])){
         $action = 'Added Member named '.$txt_lname.', '.$txt_fname.' '.$txt_mname;
-        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['role']."', NOW(), '".$action."')");
+        $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     $su = mysqli_query($con, "SELECT * from tblresident WHERE lname = '$txt_lname' AND fname = '$txt_fname' AND mname = '$txt_mname' ");
@@ -143,9 +143,9 @@ if(isset($_POST['btn_save'])){
     $milliseconds = round(microtime(true) * 1000);
     $image = $milliseconds.'_'.$name;
 
-    if(isset($_SESSION['role'])){
+    if(isset($_SESSION['username'])){
         $action = 'Updated Member named '.$txt_edit_lname.', '.$txt_edit_fname.' '.$txt_edit_mname;
-        $iquery = mysqli_query($con, "INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['role']."', NOW(), '".$action."')");
+        $iquery = mysqli_query($con, "INSERT INTO tbllogs (user,logdate,action) VALUES ('".$_SESSION['username']."', NOW(), '".$action."')");
     }
 
     if($name != "") {

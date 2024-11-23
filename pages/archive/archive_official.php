@@ -48,7 +48,7 @@
                             ?>          
                             <a href="../officials/officials.php" class="redirect-button" style="color: #0605a6; float:right;" >
                 <i class="fa fa-user"></i>
-                <span class="tooltip-text">Officer List</span>
+                <span class="tooltip-text">Officials List</span>
 
                 </a> 
                         </h1>
