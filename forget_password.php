@@ -38,13 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.mailersend.net';  // Set your SMTP server
                 $mail->SMTPAuth = true;
-                $mail->Username = 'MS_aEACuu@trial-0p7kx4xjwevl9yjr.mlsender.net'; // Your SMTP username
-                $mail->Password = 'ZsOeSK3qqlPGnXj7'; // Your SMTP password or app password
+                $mail->Username = 'MS_7mbW1m@trial-7dnvo4djj3x45r86.mlsender.net'; // Your SMTP username
+                $mail->Password = '8XhCkcoNPuzNMq0i'; // Your SMTP password or app password
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
                 // Sender and recipient settings
-                $mail->setFrom('MS_aEACuu@trial-0p7kx4xjwevl9yjr.mlsender.net', 'BFARMC - Sinalhan');
+                $mail->setFrom('MS_7mbW1m@trial-7dnvo4djj3x45r86.mlsender.net', 'BFARMC - Sinalhan');
                 $mail->addAddress($detailFetch['email'], $detailFetch['first_name']);
 
                 $mail->isHTML(true);
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                       }
 
                       .logo {
-                        width: 150px;
+                        width: 80px;
                       }
 
                       .body-card {
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                       .body-card h1 {
                         font-size: 18px;
                         font-weight: bold;
-                        color: #226060;
+                        color: #0605a6;
                       }
 
                       .body-card p{
@@ -109,8 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         max-width: 300px;
                         padding: 20px;
                         border-radius: 20px;
-                        background-color: #DBDEDA;  
-                        color: #226060;
+                        background-color: #eff2ff;  
+                        color: #0605a6;
                         }
 
                       .body-card .last-p {
@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                   <body>
                     <div class="card-container">
                       <div class="header-card">
-                        <img class="logo" src="./img/bfarmc-sinalhan-logo.png" alt="BFARMC  Logo">
+                        <img class="logo" src="https://i.ibb.co/YdJyGrp/bfarmc-sinalhan-logo.png" alt="BFARMC  Logo">
                       </div>
                       <div class="body-card">
                         <h1>Hi '.$detailFetch['first_name'].' '.$detailFetch['last_name'].',</h1>
@@ -165,8 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         <div class="verification__code">'.$verification_code.'</div>
                         <p class="last-p">If you believe you have received this email in error, please disregard this email or notify us.</p>
                         <div class="icon-redirect">
-                          <a href="https://www.facebook.com/profile.php?id=100092186237360"><img class="icon" src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/448805439_1033824851691076_1924524101978291005_n.png?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeE9aPRH_OGP0V0aJCnFpQkPEDWtl9pklFYQNa2X2mSUVomkxi-0lupO9jucL73DWWrv9hh_LvmB2yLwLuIjefU9&_nc_ohc=TsTB9zB4jLgQ7kNvgGSQWqG&_nc_ht=scontent.fmnl9-3.fna&oh=03_Q7cD1QE_069nPaOOI8Rzn--Jybq7xY8MU05G2WRV1G3WVrgd-w&oe=66A7C320"/></a>
-                          <a href="mailto:resortvillagilda@gmail.com"><img class="icon" src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/448665658_1005997041102081_7020963237239717707_n.png?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHE3_QUTfqAlZQW0Rswo88XGtPR5f8vZN8a09Hl_y9k31S3U4Gm_a6p7llRzxhqFwpjlpw6oeY4LEbkxg1KoMnL&_nc_ohc=kU_V_p-0oD4Q7kNvgFQNKIz&_nc_ht=scontent.fmnl9-3.fna&oh=03_Q7cD1QFx3CUFMyd_D6tKluLkL7xxQt7OyuHRMIptfVyF0AxQEA&oe=66A7C3D9"/></a>
+                          <a href="https://www.facebook.com/profile.php?id=100063943027829"><img class="icon" src="https://cdn1.iconfinder.com/data/icons/social-media-set-for-free/32/facebook-512.png"/></a>
                         </div>
                       </div>
                       <hr>

@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
                 <div class="info-details">
                     <h1><?php echo htmlspecialchars($member['cname']); ?></h1>
                     <h2><?php echo htmlspecialchars($member['type']); ?></h2>
-                    <p><span class="label">ID:</span> <span class="value"><?php echo htmlspecialchars($member['id']); ?></span></p>
+                    <p><span class="label">ID:</span> <span class="value">2024 - 00<?php echo htmlspecialchars($member['id']); ?></span></p>
                     <p><span class="label">Gender:</span> <span class="value"><?php echo htmlspecialchars($member['gender']); ?></span></p>
                     <p><span class="label">Age:</span> <span class="value"><?php echo htmlspecialchars($member['age']) . " years old"; ?></span></p>
                     <img src="../../img/stamp.png" alt="Stamp" class="stamp">
