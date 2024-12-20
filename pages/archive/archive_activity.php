@@ -83,7 +83,6 @@
                                                 <th>Date of Activity</th>
                                                 <th>Activity</th>
                                                 <th>Description</th>
-                                                <th style="width: 140px !important;">Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,9 +98,6 @@
                                                         <td>'.$row['dateofactivity'].'</td>
                                                         <td>'.$row['activity'].'</td>
                                                         <td>'.$row['description'].'</td>
-                                                        <td>
-                                                            <button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                        </td>
                                                     </tr>
                                                     ';
 
@@ -146,6 +142,14 @@ var select_all = document.getElementById("cbxMainphoto"); //select all checkbox
 var checkboxes = document.getElementsByClassName("chk_deletephoto"); //checkbox items
 
 //select all checkboxes
+
+function checkMain(source) {
+        var checkboxes = document.getElementsByClassName("chk_unarchive"); // Get all checkboxes in the table
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = source.checked; // Set each checkbox checked status to the 'select all' checkbox status
+        }
+    }
+    
 select_all.addEventListener("change", function(e){
     for (i = 0; i < checkboxes.length; i++) { 
         checkboxes[i].checked = select_all.checked;
@@ -173,7 +177,7 @@ for (var i = 0; i < checkboxes.length; i++) {
             $("#table").DataTable({
                 "responsive": true,   // Enable responsiveness
                 "aoColumnDefs": [
-                    { "bSortable": false, "aTargets": [ 0, 4 ] }  // Disable sorting for specific columns
+                    { "bSortable": false, "aTargets": [ 0, 3 ] }  // Disable sorting for specific columns
                 ],
                 "aaSorting": [],
                 "autoWidth": false      // Disable automatic column width calculation
@@ -199,7 +203,7 @@ for (var i = 0; i < checkboxes.length; i++) {
             $("#table").DataTable({
                 "responsive": true,   // Enable responsiveness
                 "aoColumnDefs": [
-                    { "bSortable": false, "aTargets": [ 4 ] }  // Disable sorting for specific column
+                    { "bSortable": false, "aTargets": [ 3 ] }  // Disable sorting for specific column
                 ],
                 "aaSorting": [],
                 "autoWidth": false      // Disable automatic column width calculation

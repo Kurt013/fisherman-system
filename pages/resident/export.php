@@ -2,16 +2,29 @@
 if (isset($_POST['export'])) {
     include "../connection.php";
 
-    // Get the export format chosen by the user
+    // Get the export format and data type chosen by the user
     $export_format = $_POST['export_format'];
+    $data_type = $_POST['data_type'];
 
-    // Updated SQL query to retrieve concatenated names and cellphone numbers of residents, ordered by Purok (zone)
-    $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, cpnumber, zone FROM tblresident WHERE archive = 0 ORDER BY zone"; 
+    // Prepare SQL query based on the data type chosen
+    if ($data_type == 'fisherman') {
+        // Query for fishermen only (excluding cpnumber)
+        $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, zone FROM tblresident WHERE archive = 0 AND type = 'Fisherman' ORDER BY zone";
+        $title = 'List of Fisherman Members'; // Set the title for fishermen
+    } elseif ($data_type == 'Fish Vendor') {
+        // Query for fish vendors only (excluding cpnumber)
+        $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, zone FROM tblresident WHERE archive = 0 AND type = 'Fish Vendor' ORDER BY zone";
+        $title = 'List of Fish Vendor Members'; // Set the title for fish vendors
+    } else {
+        // Query for both fishermen and fish vendors (excluding cpnumber)
+        $SQL = "SELECT CONCAT(lname, ', ', fname, ' ', mname) AS cname, zone FROM tblresident WHERE archive = 0 ORDER BY zone";
+        $title = 'List of all BFARMC Members'; // Set the title for both
+    }
 
-    $arrhead = array("Purok", "Name", "Cellphone Number");
+    $arrhead = array("Purok", "Name"); // Updated header without Cellphone Number
 
     // Prepare the data output
-    $output = "List of Members\n";
+    $output = $title . "\n"; // Use dynamic title
     $output .= implode("\t", $arrhead) . "\n";
 
     $result = mysqli_query($con, $SQL);
@@ -28,13 +41,12 @@ if (isset($_POST['export'])) {
         while ($row = mysqli_fetch_assoc($result)) {
             $line = '"' . $row['zone'] . '"' . "\t"; // Accessing the zone (Purok)
             $line .= '"' . $row['cname'] . '"' . "\t"; // Accessing the concatenated name
-            $line .= '"' . $row['cpnumber'] . '"' . "\t"; // Accessing the cellphone number
             $output .= trim($line) . "\n";
         }
 
         // Send headers and output Excel
         header("Content-Type: application/vnd.ms-excel");
-        header("Content-Disposition: attachment; filename=List_of_Members.xls");
+        header("Content-Disposition: attachment; filename=" . $title . ".xls");
         header("Pragma: no-cache");
         header("Expires: 0");
         echo $output;
@@ -46,29 +58,27 @@ if (isset($_POST['export'])) {
         // Initialize PDF
         $pdf = new FPDF();
         $pdf->AddPage();
-        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetFont('Arial', 'B', 15);
 
-        // Add title
-        $pdf->Cell(0, 10, 'List of Members', 0, 1, 'C');
+        // Add title (dynamic title)
+        $pdf->Cell(0, 20, $title, 0, 1, 'C');
 
         // Set header
-        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetFont('Arial', 'B', 14);
         $pdf->Cell(40, 10, 'Purok', 1, 0, 'C');
-        $pdf->Cell(90, 10, 'Name', 1, 0, 'C');
-        $pdf->Cell(60, 10, 'Cellphone Number', 1, 1, 'C');
+        $pdf->Cell(150, 10, 'Name', 1, 1, 'C');
 
         // Set content font
-        $pdf->SetFont('Arial', '', 10);
+        $pdf->SetFont('Arial', '', 12);
 
         // Loop through the result and add to the table
         while ($row = mysqli_fetch_assoc($result)) {
-            $pdf->Cell(40, 10, $row['zone'], 1);
-            $pdf->Cell(90, 10, $row['cname'], 1);
-            $pdf->Cell(60, 10, $row['cpnumber'], 1, 1);
+            $pdf->Cell(40, 10, $row['zone'], 1, 0, 'C');
+            $pdf->Cell(150, 10, $row['cname'], 1, 1, 'C');
         }
 
         // Output the PDF
-        $pdf->Output('List_of_Members.pdf', 'D');
+        $pdf->Output($title . '.pdf', 'D');
         exit;
     }
 }

@@ -27,7 +27,7 @@
                     <input name="txt_edit_cname" class="form-control input-sm" type="text" value="'.$row['completeName'].'"/>
                 </div>
                 <div class="form-group">
-                    <label>Contact #: </label>
+                    <label>Contact Number: </label>
                     <input name="txt_edit_contact" class="form-control input-sm" type="text" value="'.$row['pcontact'].'" />
                 </div>
                 <div class="form-group">

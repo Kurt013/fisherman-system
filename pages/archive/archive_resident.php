@@ -21,15 +21,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['btn_archive'])) {
         if (!empty($_POST['chk_delete'])) {
-            $idsToArchive = implode(',', $_POST['chk_delete']);
-            $archiveQuery = "UPDATE tblresident SET archive = 1 WHERE id IN ($idsToArchive)";
-            if (mysqli_query($con, $archiveQuery)) {
-                $_SESSION['archive'] = "Members archived successfully."; // Set the notification
+            // Sanitize and prepare the list of IDs for the query
+            $idsToArchive = array_map('intval', $_POST['chk_delete']);
+            $idsToArchive = implode(',', $idsToArchive);  // Join them into a comma-separated string
+            
+            // Make sure the $idsToArchive list is not empty
+            if (!empty($idsToArchive)) {
+                $archiveQuery = "UPDATE tblresident SET archive = 1 WHERE id IN ($idsToArchive)";
+                if (mysqli_query($con, $archiveQuery)) {
+                    $_SESSION['archive'] = "Members archived successfully."; // Set the notification
+                } else {
+                    $_SESSION['archive_error'] = "Error archiving members."; // Handle the error
+                }
+            } else {
+                $_SESSION['archive_error'] = "No valid IDs selected."; // Handle the case where no valid IDs are selected
             }
+            // Redirect to the same page
             header("Location: " . $_SERVER['PHP_SELF']);
             exit;
         }
     }
+    
 
     if (isset($_POST['qr_data']) && isset($_POST['image_data'])) {
         // Handle the PDF generation action
@@ -187,7 +199,6 @@ include('../header.php');
                                         <th>Age</th>
                                         <th>Type</th>
                                         <th>Cellphone Number</th>
-                                        <th>Option</th>
 
                                     </tr>
                                 </thead>
@@ -214,7 +225,6 @@ include('../header.php');
                                     <td>' . $row['age'] . '</td>
                                     <td>' . $row['type'] . '</td>
                                     <td>' . $row['cpnumber'] . '</td>
-                                    <td><button class="btn btn-secondary btn-sm" data-target="#editModal' . $row['id'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                 </tr>';
                                 include "../resident/edit_modal.php";
 
@@ -249,7 +259,7 @@ include('../header.php');
                 $("#table").DataTable({
                     "responsive": true,
                     "aoColumnDefs": [ 
-                        { "bSortable": false, "aTargets": [ 0, 7 ] }
+                        { "bSortable": false, "aTargets": [ 0, 5 ] }
                     ],
                     "aaSorting": [],
                     "autoWidth": false 

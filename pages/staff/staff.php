@@ -60,7 +60,7 @@
                                             if(!isset($_SESSION['staff']))
                                             {
                                         ?>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Archive</button> 
+                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#archiveModal"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Archive</button> 
                                         <?php
                                             }
                                         ?>

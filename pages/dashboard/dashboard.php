@@ -34,14 +34,14 @@ if (!isset($_SESSION['role'])) {
                     <div class="box">
                         <div class="col-md-4 col-sm-6 col-xs-12"><br>
                             <div class="info-box">
-                                <a href="../officials/officials.php">
-                                    <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
+                            <a href="../resident/resident.php">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
                                 </a>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Total Officials</span>
+                                    <span class="info-box-text">Total Members</span>
                                     <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con, "SELECT * from tblofficial  WHERE archive = 0");
+                                            $q = mysqli_query($con, "SELECT * from tblresident  WHERE archive = 0");
                                             echo mysqli_num_rows($q);
                                         ?>
                                     </span>
@@ -52,14 +52,15 @@ if (!isset($_SESSION['role'])) {
                         <div class="col-md-4 col-sm-6 col-xs-12"><br>
                             <div class="info-box">
                                 <a href="../resident/resident.php">
-                                    <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
+                                    <span class="info-box-icon bg-aqua"><i class="fa-solid fa-sailboat"></i></span>
                                 </a>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Total Members</span>
+                                    <span class="info-box-text">Total Registered Boat</span>
                                     <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con, "SELECT * from tblresident  WHERE archive = 0");
-                                            echo mysqli_num_rows($q);
+                                            // Correct the query to use proper quotes for 'Yes'
+                                            $q = mysqli_query($con, "SELECT * FROM tblresident WHERE has_boat = 'Yes' AND archive = 0");
+                                            echo mysqli_num_rows($q); // Count the rows returned by the query
                                         ?>
                                     </span>
                                 </div>

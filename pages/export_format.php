@@ -7,20 +7,31 @@
         <h4 class="modal-title" id="exportModalLabel">Export Confirmation</h4>
       </div>
       <div class="modal-body">
-        <p>Choose export format:</p>
+        <p>Choose Member type and export format:</p>
         <!-- Form for exporting -->
         <form method="post" action="../resident/export.php">
-        <div class="form-group">
+          <!-- Add a dropdown for choosing the type of data -->
+          <div class="form-group">
+            <label for="data_type">Choose Member Type:</label>
+            <select name="data_type" id="data_type" class="form-control">
+              <option value="fisherman">Fisherman</option>
+              <option value="Fish Vendor">Fish Vendor</option>
+              <option value="both">All</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
             <label for="export-format">Export Format:</label>
             <select name="export_format" id="export_format" class="form-control">
-            <option value="pdf">PDF</option>
-            <option value="excel">Excel</option>
+              <option value="pdf">PDF</option>
+              <option value="excel">Excel</option>
             </select>
-        </div>
-        <div class="modal-footer">
+          </div>
+
+          <div class="modal-footer">
             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
             <input type="submit" class="btn btn-primary btn-sm" name="export" value="Export">
-        </div>
+          </div>
         </form>
       </div>
     </div>

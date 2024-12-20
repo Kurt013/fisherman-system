@@ -3,15 +3,15 @@ if (isset($_POST['export'])) {
     include "../connection.php";
 
     // SQL queries to fetch data
-    $SQL1 = "SELECT COUNT(*) AS NumberofOfficial FROM tblofficial WHERE archive = 0"; // Total Officials
-    $SQL2 = "SELECT COUNT(*) AS NumberofMembers FROM tblresident WHERE archive = 0"; // Total Residents per Zone
+    $SQL2 = "SELECT COUNT(*) AS NumberofBoats FROM tblresident WHERE has_boat = 'Yes' AND archive = 0"; // Total Boats
+    $SQL1 = "SELECT COUNT(*) AS NumberofMembers FROM tblresident WHERE archive = 0"; // Total Residents per Zone
     $SQL3 = "SELECT COUNT(*) AS NumberofActivities FROM tblactivity WHERE archive = 0"; // Total Activities
     $SQL4 = "SELECT COUNT(*) AS NumberofMembers, Zone FROM tblresident WHERE archive = 0 GROUP BY Zone"; // Total Residents per Purok
     $SQL5 = "SELECT COUNT(*) AS NumberofMembers, Age FROM tblresident WHERE archive = 0 GROUP BY Age"; // Total Residents by Age
     $SQL6 = "SELECT COUNT(*) AS NumberofMembers, type FROM tblresident WHERE archive = 0 GROUP BY type"; // Total Residents by Type
 
     $arrsql = array($SQL1, $SQL2, $SQL3, $SQL4, $SQL5, $SQL6);
-    $arrhead = array("Total Officials", "Total Members", "Total Activities", "Population per Purok", "Members by Age", "Members by Type");
+    $arrhead = array("Total Members", "Total Registered Boats", "Total Activities", "Population per Purok", "Members by Age", "Members by Type");
 
     $output = '';
 
@@ -78,22 +78,22 @@ if (isset($_POST['export'])) {
         // Initialize PDF
         $pdf = new FPDF();
         $pdf->AddPage();
-        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetFont('Arial', 'B', 15);
 
         // Add title and center it
-        $pdf->Cell(0, 10, 'Report: Population and Member Statistics', 0, 1, 'C');
+        $pdf->Cell(0, 0, 'Report: Population and Member Statistics', 0, 1, 'C');
         $pdf->Ln(10); // Add some space
 
         // Set content font
-        $pdf->SetFont('Arial', '', 10);
+        $pdf->SetFont('Arial', '', 14);
 
         // Loop through the SQL queries to generate the PDF content
         foreach (array_combine($arrsql, $arrhead) as $query => $header) {
             $pdf->Ln();
-            $pdf->SetFont('Arial', 'B', 10);
+            $pdf->SetFont('Arial', 'B', 13);
             $pdf->Cell(0, 10, $header, 0, 1, 'C');  // Center the header
 
-            $pdf->SetFont('Arial', '', 10);
+            $pdf->SetFont('Arial', '', 12);
 
             $result = mysqli_query($con, $query);
             

@@ -68,11 +68,11 @@
                                             }
                                                 ?>
 
-<div style="text-align: right;">
-    <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#exportModal">
-        <i class="fa fa-file-export" aria-hidden="true"></i> Export
-    </button>
-</div>
+                                    <div style="text-align: right;">
+                                        <button type="button" class="btn btn-third btn-sm" data-toggle="modal" data-target="#exportModal">
+                                            <i class="fa fa-file-export" aria-hidden="true"></i> Export
+                                        </button>
+                                    </div>
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->
@@ -102,6 +102,7 @@
                                             
 
                                                 $squery = mysqli_query($con, "select * from tblactivity WHERE archive = 0");
+                                                if (mysqli_num_rows($squery) > 0) {
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '<tr>';
@@ -125,6 +126,9 @@
                                                     include "edit_modal.php";
                                                     include "view_modal.php";
                                                 }
+                                            } else {
+                                                echo '<tr><td colspan="6" style="text-align: center; color: #999;">No activities found. Click "Add Activity" to create a new one.</td></tr>';
+                                            }
 
                                             
                                             ?>

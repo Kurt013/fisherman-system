@@ -82,7 +82,6 @@
                                                 ?>
                                                 <th>Name</th>
                                                 <th>Userame</th>
-                                                <th style="width: 40px !important;">Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,7 +95,6 @@
                                                         <td><input type="checkbox" name="chk_unarchive[]" class="chk_unarchive" value="'.$row['id'].'" /></td>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 
@@ -111,7 +109,6 @@
                                                     <tr>
                                                         <td>'.$row['first_name'].' '.$row['last_name'].'</td>
                                                         <td>'.$row['username'].'</td>
-                                                        <td><button class="btn btn-secondary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                     </tr>
                                                     ';
 
@@ -148,9 +145,15 @@
         <?php }
         include "../footer.php"; ?>
 <script type="text/javascript">
+    function checkMain(source) {
+        var checkboxes = document.getElementsByClassName("chk_unarchive"); // Get all checkboxes in the table
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = source.checked; // Set each checkbox checked status to the 'select all' checkbox status
+        }
+    }
     $(function() {
         $("#table").dataTable({
-           "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,3 ] } ],"aaSorting": []
+           "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,2 ] } ],"aaSorting": []
         });
     });
 

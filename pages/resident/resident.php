@@ -21,15 +21,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['btn_archive'])) {
         if (!empty($_POST['chk_delete'])) {
-            $idsToArchive = implode(',', $_POST['chk_delete']);
-            $archiveQuery = "UPDATE tblresident SET archive = 1 WHERE id IN ($idsToArchive)";
-            if (mysqli_query($con, $archiveQuery)) {
-                $_SESSION['archive'] = "Members archived successfully."; // Set the notification
+            // Sanitize and prepare the list of IDs for the query
+            $idsToArchive = array_map('intval', $_POST['chk_delete']);
+            $idsToArchive = implode(',', $idsToArchive);  // Join them into a comma-separated string
+            
+            // Make sure the $idsToArchive list is not empty
+            if (!empty($idsToArchive)) {
+                $archiveQuery = "UPDATE tblresident SET archive = 1 WHERE id IN ($idsToArchive)";
+                if (mysqli_query($con, $archiveQuery)) {
+                    $_SESSION['archive'] = "Members archived successfully."; // Set the notification
+                } else {
+                    $_SESSION['archive_error'] = "Error archiving members."; // Handle the error
+                }
+            } else {
+                $_SESSION['archive_error'] = "No valid IDs selected."; // Handle the case where no valid IDs are selected
             }
+            // Redirect to the same page
             header("Location: " . $_SERVER['PHP_SELF']);
             exit;
         }
     }
+    
 
     if (isset($_POST['qr_data']) && isset($_POST['image_data'])) {
         // Handle the PDF generation action
@@ -201,14 +213,14 @@ include('../header.php');
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Type</th>
-                                        <th>Cellphone Number</th>
+                                        <th>Registered Boat Number</th>
                                         <th>ID Card</th>
                                         <th style="width: 40px !important;">Option</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, type, cpnumber, image 
+                                $squery = mysqli_query($con, "SELECT zone, id, CONCAT(lname, ', ', fname, ' ', mname) AS cname, age, type, boat_number, image 
                                 FROM tblresident 
                                 WHERE archive = 0 
                                 ORDER BY zone");
@@ -234,7 +246,7 @@ include('../header.php');
                                     <td>' . $row['cname'] . '</td>
                                     <td>' . $row['age'] . '</td>
                                     <td>' . $row['type'] . '</td>
-                                    <td>' . $row['cpnumber'] . '</td>
+                                    <td>' . (empty($row['boat_number']) ? 'N/A' : $row['boat_number']) . '</td>
                                     <td>
                                         <button type="button" onclick="generatePdf(\'' . htmlspecialchars($qrData) . '\', \'' . $qrCodeBase64 . '\')" class="btn btn-pdf btn-sm">
     <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF

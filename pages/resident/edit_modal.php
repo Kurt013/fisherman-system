@@ -47,6 +47,12 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
                             <label class="control-label">Image:</label>
                             <input name="txt_edit_image" class="form-control input-sm" type="file" />
                         </div>
+                         <div id="edit_boat_number'.$row['id'].'" style="display: none;">
+                            <div class="form-group">
+                                <label class="control-label">Registered Boat Number:</label>
+                                <input name="edit_boat_number" class="form-control input-sm" type="text" value="'.$erow['boat_number'].'" placeholder="Boat Number" />
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -71,10 +77,18 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
                         </div>
                         <div class="form-group">     
                             <label class="control-label">Type:</label>
-                            <select name="ddl_edit_type" class="form-control input-sm">
+                            <select id="ddl-edit-type'.$row['id'].'" name="ddl_edit_type" class="form-control input-sm">
                                 <option disabled="">-Select Type-</option>
                                 <option value="Fisherman" '.($erow['type'] == 'Fisherman' ? 'selected' : '').'>Fisherman</option>
                                 <option value="Fish Vendor" '.($erow['type'] == 'Fish Vendor' ? 'selected' : '').'>Fish Vendor</option>
+                            </select>
+                        </div>
+                        <div id="edit_has_boat_field'.$row['id'].'" class="form-group" style="display: none;">
+                            <label class="control-label">Has Registered Boat?</label>
+                            <select id="edit_has_boat'.$row['id'].'" name="edit_has_boat" class="form-control input-sm">
+                                <option selected="" disabled="">-Select Option-</option>
+                                <option value="Yes" '.($erow['has_boat'] == 'Yes' ? 'selected' : '').'>Yes</option>
+                                <option value="No" '.($erow['has_boat'] == 'No' ? 'selected' : '').'>No</option>
                             </select>
                         </div>
                     </div>
@@ -89,4 +103,41 @@ echo '<div id="editModal'.$row['id'].'" class="modal fade">
   </div>
 </form>
 </div>';
+
+echo '<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function () {
+    const typeField = document.getElementById("ddl-edit-type'.$row['id'].'");
+    const hasBoatField = document.getElementById("edit_has_boat_field'.$row['id'].'");
+    const hasBoat = document.getElementById("edit_has_boat'.$row['id'].'");
+    const boatNumberField = document.getElementById("edit_boat_number'.$row['id'].'");
+
+    // Initialize fields based on current values
+    if (typeField.value === "Fisherman") {
+        hasBoatField.style.display = "block";
+    }
+
+    if (hasBoat.value === "Yes") {
+        boatNumberField.style.display = "block";
+    }
+
+    // Add event listeners for changes
+    typeField.addEventListener("change", function () {
+        if (typeField.value === "Fisherman") {
+            hasBoatField.style.display = "block";
+        } else {
+            hasBoatField.style.display = "none";
+            boatNumberField.style.display = "none";
+            hasBoat.value = ""; // Reset selection
+        }
+    });
+
+    hasBoat.addEventListener("change", function () {
+        if (hasBoat.value === "Yes") {
+            boatNumberField.style.display = "block";
+        } else {
+            boatNumberField.style.display = "none";
+        }
+    });
+});
+</script>';
 ?>

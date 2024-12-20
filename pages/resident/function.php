@@ -6,6 +6,8 @@ if(isset($_POST['btn_add'])){
     $ddl_gender = mysqli_real_escape_string($con, $_POST['ddl_gender']);
     $ddl_type = mysqli_real_escape_string($con, $_POST['ddl_type']);
     $txt_bdate = mysqli_real_escape_string($con, $_POST['txt_bdate']);
+    $has_boat = mysqli_real_escape_string($con, $_POST['has_boat']);
+    $boat_number = mysqli_real_escape_string($con, $_POST['boat_number']);
 
     // Age calculation
     $dateOfBirth = $txt_bdate;
@@ -52,6 +54,8 @@ if(isset($_POST['btn_add'])){
                                         gender,
                                         cpnumber,
                                         type,
+                                        has_boat,
+                                        boat_number,
                                         image
                                     ) 
                                     VALUES (
@@ -66,6 +70,8 @@ if(isset($_POST['btn_add'])){
                                         '$ddl_gender', 
                                         '$txt_cpnumber',
                                         '$ddl_type', 
+                                        '$has_boat',
+                                        '$boat_number',
                                         '$txt_image'
                                     )") 
                             or die('Error: ' . mysqli_error($con));
@@ -88,6 +94,8 @@ if(isset($_POST['btn_add'])){
                                         gender,
                                         cpnumber,
                                         type,
+                                        has_boat,
+                                        boat_number,
                                         image
                                     ) 
                                     VALUES (
@@ -102,6 +110,8 @@ if(isset($_POST['btn_add'])){
                                         '$ddl_gender', 
                                         '$txt_cpnumber',
                                         '$ddl_type', 
+                                        '$has_boat',
+                                        '$boat_number',
                                         '$txt_image'
                                     )") 
                             or die('Error: ' . mysqli_error($con));
@@ -133,6 +143,8 @@ if(isset($_POST['btn_save'])){
     $txt_edit_cpnumber = mysqli_real_escape_string($con, $_POST['txt_edit_cpnumber']);
     $ddl_edit_gender = mysqli_real_escape_string($con, $_POST['ddl_edit_gender']);
     $ddl_edit_type = mysqli_real_escape_string($con, $_POST['ddl_edit_type']);
+    $edit_has_boat = mysqli_real_escape_string($con, $_POST['edit_has_boat']);
+    $edit_boat_number = mysqli_real_escape_string($con, $_POST['edit_boat_number']);
 
 
     // File upload logic
@@ -177,7 +189,9 @@ if(isset($_POST['btn_save'])){
         cpnumber = '".$txt_edit_cpnumber."',
         gender = '".$ddl_edit_gender."',
         type = '".$ddl_edit_type."',
-        image = '".$txt_edit_image."'
+        image = '".$txt_edit_image."',
+        has_boat = '$edit_has_boat',
+        boat_number = '$edit_boat_number'
         WHERE id = '".$txt_id."'
     ") or die('Error: ' . mysqli_error($con));
 

@@ -95,7 +95,6 @@
                                                 <th>Address</th>
                                                 <th>Start of Term</th>
                                                 <th>End of Term</th>
-                                                <th style="width: 130px !important;">Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -115,22 +114,6 @@
                                                             <td>'.$row['paddress'].'</td>
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
-                                                            <td>
-                                                                <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
-                                                                if(isset($_SESSION['role']) && $_SESSION['role'] !== "staff") {
-                                                                    if($row['status'] == 'Ongoing Term') {
-                                                                        echo '<button class="btn btn-danger btn-sm" data-target="#endModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> End</button>';
-                                                                    } else {
-                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
-                                                                    }
-                                                                } else {
-                                                                    // If the user is 'Staff', show only the Edit button and the Start button if applicable
-                                                                    if ($row['status'] !== 'Ongoing Term') {
-                                                                        echo '<button class="btn btn-success btn-sm" data-target="#startModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i> Start</button>';
-                                                                    }
-                                                                }
-                                                                
-                                                            echo '</td>
                                                         
                                                         </tr>
                                                         ';
@@ -153,7 +136,6 @@
                                                             <td>'.$row['paddress'].'</td>
                                                             <td>'.$row['termStart'].'</td>
                                                             <td>'.$row['termEnd'].'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                                                         </tr>
                                                         ';
 
@@ -192,12 +174,18 @@
        
         
     <script type="text/javascript">
+        function checkMain(source) {
+        var checkboxes = document.getElementsByClassName("chk_unarchive"); // Get all checkboxes in the table
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = source.checked; // Set each checkbox checked status to the 'select all' checkbox status
+        }
+    }
         <?php if(!isset($_SESSION['staff'])) { ?>
             $(function() {
                 $("#table").DataTable({
                     "responsive": true,
                     "aoColumnDefs": [ 
-                        { "bSortable": false, "aTargets": [ 0, 7 ] }
+                        { "bSortable": false, "aTargets": [ 0, 6 ] }
                     ],
                     "aaSorting": [],
                     "autoWidth": false 

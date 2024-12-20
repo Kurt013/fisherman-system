@@ -29,8 +29,8 @@
                                     <input name="txt_cname" class="form-control input-sm" type="text" placeholder="Lastname, Firstname, Middlename" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label>Contact #:</label>
-                                    <input name="txt_contact" class="form-control input-sm" type="number" placeholder="Contact #" required/>
+                                    <label>Contact Number:</label>
+                                    <input name="txt_contact" class="form-control input-sm" type="number" placeholder="Contact Number" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Address:</label>
