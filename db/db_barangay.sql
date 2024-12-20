@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 10:01 AM
+-- Generation Time: Dec 20, 2024 at 03:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_barangay`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forget_password`
+--
+
+CREATE TABLE `forget_password` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `temp_key` varchar(200) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `forget_password`
+--
+
+INSERT INTO `forget_password` (`id`, `email`, `temp_key`, `created`) VALUES
+(0, 'casubhalucky5@gmail.com', '800378', '2024-12-04 11:10:59');
 
 -- --------------------------------------------------------
 
@@ -41,8 +61,10 @@ CREATE TABLE `tblactivity` (
 --
 
 INSERT INTO `tblactivity` (`id`, `dateofactivity`, `activity`, `description`, `image`, `archive`) VALUES
-(14, '2024-10-28', 'Ayuda', 'Distribution of ayuda', '1730191689375login-bg.png', 0),
-(15, '2024-10-31', 'Election', 'Election of officers', '1730369075356home-bg.png', 1);
+(14, '2024-10-28', 'Ayuda', 'Distribution of ayuda for fisherman', '1730191689375login-bg.png', 0),
+(15, '2024-10-31', 'Election', 'Election of officers', '1730369075356home-bg.png', 1),
+(18, '2024-11-06', 'Meeting', 'Meeting', '1731924052023qr_code (4).jpg', 1),
+(19, '2024-12-05', 'Cleaning', 'Cleaning of Lawa', '1734278397349unmute.png', 0);
 
 -- --------------------------------------------------------
 
@@ -284,7 +306,103 @@ INSERT INTO `tbllogs` (`id`, `user`, `logdate`, `action`) VALUES
 (185, 'administrator', '2024-11-08 15:15:05', 'Updated Resident named Dela Cruz, Juan  Pepito'),
 (186, 'administrator', '2024-11-08 15:15:13', 'Updated Resident named Juan, Zofia Zurita'),
 (187, 'administrator', '2024-11-08 15:16:26', 'Added Resident named Casubha, Lucky Star M.'),
-(188, 'staff', '2024-11-08 15:51:24', 'Updated Resident named Dela Cruz, Juan  Pepita');
+(188, 'staff', '2024-11-08 15:51:24', 'Updated Resident named Dela Cruz, Juan  Pepita'),
+(189, 'administrator', '2024-11-08 17:36:40', 'Added Resident named wdwjn, msjcnj nscjnqj'),
+(190, 'administrator', '2024-11-08 17:36:50', 'Updated Resident named wdwjn, msjcnj nscjnqj'),
+(191, 'administrator', '2024-11-10 14:56:08', 'Updated Members named Dela Cruz, Juan  Pepita'),
+(192, 'administrator', '2024-11-10 16:50:47', 'Added Members named Manaloto, Pepito juje'),
+(193, 'administrator', '2024-11-10 17:02:24', 'Updated Member named Dela Cruz, Juan  Pepita'),
+(194, 'administrator', '2024-11-10 17:08:11', 'Updated Member named Manaloto, Pepito juje'),
+(195, 'administrator', '2024-11-10 17:08:47', 'Updated Member named Duterte, digong hehe'),
+(196, 'administrator', '2024-11-10 17:09:20', 'Updated Member named Dela Cruz, Juan  Pepita'),
+(197, 'administrator', '2024-11-10 20:57:22', 'Added Official named Naag, Gracia'),
+(198, 'administrator', '2024-11-10 20:57:31', 'Update Official named Dela Cruz, Juan C.'),
+(199, 'staff', '2024-11-12 22:57:07', 'Added Official named '),
+(200, 'administrator', '2024-11-13 22:05:22', 'Added Activity '),
+(201, 'administrator', '2024-11-13 22:05:41', 'Added Activity '),
+(202, 'administrator', '2024-11-13 22:09:44', 'Added Official named Padilla, Alden'),
+(203, 'administrator', '2024-11-13 22:11:42', 'Update Official named Padilla, Alden'),
+(204, 'administrator', '2024-11-13 22:13:24', 'Added Official named Padilla, Alden'),
+(205, 'administrator', '2024-11-13 23:54:26', 'Added Member named ,  '),
+(206, 'administrator', '2024-11-14 00:13:15', 'Added Official named Almodovar, Kurt'),
+(207, 'administrator', '2024-11-15 19:19:59', 'Added Official named Casubha,Lucky Star'),
+(208, 'administrator', '2024-11-16 19:53:48', 'Updated Activity Ayuda'),
+(209, 'administrator', '2024-11-16 20:12:52', 'Update Official named Casubha,Lucky Star'),
+(210, 'administrator', '2024-11-16 20:13:47', 'Update Official named Casubha,Lucky Star'),
+(211, 'administrator', '2024-11-16 20:14:06', 'Update Official named Casubha,Lucky Star'),
+(212, 'administrator', '2024-11-16 20:14:51', 'Updated Member named Manaloto, Pepito Maku'),
+(213, 'administrator', '2024-11-16 21:38:01', 'Update Official named Alvares, Juanito'),
+(214, 'administrator', '2024-11-16 21:38:53', 'Update Official named Bato, Max'),
+(215, 'administrator', '2024-11-16 21:39:10', 'Update Official named Padilla, Mark'),
+(216, 'administrator', '2024-11-16 21:45:57', 'Update Official named Isagon, Giean'),
+(217, 'administrator', '2024-11-16 21:47:10', 'Updated Member named Dimagiba, Rosalinda Cruz'),
+(218, 'administrator', '2024-11-16 21:47:38', 'Updated Member named Ravena, Kiefer Muwey'),
+(219, 'administrator', '2024-11-16 21:48:17', 'Updated Member named Dela Cruz, Jessy Mendoza'),
+(220, 'administrator', '2024-11-16 21:49:04', 'Updated Member named Garcia, Betty Licando'),
+(221, 'staff', '2024-11-16 21:58:07', 'Updated Activity Ayuda'),
+(222, 'administrator', '2024-11-17 19:12:19', 'Updated Member named Dela Cruz, Jessy Mendoza'),
+(223, 'administrator', '2024-11-17 19:13:04', 'Updated Member named Dela Cruz, Jessy Mendoza'),
+(224, 'administrator', '2024-11-17 19:13:16', 'Updated Member named Garcia, Betty Rose Licando'),
+(225, 'staff', '2024-11-18 17:51:09', 'Added Official named Casubha, Inorio'),
+(226, 'staff', '2024-11-18 17:58:29', 'Added Member named Casubha, Nelia Mendoza'),
+(227, 'staff', '2024-11-18 18:00:52', 'Added Activity Meeint'),
+(228, 'staff', '2024-11-18 18:01:05', 'Updated Activity Meeting'),
+(229, 'administrator', '2024-11-18 18:06:16', 'Updated Member named Casubha, Lucky Star M.'),
+(230, 'administrator', '2024-11-18 18:07:54', 'Added Member named Casubha, Lucky Star Mendoza'),
+(231, 'administrator', '2024-11-18 18:08:27', 'Updated Member named Casubha, Lucky Star Mendoza'),
+(232, 'administrator', '2024-11-18 18:08:58', 'Updated Member named Casubha, Lucky Star Mendoza'),
+(233, 'administrator', '2024-11-18 18:13:57', 'Updated Member named Dela Cruz, Jessy Mendoza'),
+(234, 'administrator', '2024-11-20 21:25:11', 'Added Member named Ravema, Kiefer Muwey'),
+(235, 'administrator', '2024-11-20 21:25:33', 'Updated Member named Ravena, Kiefer Muwey'),
+(236, 'administrator', '2024-11-20 21:27:41', 'Added Member named Dimagiba, Rosalinda Cruz'),
+(237, 'administrator', '2024-11-20 21:28:37', 'Added Member named Dimagiba, Rosalinda Cruz'),
+(238, 'administrator', '2024-11-20 21:33:38', 'Added Official named Padilla, Mark'),
+(239, 'administrator', '2024-11-20 21:34:27', 'Added Official named Padilla, Mark'),
+(240, 'administrator', '2024-11-20 21:35:33', 'Added Official named Padilla, Mark'),
+(241, 'administrator', '2024-11-20 21:36:37', 'Added Official named Padilla, Mark'),
+(242, 'administrator', '2024-11-20 21:38:14', 'Added Official named Padilla, Mark'),
+(243, 'administrator', '2024-11-20 21:40:55', 'Added Official named Padilla, Mark'),
+(244, 'administrator', '2024-11-20 21:43:18', 'Added Official named Padilla, Mark'),
+(245, 'administrator', '2024-11-20 21:45:32', 'Added Official named Padilla, Mark'),
+(246, 'administrator', '2024-11-20 21:47:21', 'Added Official named Buyhe, John '),
+(247, 'administrator', '2024-11-20 21:48:13', 'Added Member named Dimagiba, Rosalinda Cruz'),
+(248, 'administrator', '2024-11-20 21:49:05', 'Added Member named Gonzales, Hanna Mahil'),
+(249, 'administrator', '2024-11-20 21:51:25', 'Added Member named Taa, Criza Mendoza'),
+(250, 'administrator', '2024-11-20 21:54:17', 'Added Official named Isagon, Giean'),
+(251, 'administrator', '2024-11-20 22:39:00', 'Updated Activity Ayuda'),
+(252, 'administrator', '2024-11-22 20:09:13', 'Updated Member named Gonzales, Hanna Mahil'),
+(253, 'administrator', '2024-11-22 20:15:28', 'Updated Member named Gonzales, Hanna Mahil'),
+(254, 'bfarmcadmin', '2024-11-22 20:17:14', 'Update Official named Padilla, Mark'),
+(255, 'bfarmcadmin', '2024-11-22 20:19:40', 'Updated Member named Gonzales, Hanna Mahil'),
+(256, 'lucky123', '2024-11-22 20:23:18', 'Updated Activity Ayuda'),
+(257, 'lucky123', '2024-11-22 20:24:07', 'Added Official named Fornal, Jeruh'),
+(258, 'zofia123', '2024-11-22 20:30:44', 'Updated Member named Taa, Criza Mendoza'),
+(259, 'jade123', '2024-11-22 20:32:09', 'Updated Member named Ravena, Kiefer Muwey'),
+(260, 'bfarmcadmin', '2024-11-22 20:33:32', 'Updated Activity Ayuda'),
+(261, 'bfarmcadmin', '2024-11-22 20:34:08', 'Update Official named Karikitan, John '),
+(262, 'bfarmcadmin', '2024-11-25 00:38:45', 'Added Member named Naag, Gracia Menil'),
+(263, 'bfarmcadmin', '2024-11-27 22:08:27', 'Added Official named Dictado, Jerrick'),
+(264, 'bfarmcadmin', '2024-11-27 22:45:27', 'Update Official named Dela Cruz, Juan C.'),
+(265, 'bfarmcadmin', '2024-12-04 17:12:30', 'Added Member named Amarante, Anselmo Carait'),
+(266, 'bfarmcadmin', '2024-12-04 17:17:32', 'Updated Member named Amarante, Anselmo Carait'),
+(267, 'bfarmcadmin', '2024-12-04 17:18:51', 'Added Member named Amarante, Anselmo Carait'),
+(268, 'bfarmcadmin', '2024-12-04 17:19:12', 'Updated Member named Amarante, Anselmo Carait'),
+(269, 'bfarmcadmin', '2024-12-04 17:20:17', 'Updated Member named Gonzales, Hanna Mahil'),
+(270, 'bfarmcadmin', '2024-12-04 17:27:01', 'Updated Member named Gonzales, Hanna Mahil'),
+(271, 'bfarmcadmin', '2024-12-04 17:27:26', 'Updated Member named Amarante, Anselmo Carait'),
+(272, 'bfarmcadmin', '2024-12-04 17:28:27', 'Updated Member named Ravena, Kiefer Muwey'),
+(273, 'bfarmcadmin', '2024-12-04 17:28:39', 'Updated Member named Dela Cruz, Jessy Mendoza'),
+(274, 'bfarmcadmin', '2024-12-04 17:28:51', 'Updated Member named Garcia, Betty Rose Licando'),
+(275, 'bfarmcadmin', '2024-12-04 18:28:01', 'Updated Member named Amarante, Anselmo Carait'),
+(276, 'bfarmcadmin', '2024-12-04 18:49:20', 'Updated Member named Amoranto, Mae Bato'),
+(277, 'bfarmcadmin', '2024-12-04 18:50:51', 'Updated Member named Amarante, Cris Carait'),
+(278, 'bfarmcstaff', '2024-12-06 22:14:12', 'Update Official named Isagon, Giean'),
+(279, 'bfarmcstaff', '2024-12-06 22:14:24', 'Updated Member named Taa, Criza Mendoza'),
+(280, 'bfarmcadmin', '2024-12-15 23:59:57', 'Added Activity Cleaning'),
+(281, 'bfarmcadmin', '2024-12-16 00:00:06', 'Updated Activity Cleaning'),
+(282, 'bfarmcadmin', '2024-12-16 00:00:54', 'Added Official named hehe'),
+(283, 'bfarmcadmin', '2024-12-20 22:24:38', 'Added Official named Lucky Star Mendoza Casubha'),
+(284, 'bfarmcadmin', '2024-12-20 22:28:35', 'Added Member named Casubha, Inorio Cruz');
 
 -- --------------------------------------------------------
 
@@ -309,10 +427,20 @@ CREATE TABLE `tblofficial` (
 --
 
 INSERT INTO `tblofficial` (`id`, `sPosition`, `completeName`, `pcontact`, `paddress`, `termStart`, `termEnd`, `status`, `archive`) VALUES
-(12, 'President', 'Dela Cruz, Juan C.', '09236781914', 'Purok 1 Sinalhan', '2024-10-16', '2024-11-08', 'Ongoing Term', 0),
+(12, 'President', 'Dela Cruz, Juan C.', '09236781913', 'Purok 2 Sinalhan', '2024-10-16', '2024-11-08', 'End Term', 0),
 (15, 'Vice President', 'Delos Santos, Sergio', '09901789111', '647 Purok 2 Sinalhan', '2023-03-01', '2024-11-09', 'Ongoing Term', 1),
-(17, 'Public Relations Officer', 'Padilla, Alden', '099087618913', 'Purok 2 Sinalhan', '2024-09-29', '2024-10-31', 'Ongoing Term', 0),
-(18, 'Sergeant at Arms', 'Barreto, leon', '09097618171', 'Purok 6', '2023-02-14', '2024-11-09', 'Ongoing Term', 0);
+(17, 'Public Relations Officer', 'Padilla, Mark', '099087618912', 'Purok 2 Sinalhan', '2024-09-29', '2024-10-31', 'Ongoing Term', 0),
+(18, 'Sergeant at Arms', 'Barreto, leon', '09097618171', 'Purok 6', '2023-02-14', '2024-11-09', 'Ongoing Term', 1),
+(19, 'Vice President', 'Bato, Max', '09907817161', 'Purok 4, Sinalhan', '2023-04-05', '2025-03-11', 'Ongoing Term', 0),
+(20, 'President', 'Isagon, Giean', '09236781914', 'Purok  5 Sinalhan', '2023-01-30', '2024-02-05', 'Ongoing Term', 1),
+(22, 'Treasurer', 'Almodovar, Kurt', '09128798171', 'Purok 2 Sinalhan', '2024-10-29', '2024-12-04', 'End Term', 0),
+(23, 'Public Relations Officer', 'Alvares, Juanito', '09198789181', 'Purok 6 Sinalhan', '2023-02-08', '2024-11-26', 'Ongoing Term', 0),
+(24, 'Vice President', 'Casubha, Inorio', '09121289181', 'Purok  6 Sinalhan', '2023-01-31', '2024-12-06', 'Ongoing Term', 1),
+(25, 'Sergeant at Arms', 'Karikitan, John ', '09198987181', 'Purok 2 Sinalhan', '2023-01-01', '2025-01-20', 'Ongoing Term', 0),
+(26, 'Sergeant at Arms', 'Fornal, Jeruh', '09908718191', 'Purok 2 Sinalhan', '2021-12-27', '2024-12-07', 'Ongoing Term', 0),
+(27, 'Secretary', 'Dictado, Jerrick', '09907618171', 'Purok 2 Sinalhan', '2023-05-09', '2025-05-09', 'Ongoing Term', 0),
+(28, 'Secretary', 'hehe', '09198918191', 'Purok 1', '2024-12-01', '2025-01-11', 'Ongoing Term', 1),
+(29, 'President', 'Lucky Star Mendoza Casubha', '09817776517', 'Purok 2 Sinalhan', '2024-12-01', '2025-01-11', 'Ongoing Term', 1);
 
 -- --------------------------------------------------------
 
@@ -334,24 +462,30 @@ CREATE TABLE `tblresident` (
   `cpnumber` varchar(15) DEFAULT NULL,
   `type` text NOT NULL,
   `image` text NOT NULL,
-  `archive` tinyint(1) DEFAULT 0
+  `archive` tinyint(1) DEFAULT 0,
+  `has_boat` varchar(4) DEFAULT '0',
+  `boat_number` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblresident`
 --
 
-INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `type`, `image`, `archive`) VALUES
-(19, 'Casubha', 'Ashley', 'Mendoza', '2013-02-05', 11, 'Sinalhan', '5', 655, 'Female', '09909876181', 'Fish Vendor', '1730049567353_idpic.png', 0),
-(22, 'Juan', 'Zofia', 'Zurita', '1976-02-10', 48, 'Sinalhan', '3', 11, 'Male', '09817776517', 'Fish Vendor', '1730049581675_idpic.png', 0),
-(30, 'Dela Cruz', 'Lina', 'Casubha', '2010-07-05', 14, 'Sinalhan', '2', 12, 'Female', '09100781913', '', '1730049559567_idpic.png', 1),
-(31, 'Amarante', 'Juan', 'Danilo', '1993-03-01', 31, 'Sinalhan', '1', 43, 'Male', '09891235617', '', '1730044926206_idpic.png', 1),
-(32, 'Padilla', 'Alden', 'Barbara', '2005-04-05', 19, 'Sinalhan', '6', 12, 'Male', '09231567891', '', '1730367307049_idpic.png', 1),
-(33, 'Duterte', 'Sara', 'hehe', '2013-01-29', 11, 'Sinalhan', '3', 1212, 'Female', '09213218191', 'Fisherman', '1730367659245_idpic.png', 0),
-(34, 'Duterte', 'digong', 'hehe', '2024-10-05', 0, 'Sinalhan', '4', 1212, 'Female', '09213218191', 'Fish Vendor', '1730367798984_idpic.png', 0),
-(35, 'Barroso', 'Lauriene', 'Nofuente', '2008-03-04', 16, 'Sinalhan', '6', 123, 'Female', '09908767181', 'Fisherman', '1730986873397_idpic.png', 0),
-(36, 'Dela Cruz', 'Juan ', 'Pepita', '1997-03-04', 27, 'Sinalhan', '1', 52, 'Male', '09213218191', 'Fish Vendor', '1730986961660_idpic.png', 0),
-(37, 'Casubha', 'Lucky', 'Star M.', '1988-03-09', 36, 'Sinalhan', '2', 121, 'Female', '09817776517', 'Fish Vendor', '1731050186578_idpic.png', 0);
+INSERT INTO `tblresident` (`id`, `lname`, `fname`, `mname`, `bdate`, `age`, `barangay`, `zone`, `hnumber`, `gender`, `cpnumber`, `type`, `image`, `archive`, `has_boat`, `boat_number`) VALUES
+(19, 'Dela Cruz', 'Jessy', 'Mendoza', '1994-02-05', 30, 'Sinalhan', '5', 655, 'Female', '09909876181', 'Fisherman', '1730049567353_idpic.png', 1, 'No', ''),
+(22, 'Ravena', 'Kiefer', 'Muwey', '1976-02-10', 48, 'Sinalhan', '3', 509, 'Male', '09817776517', 'Fisherman', '1730049581675_idpic.png', 0, 'Yes', '2024-008'),
+(33, 'Duterte', 'Sara', 'hehe', '2013-01-29', 11, 'Sinalhan', '3', 1212, 'Female', '09213218191', 'Fisherman', '1730367659245_idpic.png', 1, '0', NULL),
+(34, 'Dimagiba', 'Rosalinda', 'Cruz', '2003-06-09', 21, 'Sinalhan', '4', 1212, 'Female', '09213218191', 'Fish Vendor', '1730367798984_idpic.png', 1, '0', NULL),
+(35, 'Garcia', 'Betty Rose', 'Licando', '1995-03-09', 29, 'Sinalhan', '6', 123, 'Female', '09908767181', 'Fisherman', '1730986873397_idpic.png', 0, 'Yes', '2024-011'),
+(36, 'Dela Cruz', 'Juan ', 'Pepita', '1963-06-04', 61, 'Sinalhan', '1', 521, 'Male', '09213218191', 'Fisherman', '1730986961660_idpic.png', 1, '0', NULL),
+(38, 'wdwjn', 'msjcnj', 'nscjnqj', '2009-06-09', 15, 'Sinalhan', '2', 121, 'Female', '09817776517', 'Fisherman', '1731058610372_idpic.png', 1, '0', NULL),
+(39, 'Manaloto', 'Pepito', 'Maku', '1984-02-08', 40, 'Sinalhan', '1', 121, 'Male', '09817776517', 'Fisherman', '1731228647385_idpic.png', 1, '0', NULL),
+(41, 'Casubha', 'Nelia', 'Mendoza', '2012-02-06', 12, 'Sinalhan', '3', 411, 'Female', '09817776517', 'Fish Vendor', '1731923909368_idpic.png', 1, '0', NULL),
+(44, 'Gonzales', 'Hanna', 'Mahil', '1989-06-14', 35, 'Sinalhan', '1', 579, 'Female', '09817776517', 'Fisherman', '1732110545916_idpic.png', 1, 'Yes', '2024-010'),
+(45, 'Taa', 'Criza', 'Mendoza', '1978-03-25', 46, 'Sinalhan', '2', 578, 'Female', '09817776517', 'Fish Vendor', '1732110685232_idpic.png', 0, '', ''),
+(46, 'Amoranto', 'Mae', 'Bato', '2003-11-27', 21, 'Sinalhan', '1', 578, 'Female', '09817776517', 'Fish Vendor', '1732466325203_idpic.png', 0, '', ''),
+(48, 'Amarante', 'Cris', 'Carait', '1986-07-17', 38, 'Sinalhan', '2', 121, 'Male', '09817776517', 'Fisherman', '1733303931683_idpic.png', 0, 'Yes', '2024-009'),
+(49, 'Casubha', 'Inorio', 'Cruz', '1978-02-07', 46, 'Sinalhan', '2', 231, 'Male', '09876891011', 'Fish Vendor', '1734704915113_idpic.png', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -367,21 +501,21 @@ CREATE TABLE `tbluser` (
   `username` varchar(20) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` varchar(20) NOT NULL,
-  `archive` tinyint(1) DEFAULT 0
+  `archive` tinyint(1) DEFAULT 0,
+  `temp_key` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbluser`
 --
 
-INSERT INTO `tbluser` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `role`, `archive`) VALUES
-(1, '', '', '', 'admin', 'admin', 'administrator', 0),
-(2, '', '', '', 'zone', '1234', 'zoneleader', 0),
-(11, '', '', '', 'staff', 'staff', 'staff', 1),
-(25, '', '', '', 'bfarmcadmin', '$2y$10$bgRoIIX.GwwVUbu16S.neualH.xM4x..yLlJSh94RGRIwL4ibW8du', 'administrator', 0),
-(26, '', '', '', 'bfarmcstaff', '$2y$10$uhNu9u9jBFVLOsVgvTMbYun4SjxF7l7ZyosnG9ef2ztkJXZUYkTWq', 'staff', 0),
-(27, 'Kim', 'Casubha', 'casubhalucky5@gmail.com', 'kim123', '$2y$10$GUAaUcIuMMzy.E5VVtMcqOdw0jiZPYfjfCCJgxz4nRrB22roVYhDq', 'staff', 0),
-(28, 'lucky', 'casubha', 'ajsansj', 'lucky123', '$2y$10$y.3Wz8ddA6XZ/W36rua3s.eQs0xHUI0J7K8rIzwjvwphOdpwoG4fi', 'staff', 0);
+INSERT INTO `tbluser` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `role`, `archive`, `temp_key`) VALUES
+(25, '', '', '', 'bfarmcadmin', '$2y$10$oYcZKJiFMwiZQsosB4AywuEuMLXu44YYRuYBQotGYXTgWOtRgWQKm', 'administrator', 0, ''),
+(26, 'bfarmc', 'staff', 'bfarmc@gmail.com', 'bfarmcstaff', '$2y$10$2RTvmE2TN86SoYwcu.3QsugLky0ZIWuz9GrUzJzOTZli1ROJToiQ.', 'staff', 0, ''),
+(28, 'lucky', 'casubha', 'casubhalucky5@gmail.com', 'lucky123', '$2y$10$CZs0AneaACUUnp//rDOoaelVbyD9dNumJoxfUMP849jlHclN/zB3q', 'staff', 0, ''),
+(29, 'Zofia', 'Juan', 'zofiaj', 'zofia123', '$2y$10$k81637iRQLHy17ckMiNwoe4ruYiggdr6IHJ6M58BCmE0ELlzUXPCi', 'staff', 0, ''),
+(30, 'jade', 'barroso', 'jade@gmail.com', 'jade123', '$2y$10$hXbg3cAYHA8QWX5WELF2FuVKvsA6ixBWdsDn8WYl4CC02DYpALiQO', 'staff', 0, ''),
+(31, 'gracia', 'naag', 'gracia@gmail.com', 'gracia123', '$2y$10$Sv3dJQGRnMFFZIoFiQ21GuIgomsudCf9anxmgiMBN35uqGWK0i3nu', 'staff', 1, '');
 
 -- --------------------------------------------------------
 
@@ -457,7 +591,7 @@ ALTER TABLE `tblzone`
 -- AUTO_INCREMENT for table `tblactivity`
 --
 ALTER TABLE `tblactivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tblactivityphoto`
@@ -469,25 +603,25 @@ ALTER TABLE `tblactivityphoto`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
 
 --
 -- AUTO_INCREMENT for table `tblofficial`
 --
 ALTER TABLE `tblofficial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tblresident`
 --
 ALTER TABLE `tblresident`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
